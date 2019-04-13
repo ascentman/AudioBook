@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		CE568F2822625E49000D0A3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE568F2722625E49000D0A3B /* AppDelegate.swift */; };
-		CE568F2A22625E49000D0A3B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE568F2922625E49000D0A3B /* ViewController.swift */; };
+		CE568F2A22625E49000D0A3B /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE568F2922625E49000D0A3B /* MainCollectionViewController.swift */; };
 		CE568F2D22625E49000D0A3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE568F2B22625E49000D0A3B /* Main.storyboard */; };
 		CE568F2F22625E4A000D0A3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE568F2E22625E4A000D0A3B /* Assets.xcassets */; };
 		CE568F3222625E4A000D0A3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE568F3022625E4A000D0A3B /* LaunchScreen.storyboard */; };
+		CE568F3A2262713D000D0A3B /* MainCollectionDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE568F392262713D000D0A3B /* MainCollectionDataProvider.swift */; };
+		CE568F3D226281B0000D0A3B /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE568F3B226281B0000D0A3B /* BookCollectionViewCell.swift */; };
+		CE568F4022628579000D0A3B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE568F3F22628578000D0A3B /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CE568F2422625E49000D0A3B /* AudioBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE568F2722625E49000D0A3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE568F2922625E49000D0A3B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE568F2922625E49000D0A3B /* MainCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
 		CE568F2C22625E49000D0A3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE568F2E22625E4A000D0A3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE568F3122625E4A000D0A3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE568F3322625E4A000D0A3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE568F392262713D000D0A3B /* MainCollectionDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionDataProvider.swift; sourceTree = "<group>"; };
+		CE568F3B226281B0000D0A3B /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
+		CE568F3F22628578000D0A3B /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +60,33 @@
 		CE568F2622625E49000D0A3B /* AudioBook */ = {
 			isa = PBXGroup;
 			children = (
+				CE7CD36C226293B900166616 /* Support files */,
+				CE7CD36D226293E400166616 /* Home */,
+				CE568F3F22628578000D0A3B /* DataManager.swift */,
+			);
+			path = AudioBook;
+			sourceTree = "<group>";
+		};
+		CE7CD36C226293B900166616 /* Support files */ = {
+			isa = PBXGroup;
+			children = (
 				CE568F2722625E49000D0A3B /* AppDelegate.swift */,
-				CE568F2922625E49000D0A3B /* ViewController.swift */,
 				CE568F2B22625E49000D0A3B /* Main.storyboard */,
 				CE568F2E22625E4A000D0A3B /* Assets.xcassets */,
 				CE568F3022625E4A000D0A3B /* LaunchScreen.storyboard */,
 				CE568F3322625E4A000D0A3B /* Info.plist */,
 			);
-			path = AudioBook;
+			path = "Support files";
+			sourceTree = "<group>";
+		};
+		CE7CD36D226293E400166616 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CE568F2922625E49000D0A3B /* MainCollectionViewController.swift */,
+				CE568F392262713D000D0A3B /* MainCollectionDataProvider.swift */,
+				CE568F3B226281B0000D0A3B /* BookCollectionViewCell.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +160,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE568F2A22625E49000D0A3B /* ViewController.swift in Sources */,
+				CE568F2A22625E49000D0A3B /* MainCollectionViewController.swift in Sources */,
+				CE568F4022628579000D0A3B /* DataManager.swift in Sources */,
+				CE568F3D226281B0000D0A3B /* BookCollectionViewCell.swift in Sources */,
 				CE568F2822625E49000D0A3B /* AppDelegate.swift in Sources */,
+				CE568F3A2262713D000D0A3B /* MainCollectionDataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +312,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 34UQ9VN4VQ;
-				INFOPLIST_FILE = AudioBook/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/AudioBook/Support files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,7 +330,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 34UQ9VN4VQ;
-				INFOPLIST_FILE = AudioBook/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/AudioBook/Support files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
