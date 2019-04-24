@@ -1,67 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sqG-Bh-zzA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Trw-dM-9hO">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main Collection View Controller-->
-        <scene sceneID="Gbd-b1-5Sf">
+        <!--Home-->
+        <scene sceneID="VJe-4c-lOZ">
             <objects>
-                <collectionViewController id="sqG-Bh-zzA" customClass="MainCollectionViewController" customModule="AudioBook" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Avt-za-y1h">
+                <viewController id="ETB-Di-JRu" customClass="HomeViewController" customModule="AudioBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6K4-s4-lGA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cpm-NU-GVC">
-                            <size key="itemSize" width="115" height="87"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Zka-d8-Sfu" customClass="BookCollectionViewCell" customModule="AudioBook" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="115" height="87"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="115" height="87"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="znC-lV-3Dm">
-                                            <rect key="frame" x="36.5" y="33" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </view>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b44-4v-eG8">
+                                <rect key="frame" x="0.0" y="64" width="375" height="60"/>
                                 <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="znC-lV-3Dm" firstAttribute="centerY" secondItem="Zka-d8-Sfu" secondAttribute="centerY" id="myv-ve-1CW"/>
-                                    <constraint firstItem="znC-lV-3Dm" firstAttribute="centerX" secondItem="Zka-d8-Sfu" secondAttribute="centerX" id="r7a-Vz-2gW"/>
+                                    <constraint firstAttribute="height" constant="60" id="3jR-kt-UdX"/>
                                 </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Nog-ch-QRu">
+                                <rect key="frame" x="0.0" y="124" width="375" height="543"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6pb-UG-RtN">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="RZQ-Zu-4ta" customClass="BookCollectionViewCell" customModule="AudioBook" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
                                 <connections>
-                                    <outlet property="someLabel" destination="znC-lV-3Dm" id="1J2-ay-bUQ"/>
+                                    <outlet property="dataSource" destination="1mG-xb-fWP" id="sva-Bg-VPB"/>
+                                    <outlet property="delegate" destination="1mG-xb-fWP" id="lGz-bE-Ux2"/>
                                 </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="YWd-CT-HDf" id="EAi-l5-S7R"/>
-                            <outlet property="delegate" destination="YWd-CT-HDf" id="Zmv-54-bYe"/>
-                        </connections>
-                    </collectionView>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="b44-4v-eG8" firstAttribute="leading" secondItem="DYE-pf-NhJ" secondAttribute="leading" id="66a-k2-aOE"/>
+                            <constraint firstItem="Nog-ch-QRu" firstAttribute="leading" secondItem="DYE-pf-NhJ" secondAttribute="leading" id="D5L-b1-0Eb"/>
+                            <constraint firstItem="b44-4v-eG8" firstAttribute="top" secondItem="DYE-pf-NhJ" secondAttribute="top" id="Ml6-Lh-B4D"/>
+                            <constraint firstItem="Nog-ch-QRu" firstAttribute="top" secondItem="b44-4v-eG8" secondAttribute="bottom" id="Tg6-eb-O8B"/>
+                            <constraint firstItem="b44-4v-eG8" firstAttribute="trailing" secondItem="DYE-pf-NhJ" secondAttribute="trailing" id="UD5-mT-GpI"/>
+                            <constraint firstItem="Nog-ch-QRu" firstAttribute="trailing" secondItem="DYE-pf-NhJ" secondAttribute="trailing" id="kdh-5p-6Eu"/>
+                            <constraint firstItem="Nog-ch-QRu" firstAttribute="bottom" secondItem="DYE-pf-NhJ" secondAttribute="bottom" id="reM-eb-P7I"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DYE-pf-NhJ"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Home" id="AJI-hE-5WA"/>
                     <connections>
-                        <outlet property="dataProvider" destination="YWd-CT-HDf" id="1aI-D6-i5g"/>
+                        <outlet property="collectionView" destination="Nog-ch-QRu" id="cBN-93-j7j"/>
+                        <outlet property="dataProvider" destination="1mG-xb-fWP" id="zLJ-Cm-beC"/>
                     </connections>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0ku-RS-mMZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="YWd-CT-HDf" customClass="MainCollectionDataProvider" customModule="AudioBook" customModuleProvider="target"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ln4-3q-Lwy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="1mG-xb-fWP" customClass="HomeDataProvider" customModule="AudioBook" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="245.59999999999999" y="140.77961019490255"/>
+            <point key="canvasLocation" x="-424.80000000000001" y="-134.48275862068968"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xdX-XN-ba4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Trw-dM-9hO" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Mld-0j-qWR">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ETB-Di-JRu" kind="relationship" relationship="rootViewController" id="iDq-pG-phE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eV1-XN-BOr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1364" y="-134.48275862068968"/>
         </scene>
     </scenes>
 </document>
