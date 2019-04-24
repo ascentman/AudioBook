@@ -10,5 +10,6 @@ import Foundation
 
 final class DataManager {
 
-    let elements = Array(repeating: "row", count: 30)
+    let new = Array(repeating: "row", count: 30)
+    let old = Array(repeating: "ROW", count: 30)
 }

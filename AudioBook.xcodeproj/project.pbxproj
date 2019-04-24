@@ -11,6 +11,7 @@
 		CE29C83F2270F82E003FDAB6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE29C83E2270F82E003FDAB6 /* DataManager.swift */; };
 		CE29C8412270FAA5003FDAB6 /* BookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE29C8402270FAA5003FDAB6 /* BookCollectionViewCell.xib */; };
 		CE29C8432270FFE4003FDAB6 /* UICollectionViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE29C8422270FFE4003FDAB6 /* UICollectionViewCell+Extensions.swift */; };
+		CE29C8472271027B003FDAB6 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE29C8462271027B003FDAB6 /* CustomSegmentedControl.swift */; };
 		CE568F2822625E49000D0A3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE568F2722625E49000D0A3B /* AppDelegate.swift */; };
 		CE568F2D22625E49000D0A3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE568F2B22625E49000D0A3B /* Main.storyboard */; };
 		CE568F2F22625E4A000D0A3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE568F2E22625E4A000D0A3B /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 		CE29C83E2270F82E003FDAB6 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		CE29C8402270FAA5003FDAB6 /* BookCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookCollectionViewCell.xib; sourceTree = "<group>"; };
 		CE29C8422270FFE4003FDAB6 /* UICollectionViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extensions.swift"; sourceTree = "<group>"; };
+		CE29C8462271027B003FDAB6 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		CE568F2422625E49000D0A3B /* AudioBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE568F2722625E49000D0A3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE568F2C22625E49000D0A3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -62,6 +64,22 @@
 			path = BookCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		CE29C84522710252003FDAB6 /* Support Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CE29C8462271027B003FDAB6 /* CustomSegmentedControl.swift */,
+			);
+			path = "Support Classes";
+			sourceTree = "<group>";
+		};
+		CE29C848227102E4003FDAB6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CE29C8422270FFE4003FDAB6 /* UICollectionViewCell+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		CE414C33226C62EA0063C468 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,8 +108,10 @@
 			isa = PBXGroup;
 			children = (
 				CE7CD36C226293B900166616 /* Support files */,
+				CE29C84522710252003FDAB6 /* Support Classes */,
 				CE29C83D2270F813003FDAB6 /* DataManager */,
 				CE414C33226C62EA0063C468 /* Modules */,
+				CE29C848227102E4003FDAB6 /* Extensions */,
 			);
 			path = AudioBook;
 			sourceTree = "<group>";
@@ -99,12 +119,11 @@
 		CE7CD36C226293B900166616 /* Support files */ = {
 			isa = PBXGroup;
 			children = (
-				CE568F2722625E49000D0A3B /* AppDelegate.swift */,
 				CE568F2B22625E49000D0A3B /* Main.storyboard */,
-				CE568F2E22625E4A000D0A3B /* Assets.xcassets */,
 				CE568F3022625E4A000D0A3B /* LaunchScreen.storyboard */,
+				CE568F2E22625E4A000D0A3B /* Assets.xcassets */,
+				CE568F2722625E49000D0A3B /* AppDelegate.swift */,
 				CE568F3322625E4A000D0A3B /* Info.plist */,
-				CE29C8422270FFE4003FDAB6 /* UICollectionViewCell+Extensions.swift */,
 			);
 			path = "Support files";
 			sourceTree = "<group>";
@@ -191,6 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE29C8472271027B003FDAB6 /* CustomSegmentedControl.swift in Sources */,
 				CE568F2822625E49000D0A3B /* AppDelegate.swift in Sources */,
 				CE29C83F2270F82E003FDAB6 /* DataManager.swift in Sources */,
 				CE29C8432270FFE4003FDAB6 /* UICollectionViewCell+Extensions.swift in Sources */,

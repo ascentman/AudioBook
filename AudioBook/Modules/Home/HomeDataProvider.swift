@@ -10,21 +10,28 @@ import UIKit
 
 final class HomeDataProvider: NSObject {
     let dataManager = DataManager()
+    var selectedSegment = 0
 
 }
 
 extension HomeDataProvider: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataManager.elements.count
+        if selectedSegment == 0 {
+            return dataManager.new.count
+        } else {
+            return dataManager.old.count
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifier, for: indexPath) as? BookCollectionViewCell {
-            cell.setCell(name: dataManager.elements[indexPath.row] + indexPath.row.description)
-            return cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifier, for: indexPath) as? BookCollectionViewCell
+        if selectedSegment == 0 {
+            cell?.setCell(name: dataManager.new[indexPath.row] + indexPath.row.description)
+            return cell ?? UICollectionViewCell()
+        } else {
+            cell?.setCell(name: dataManager.old[indexPath.row] + indexPath.row.description)
+            return cell ?? UICollectionViewCell()
         }
-        return UICollectionViewCell()
-
     }
 }
 

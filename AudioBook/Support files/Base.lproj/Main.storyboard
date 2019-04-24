@@ -18,15 +18,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b44-4v-eG8">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b44-4v-eG8" customClass="CustomSegmentControl" customModule="AudioBook" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="60"/>
-                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="3jR-kt-UdX"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="commaSeparetedButtonTitles" value="Новий Завіт, Старий Завіт"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="segmentControlClicked:" destination="ETB-Di-JRu" eventType="valueChanged" id="oaT-cx-eUV"/>
+                                </connections>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Nog-ch-QRu">
-                                <rect key="frame" x="0.0" y="124" width="375" height="543"/>
+                                <rect key="frame" x="0.0" y="129" width="375" height="538"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6pb-UG-RtN">
                                     <size key="itemSize" width="50" height="50"/>
@@ -55,7 +66,7 @@
                             <constraint firstItem="b44-4v-eG8" firstAttribute="leading" secondItem="DYE-pf-NhJ" secondAttribute="leading" id="66a-k2-aOE"/>
                             <constraint firstItem="Nog-ch-QRu" firstAttribute="leading" secondItem="DYE-pf-NhJ" secondAttribute="leading" id="D5L-b1-0Eb"/>
                             <constraint firstItem="b44-4v-eG8" firstAttribute="top" secondItem="DYE-pf-NhJ" secondAttribute="top" id="Ml6-Lh-B4D"/>
-                            <constraint firstItem="Nog-ch-QRu" firstAttribute="top" secondItem="b44-4v-eG8" secondAttribute="bottom" id="Tg6-eb-O8B"/>
+                            <constraint firstItem="Nog-ch-QRu" firstAttribute="top" secondItem="b44-4v-eG8" secondAttribute="bottom" constant="5" id="Tg6-eb-O8B"/>
                             <constraint firstItem="b44-4v-eG8" firstAttribute="trailing" secondItem="DYE-pf-NhJ" secondAttribute="trailing" id="UD5-mT-GpI"/>
                             <constraint firstItem="Nog-ch-QRu" firstAttribute="trailing" secondItem="DYE-pf-NhJ" secondAttribute="trailing" id="kdh-5p-6Eu"/>
                             <constraint firstItem="Nog-ch-QRu" firstAttribute="bottom" secondItem="DYE-pf-NhJ" secondAttribute="bottom" id="reM-eb-P7I"/>
