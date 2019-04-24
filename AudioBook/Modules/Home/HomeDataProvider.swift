@@ -59,7 +59,7 @@ extension HomeDataProvider: UICollectionViewDelegate {
     }
 }
 
-extension HomeDataProvider: UICollectionViewDelegateFlowLayout{
+extension HomeDataProvider: UICollectionViewDelegateFlowLayout {
 
     // MARK: - UICollectionViewDelegateFlowLayout
 
