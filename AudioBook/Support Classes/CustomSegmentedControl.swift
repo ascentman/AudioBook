@@ -72,15 +72,15 @@ class CustomSegmentControl: UIControl {
             let button = UIButton(type: .system)
             button.setTitle(buttonTitle, for: .normal)
             button.setTitleColor(textColor, for: .normal)
-            button.titleLabel?.font = UIFont(name: "Avenir Next", size: 19)
+            button.titleLabel?.font = UIFont(name: "Charter", size: 20)
             button.addTarget(self, action: #selector(buttonTapped(button:)), for: .touchUpInside)
             buttons.append(button)
         }
 
         buttons.first?.setTitleColor(selectorTextColor, for: .normal)
         let selectorWidth = frame.width / CGFloat(buttonTitles.count)
-        selector = UIView(frame: CGRect(x: 0, y: 0, width: selectorWidth, height: frame.height))
-        selector.layer.cornerRadius = frame.height / 2
+        selector = UIView(frame: CGRect(x: 0, y: 5, width: selectorWidth, height: frame.height - 10))
+        selector.layer.cornerRadius = (frame.height - 10) / 2
         selector.backgroundColor = selectorColor
         selector.layer.borderWidth = 2
         selector.layer.borderColor = selectorBorderColor.cgColor

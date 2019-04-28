@@ -21,6 +21,7 @@ final class HomeViewController: UIViewController {
 
         BookCollectionViewCell.register(for: collectionView)
         dataProvider.delegate = self
+        setupNavigationBar()
     }
 
     // MARK: - IBActions
@@ -32,6 +33,15 @@ final class HomeViewController: UIViewController {
             dataProvider.selectedSegment = 1
         }
         collectionView.reloadData()
+    }
+
+    // MARK: - Private
+
+    private func setupNavigationBar() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "Charter", size: 24)!]
+        navigationController?.navigationBar.titleTextAttributes = attributes
     }
 }
 

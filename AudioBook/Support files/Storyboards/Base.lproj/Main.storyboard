@@ -33,11 +33,12 @@
             <objects>
                 <viewController id="ETB-Di-JRu" customClass="HomeViewController" customModule="AudioBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6K4-s4-lGA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b44-4v-eG8" customClass="CustomSegmentControl" customModule="AudioBook" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                <color key="backgroundColor" red="0.091227047145366669" green="0.55192708969116211" blue="0.37101572751998901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="3jR-kt-UdX"/>
                                 </constraints>
@@ -50,10 +51,10 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="string" keyPath="commaSeparetedButtonTitles" value="Перший, Другий"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="selectorColor">
-                                        <color key="value" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="selectorBorderColor">
-                                        <color key="value" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -61,8 +62,8 @@
                                 </connections>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Nog-ch-QRu">
-                                <rect key="frame" x="0.0" y="129" width="375" height="489"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="0.0" y="60" width="375" height="494"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6pb-UG-RtN">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -90,7 +91,7 @@
                             <constraint firstItem="b44-4v-eG8" firstAttribute="leading" secondItem="DYE-pf-NhJ" secondAttribute="leading" id="66a-k2-aOE"/>
                             <constraint firstItem="Nog-ch-QRu" firstAttribute="leading" secondItem="DYE-pf-NhJ" secondAttribute="leading" id="D5L-b1-0Eb"/>
                             <constraint firstItem="b44-4v-eG8" firstAttribute="top" secondItem="DYE-pf-NhJ" secondAttribute="top" id="Ml6-Lh-B4D"/>
-                            <constraint firstItem="Nog-ch-QRu" firstAttribute="top" secondItem="b44-4v-eG8" secondAttribute="bottom" constant="5" id="Tg6-eb-O8B"/>
+                            <constraint firstItem="Nog-ch-QRu" firstAttribute="top" secondItem="b44-4v-eG8" secondAttribute="bottom" id="Tg6-eb-O8B"/>
                             <constraint firstItem="b44-4v-eG8" firstAttribute="trailing" secondItem="DYE-pf-NhJ" secondAttribute="trailing" id="UD5-mT-GpI"/>
                             <constraint firstItem="Nog-ch-QRu" firstAttribute="trailing" secondItem="DYE-pf-NhJ" secondAttribute="trailing" id="kdh-5p-6Eu"/>
                             <constraint firstItem="Nog-ch-QRu" firstAttribute="bottom" secondItem="DYE-pf-NhJ" secondAttribute="bottom" id="reM-eb-P7I"/>
@@ -106,7 +107,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ln4-3q-Lwy" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="1mG-xb-fWP" customClass="HomeDataProvider" customModule="AudioBook" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="-900" y="-114"/>
+            <point key="canvasLocation" x="-900" y="-114.69265367316342"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xdX-XN-ba4">
@@ -114,9 +115,13 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Trw-dM-9hO" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="bookmarks" id="xSB-2c-KII"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Mld-0j-qWR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="Mld-0j-qWR">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.091227047145366669" green="0.55192708969116211" blue="0.37101572751998901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

@@ -35,6 +35,8 @@ extension HomeDataProvider: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifier, for: indexPath) as? BookCollectionViewCell
+        cell?.layer.cornerRadius = 10
+        cell?.layer.masksToBounds = true
         if selectedSegment == 0 {
             cell?.setCell(name: dataManager.new[indexPath.row] + indexPath.row.description)
             return cell ?? UICollectionViewCell()
@@ -71,10 +73,14 @@ extension HomeDataProvider: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let padding: CGFloat = 10
         let collectionViewSize = collectionView.frame.size.width - padding
-        return CGSize(width: collectionViewSize / 2, height: collectionViewSize / 3)
+        return CGSize(width: collectionViewSize / 2 - 5, height: collectionViewSize / 3)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     }
 }
