@@ -20,6 +20,7 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         BookCollectionViewCell.register(for: collectionView)
+        dataProvider.delegate = self
     }
 
     // MARK: - IBActions
@@ -31,5 +32,25 @@ final class HomeViewController: UIViewController {
             dataProvider.selectedSegment = 1
         }
         collectionView.reloadData()
+    }
+}
+
+// MARK: - Extensions
+
+extension HomeViewController: HomeDataProviderDelegate {
+
+    // MARK: - HomeDataProviderDelegate
+
+    func goToDetails(_ selectedSegment: Int, index: Int) {
+        let storyboard = UIStoryboard(name: StoryboardName.details, bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: DetailsViewController.description()) as? DetailsViewController
+        if selectedSegment == 0 {
+            vc?.fillDetails("\(dataProvider.dataManager.new[index])\(index)")
+        } else {
+            vc?.fillDetails("\(dataProvider.dataManager.old[index])\(index)")
+        }
+        if let vc = vc {
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }

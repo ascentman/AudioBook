@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol HomeDataProviderDelegate: class {
+    func goToDetails(_ selectedSegment: Int, index: Int)
+}
+
 final class HomeDataProvider: NSObject {
     let dataManager = DataManager()
     var selectedSegment = 0
+    weak var delegate: HomeDataProviderDelegate?
 
 }
 
@@ -45,7 +50,7 @@ extension HomeDataProvider: UICollectionViewDelegate {
     // MARK: - UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
+        delegate?.goToDetails(selectedSegment, index: indexPath.row)
     }
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

@@ -49,6 +49,12 @@
                                         <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="string" keyPath="commaSeparetedButtonTitles" value="Перший, Другий"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectorColor">
+                                        <color key="value" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectorBorderColor">
+                                        <color key="value" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="segmentControlClicked:" destination="ETB-Di-JRu" eventType="valueChanged" id="oaT-cx-eUV"/>
@@ -101,21 +107,6 @@
                 <customObject id="1mG-xb-fWP" customClass="HomeDataProvider" customModule="AudioBook" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="-900" y="-114"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="mdL-nh-fQb">
-            <objects>
-                <viewController id="K7E-9U-P0I" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zUJ-sB-j5n">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Bkq-Vh-tBr"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8SW-hU-dFp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-66" y="-114"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xdX-XN-ba4">
