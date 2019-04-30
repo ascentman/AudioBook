@@ -13,10 +13,9 @@ protocol HomeDataProviderDelegate: class {
 }
 
 final class HomeDataProvider: NSObject {
-    let dataManager = DataManager()
+    let dataManager = DataSource()
     var selectedSegment = 0
     weak var delegate: HomeDataProviderDelegate?
-
 }
 
 // MARK: - Extensions
@@ -27,9 +26,9 @@ extension HomeDataProvider: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if selectedSegment == 0 {
-            return dataManager.new.count
+            return dataManager.newTestament.count
         } else {
-            return dataManager.old.count
+            return dataManager.oldTestament.count
         }
     }
 
@@ -38,10 +37,10 @@ extension HomeDataProvider: UICollectionViewDataSource {
         cell?.layer.cornerRadius = 10
         cell?.layer.masksToBounds = true
         if selectedSegment == 0 {
-            cell?.setCell(name: dataManager.new[indexPath.row] + indexPath.row.description)
+            cell?.setCell(book: dataManager.newTestament[indexPath.row])
             return cell ?? UICollectionViewCell()
         } else {
-            cell?.setCell(name: dataManager.old[indexPath.row] + indexPath.row.description)
+            cell?.setCell(book: dataManager.oldTestament[indexPath.row])
             return cell ?? UICollectionViewCell()
         }
     }

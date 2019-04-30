@@ -10,19 +10,26 @@ import UIKit
 
 final class DetailsViewController: UIViewController {
 
-    @IBOutlet weak var detailsLabel: UILabel!
+    @IBOutlet var dataProvider: DetailsDataProvider!
+    @IBOutlet weak var collectionView: UICollectionView!
 
-    private var detailsText = ""
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        detailsLabel.text = detailsText
     }
 
-    // MARK: - Public
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
 
-    func fillDetails(_ text: String) {
-        detailsText = text
+        tabBarController?.tabBar.isHidden = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+
+        tabBarController?.tabBar.isHidden = false
     }
 }
+
+

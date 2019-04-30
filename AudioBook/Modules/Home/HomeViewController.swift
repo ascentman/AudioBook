@@ -53,13 +53,15 @@ extension HomeViewController: HomeDataProviderDelegate {
 
     func goToDetails(_ selectedSegment: Int, index: Int) {
         let storyboard = UIStoryboard(name: StoryboardName.details, bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: DetailsViewController.description()) as? DetailsViewController
+        let viewController = storyboard.instantiateViewController(withIdentifier: DetailsViewController.description()) as? DetailsViewController
         if selectedSegment == 0 {
-            vc?.fillDetails("\(dataProvider.dataManager.new[index])\(index)")
+            viewController?.title = dataProvider.dataManager.newTestament[index].name
+            viewController?.dataProvider.fillChosen(book: dataProvider.dataManager.newTestament[index])
         } else {
-            vc?.fillDetails("\(dataProvider.dataManager.old[index])\(index)")
+            viewController?.title = dataProvider.dataManager.oldTestament[index].name
+            viewController?.dataProvider.fillChosen(book: dataProvider.dataManager.oldTestament[index])
         }
-        if let vc = vc {
+        if let vc = viewController {
             navigationController?.pushViewController(vc, animated: true)
         }
     }

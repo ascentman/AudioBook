@@ -9,28 +9,53 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BookCollectionViewCell" customModule="AudioBook" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BookCollectionViewCell" customModule="AudioBook" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB" customClass="BookCollectionViewCell" customModule="AudioBook" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oz6-qT-C3X">
-                    <rect key="frame" x="166.5" y="323" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="audioCell" translatesAutoresizingMaskIntoConstraints="NO" id="aqC-0w-r8J">
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eoo-zI-ZVl">
+                    <rect key="frame" x="20" y="5" width="290" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oz6-qT-C3X">
+                            <rect key="frame" x="16" y="13" width="258" height="24.5"/>
+                            <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Oz6-qT-C3X" firstAttribute="leading" secondItem="eoo-zI-ZVl" secondAttribute="leading" constant="16" id="6zO-Jm-kvA"/>
+                        <constraint firstItem="Oz6-qT-C3X" firstAttribute="centerY" secondItem="eoo-zI-ZVl" secondAttribute="centerY" id="DQh-nt-drj"/>
+                        <constraint firstAttribute="trailing" secondItem="Oz6-qT-C3X" secondAttribute="trailing" constant="16" id="mmE-kz-Far"/>
+                        <constraint firstAttribute="height" constant="50" id="uKk-d1-HiY"/>
+                    </constraints>
+                </view>
             </subviews>
-            <color key="backgroundColor" red="0.22031943879999999" green="0.31527659279999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="Oz6-qT-C3X" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="8vd-Wq-orW"/>
-                <constraint firstItem="Oz6-qT-C3X" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="pbt-BQ-yRt"/>
+                <constraint firstAttribute="bottom" secondItem="aqC-0w-r8J" secondAttribute="bottom" id="Bzp-BQ-Mn1"/>
+                <constraint firstAttribute="trailing" secondItem="eoo-zI-ZVl" secondAttribute="trailing" constant="-10" id="NtZ-yc-4Rk"/>
+                <constraint firstItem="eoo-zI-ZVl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="eH7-2P-nel"/>
+                <constraint firstItem="eoo-zI-ZVl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="pxM-f8-4NW"/>
+                <constraint firstItem="aqC-0w-r8J" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="t5i-eB-Tww"/>
+                <constraint firstItem="aqC-0w-r8J" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vDW-21-wZ6"/>
+                <constraint firstAttribute="trailing" secondItem="aqC-0w-r8J" secondAttribute="trailing" id="wSZ-8v-r2r"/>
             </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="backTextView" destination="eoo-zI-ZVl" id="nWd-8r-lIM"/>
                 <outlet property="someLabel" destination="Oz6-qT-C3X" id="X9I-Bt-cfw"/>
             </connections>
-            <point key="canvasLocation" x="-68" y="89"/>
+            <point key="canvasLocation" x="-113.59999999999999" y="146.62668665667167"/>
         </view>
     </objects>
+    <resources>
+        <image name="audioCell" width="1280" height="960"/>
+    </resources>
 </document>

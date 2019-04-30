@@ -10,11 +10,13 @@ import UIKit
 
 final class BookCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var someLabel: UILabel!
+    @IBOutlet private weak var backTextView: UIView!
+    @IBOutlet private weak var someLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        backTextView.backgroundColor = UIColor.darkGray
+        backTextView.layer.cornerRadius = 10
     }
 
     override func prepareForReuse() {
@@ -22,7 +24,7 @@ final class BookCollectionViewCell: UICollectionViewCell {
         someLabel.text = nil
     }
 
-    func setCell(name: String) {
-        someLabel.text = name
+    func setCell(book: Book) {
+        someLabel.text = book.name
     }
 }
