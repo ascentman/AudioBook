@@ -10,7 +10,14 @@ import UIKit
 
 final class DetailsDataProvider: NSObject {
 
-     var chosenBook = Book()
+    let fileHandler = FileHandler()
+    var chosenBook = Book()
+    let downloadService = DownloadService()
+    lazy var downloadsSession: URLSession = {
+        let configuration = URLSessionConfiguration.background(withIdentifier: "bgSessionConfiguration")
+        return URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
+    }()
+
     private var cells: [Int] {
         get {
             return [Int](1...chosenBook.chaptersCount)
@@ -57,7 +64,11 @@ extension DetailsDataProvider: UICollectionViewDelegate {
         })
         cell?.layer.transform = CATransform3DIdentity
         cell?.backgroundColor = UIColor.orange
-        print(chosenBook.name, indexPath.row + 1)
+        print(chosenBook.label, indexPath.row + 1)
+
+        // TODO
+        let track = Track(name: "1111", artist: "33333", previewURL: URL(string: "https://www.audiobible.inf.ua/test/hope.mp3")!, index: 1)
+        downloadService.startDownload(track)
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -84,3 +95,38 @@ extension DetailsDataProvider: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     }
 }
+
+extension DetailsDataProvider: URLSessionDownloadDelegate {
+
+    // MARK: - URLSessionDownloadDelegate
+
+    // Stores downloaded file
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        guard let sourceURL = downloadTask.originalRequest?.url else {
+            return
+        }
+        let download = downloadService.activeDownloads[sourceURL]
+        downloadService.activeDownloads[sourceURL] = nil
+
+        guard let destinationURL = fileHandler.localFilePath(for: sourceURL) else {
+            return
+        }
+        print(destinationURL)
+
+        let fileManager = FileManager.default
+        try? fileManager.removeItem(at: destinationURL)
+        do {
+            try fileManager.copyItem(at: location, to: destinationURL)
+            download?.track.downloaded = true
+        } catch let error {
+            print("Could not copy file to disk: \(error.localizedDescription)")
+        }
+
+//        if let index = download?.track.index {
+//            DispatchQueue.main.async {
+//                self.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+//            }
+//        }
+    }
+}
+

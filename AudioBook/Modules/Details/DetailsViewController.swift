@@ -17,6 +17,8 @@ final class DetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        dataProvider.downloadService.downloadsSession = dataProvider.downloadsSession
     }
 
     override func viewWillAppear(_ animated: Bool) {

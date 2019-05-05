@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChapterCollectionViewCell: UICollectionViewCell {
+final class ChapterCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet private weak var chapterNumber: UILabel!
 
