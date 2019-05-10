@@ -13,9 +13,20 @@ protocol HomeDataProviderDelegate: class {
 }
 
 final class HomeDataProvider: NSObject {
+
     let dataManager = DataSource()
+    let downloadService = DownloadService()
+    let fileHandler = FileHandler()
+    lazy var downloadsSession: URLSession = {
+        let configuration = URLSessionConfiguration.background(withIdentifier: "bgSessionConfiguration")
+        return URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
+    }()
     var selectedSegment = 0
     weak var delegate: HomeDataProviderDelegate?
+
+    private func downloadSpecific(book: BookOnline) {
+        downloadService.startDownload(book)
+    }
 }
 
 // MARK: - Extensions
@@ -51,6 +62,21 @@ extension HomeDataProvider: UICollectionViewDelegate {
     // MARK: - UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if selectedSegment == 0 {
+            if let selectedBookUrl = URL(string: dataManager.newTestament[indexPath.row].bookUrl) {
+                let bookOnline = BookOnline(label: dataManager.newTestament[indexPath.row].label,
+                                      previewURL: selectedBookUrl,
+                                      chaptersCount: dataManager.newTestament[indexPath.row].chaptersCount)
+                downloadSpecific(book: bookOnline)
+            }
+        } else {
+            if let selectedBookUrl = URL(string: dataManager.oldTestament[indexPath.row].bookUrl) {
+                let bookOnline = BookOnline(label: dataManager.oldTestament[indexPath.row].label,
+                                            previewURL: selectedBookUrl,
+                                            chaptersCount: dataManager.oldTestament[indexPath.row].chaptersCount)
+                downloadSpecific(book: bookOnline)
+            }
+        }
         delegate?.goToDetails(selectedSegment, index: indexPath.row)
     }
 
@@ -81,5 +107,33 @@ extension HomeDataProvider: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+    }
+}
+
+extension HomeDataProvider: URLSessionDownloadDelegate {
+
+    // MARK: - URLSessionDownloadDelegate
+
+    // Stores downloaded file
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        guard let sourceURL = downloadTask.originalRequest?.url else {
+            return
+        }
+        let download = downloadService.activeDownloads[sourceURL]
+        downloadService.activeDownloads[sourceURL] = nil
+
+        guard let destinationURL = fileHandler.localFilePath(for: sourceURL) else {
+            return
+        }
+        print(destinationURL)
+
+        let fileManager = FileManager.default
+        try? fileManager.removeItem(at: destinationURL)
+        do {
+            try fileManager.copyItem(at: location, to: destinationURL)
+            download?.track.downloaded = true
+        } catch let error {
+            print("Could not copy file to disk: \(error.localizedDescription)")
+        }
     }
 }

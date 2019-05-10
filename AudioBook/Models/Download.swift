@@ -10,8 +10,8 @@ import Foundation
 
 class Download {
 
-    var track: Track
-    init(track: Track) {
+    var track: BookOnline
+    init(track: BookOnline) {
         self.track = track
     }
 

@@ -21,8 +21,6 @@ final class DetailsViewController: UIViewController {
 
         playerView.layer.masksToBounds = true
         playerView.layer.cornerRadius = 10.0
-
-        dataProvider.downloadService.downloadsSession = dataProvider.downloadsSession
     }
 
     override func viewWillAppear(_ animated: Bool) {

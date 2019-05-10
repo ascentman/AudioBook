@@ -22,6 +22,7 @@ final class HomeViewController: UIViewController {
         BookCollectionViewCell.register(for: collectionView)
         dataProvider.delegate = self
         setupNavigationBar()
+        dataProvider.downloadService.downloadsSession = dataProvider.downloadsSession
     }
 
     // MARK: - IBActions

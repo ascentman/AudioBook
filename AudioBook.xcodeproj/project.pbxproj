@@ -30,7 +30,7 @@
 		CEC82102226C902600A1AA8D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC82101226C902600A1AA8D /* HomeViewController.swift */; };
 		CEC82106226C909000A1AA8D /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC82105226C909000A1AA8D /* BookCollectionViewCell.swift */; };
 		CED6C3E8227E3C05008DBAC9 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6C3E7227E3C05008DBAC9 /* Download.swift */; };
-		CED6C3EA227E3C3E008DBAC9 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6C3E9227E3C3E008DBAC9 /* Track.swift */; };
+		CED6C3EA227E3C3E008DBAC9 /* BookOnline.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6C3E9227E3C3E008DBAC9 /* BookOnline.swift */; };
 		CED6C3ED227E3D16008DBAC9 /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6C3EC227E3D16008DBAC9 /* DownloadService.swift */; };
 		CED6C3EF227E54B4008DBAC9 /* FileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6C3EE227E54B4008DBAC9 /* FileHandler.swift */; };
 /* End PBXBuildFile section */
@@ -61,7 +61,7 @@
 		CEC82101226C902600A1AA8D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CEC82105226C909000A1AA8D /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
 		CED6C3E7227E3C05008DBAC9 /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
-		CED6C3E9227E3C3E008DBAC9 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		CED6C3E9227E3C3E008DBAC9 /* BookOnline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookOnline.swift; sourceTree = "<group>"; };
 		CED6C3EC227E3D16008DBAC9 /* DownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadService.swift; sourceTree = "<group>"; };
 		CED6C3EE227E54B4008DBAC9 /* FileHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,7 +90,7 @@
 			children = (
 				CE12A9DF2278988500CDB66E /* Book.swift */,
 				CED6C3E7227E3C05008DBAC9 /* Download.swift */,
-				CED6C3E9227E3C3E008DBAC9 /* Track.swift */,
+				CED6C3E9227E3C3E008DBAC9 /* BookOnline.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -310,7 +310,7 @@
 				CE29C8472271027B003FDAB6 /* CustomSegmentedControl.swift in Sources */,
 				CED6C3EF227E54B4008DBAC9 /* FileHandler.swift in Sources */,
 				CE568F2822625E49000D0A3B /* AppDelegate.swift in Sources */,
-				CED6C3EA227E3C3E008DBAC9 /* Track.swift in Sources */,
+				CED6C3EA227E3C3E008DBAC9 /* BookOnline.swift in Sources */,
 				CE12A9E62278C97F00CDB66E /* DetailsDataProvider.swift in Sources */,
 				CE29C83F2270F82E003FDAB6 /* DataSource.swift in Sources */,
 				CE29C84B2271131A003FDAB6 /* DetailsViewController.swift in Sources */,

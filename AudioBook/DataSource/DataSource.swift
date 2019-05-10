@@ -10,10 +10,10 @@ import Foundation
 
 final class DataSource {
 
-    private let mathew = Book(name: "Євангеліє від Матвія", testament: .new, label: "Mathew", chaptersCount: 28)
-    private let mark = Book(name: "Євангеліє від Марка", testament: .new, label: "Mark", chaptersCount: 16)
-    private let luke = Book(name: "Євангеліє від Луки", testament: .new, label: "Luke", chaptersCount: 28)
-    private let john = Book(name: "Євангеліє від Івана", testament: .new, label: "John", chaptersCount: 24)
+    private let mathew = Book(name: "Євангеліє від Матвія", testament: .new, label: "matthew", chaptersCount: 28)
+    private let mark = Book(name: "Євангеліє від Марка", testament: .new, label: "mark", chaptersCount: 16)
+    private let luke = Book(name: "Євангеліє від Луки", testament: .new, label: "luke", chaptersCount: 28)
+    private let john = Book(name: "Євангеліє від Івана", testament: .new, label: "john", chaptersCount: 24)
 
     private let genesis = Book(name: "Буття", testament: .old, label: "Genesis", chaptersCount: 50)
     private let exodus = Book(name: "Вихід", testament: .old, label: "Exodus", chaptersCount: 48)

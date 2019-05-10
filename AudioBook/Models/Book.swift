@@ -19,6 +19,13 @@ final class Book {
     let testament: Testament
     let label: String
     let chaptersCount: Int
+    var bookUrl: String {
+        get {
+            return baseUrl + label
+        }
+    }
+
+    private let baseUrl = "https://www.audiobible.inf.ua/bible/"
 
     init(name: String, testament: Testament, label: String, chaptersCount: Int) {
         self.name = name

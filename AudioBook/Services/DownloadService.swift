@@ -15,40 +15,44 @@ final class DownloadService {
 
     // MARK: - Download methods called by TrackCell delegate methods
 
-    func startDownload(_ track: Track) {
-        let download = Download(track: track)
-        download.task = downloadsSession.downloadTask(with: track.previewURL)
-        download.task!.resume()
-        download.isDownloading = true
-        activeDownloads[download.track.previewURL] = download
-    }
-
-    func pauseDownload(_ track: Track) {
-        guard let download = activeDownloads[track.previewURL] else { return }
-        if download.isDownloading {
-            download.task?.cancel(byProducingResumeData: { data in
-                download.resumeData = data
-            })
-            download.isDownloading = false
+    func startDownload(_ book: BookOnline) {
+        (1...book.chaptersCount).forEach { (chapter) in
+            let chapterUrl = book.previewURL.appendingPathComponent(String(chapter)).appendingPathExtension("mp3")
+            print(chapterUrl)
+            let download = Download(track: book)
+            download.task = downloadsSession.downloadTask(with: chapterUrl)
+            download.task!.resume()
+            download.isDownloading = true
+            activeDownloads[download.track.previewURL] = download
         }
     }
 
-    func cancelDownload(_ track: Track) {
-        if let download = activeDownloads[track.previewURL] {
-            download.task?.cancel()
-            activeDownloads[track.previewURL] = nil
-        }
-    }
+//    func pauseDownload(_ track: BookOnline) {
+//        guard let download = activeDownloads[track.previewURL] else { return }
+//        if download.isDownloading {
+//            download.task?.cancel(byProducingResumeData: { data in
+//                download.resumeData = data
+//            })
+//            download.isDownloading = false
+//        }
+//    }
+//
+//    func cancelDownload(_ track: BookOnline) {
+//        if let download = activeDownloads[track.previewURL] {
+//            download.task?.cancel()
+//            activeDownloads[track.previewURL] = nil
+//        }
+//    }
 
-    func resumeDownload(_ track: Track) {
-        guard let download = activeDownloads[track.previewURL] else { return }
-        if let resumeData = download.resumeData {
-            download.task = downloadsSession.downloadTask(withResumeData: resumeData)
-        } else {
-            download.task = downloadsSession.downloadTask(with: download.track.previewURL)
-        }
-        download.task!.resume()
-        download.isDownloading = true
-    }
+//    func resumeDownload(_ track: BookOnline) {
+//        guard let download = activeDownloads[track.previewURL] else { return }
+//        if let resumeData = download.resumeData {
+//            download.task = downloadsSession.downloadTask(withResumeData: resumeData)
+//        } else {
+//            download.task = downloadsSession.downloadTask(with: download.track.previewURL)
+//        }
+//        download.task!.resume()
+//        download.isDownloading = true
+//    }
 
 }
