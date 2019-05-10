@@ -15,7 +15,8 @@ final class BookCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        backTextView.backgroundColor = UIColor.darkGray
+
+        backTextView.backgroundColor = UIColor.orange
         backTextView.layer.cornerRadius = 10
     }
 

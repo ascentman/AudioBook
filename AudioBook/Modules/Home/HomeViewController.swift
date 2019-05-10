@@ -38,9 +38,9 @@ final class HomeViewController: UIViewController {
     // MARK: - Private
 
     private func setupNavigationBar() {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "Charter", size: 24)!]
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "Charter", size: 22)!]
         navigationController?.navigationBar.titleTextAttributes = attributes
     }
 }

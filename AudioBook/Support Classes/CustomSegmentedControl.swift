@@ -82,7 +82,7 @@ class CustomSegmentControl: UIControl {
         selector = UIView(frame: CGRect(x: 0, y: 5, width: selectorWidth, height: frame.height - 10))
         selector.layer.cornerRadius = (frame.height - 10) / 2
         selector.backgroundColor = selectorColor
-        selector.layer.borderWidth = 2
+        selector.layer.borderWidth = 1
         selector.layer.borderColor = selectorBorderColor.cgColor
         addSubview(selector)
 

@@ -13,7 +13,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="giw-za-1kh">
             <objects>
-                <tabBarController id="IQI-vJ-MTs" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBar" id="IQI-vJ-MTs" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4w8-ud-eAj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -29,7 +29,7 @@
             </objects>
             <point key="canvasLocation" x="-2585" y="-113"/>
         </scene>
-        <!--Home-->
+        <!--Біблія-->
         <scene sceneID="VJe-4c-lOZ">
             <objects>
                 <viewController id="ETB-Di-JRu" customClass="HomeViewController" customModule="AudioBook" customModuleProvider="target" sceneMemberID="viewController">
@@ -88,6 +88,7 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="b44-4v-eG8" firstAttribute="leading" secondItem="DYE-pf-NhJ" secondAttribute="leading" id="66a-k2-aOE"/>
                             <constraint firstItem="Nog-ch-QRu" firstAttribute="leading" secondItem="DYE-pf-NhJ" secondAttribute="leading" id="D5L-b1-0Eb"/>
@@ -99,7 +100,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DYE-pf-NhJ"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Home" id="AJI-hE-5WA"/>
+                    <navigationItem key="navigationItem" title="Біблія" id="AJI-hE-5WA"/>
                     <connections>
                         <outlet property="collectionView" destination="Nog-ch-QRu" id="cBN-93-j7j"/>
                         <outlet property="dataProvider" destination="1mG-xb-fWP" id="zLJ-Cm-beC"/>

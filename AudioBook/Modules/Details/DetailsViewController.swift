@@ -11,12 +11,16 @@ import UIKit
 final class DetailsViewController: UIViewController {
 
     @IBOutlet var dataProvider: DetailsDataProvider!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var playerView: UIView!
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        playerView.layer.masksToBounds = true
+        playerView.layer.cornerRadius = 10.0
 
         dataProvider.downloadService.downloadsSession = dataProvider.downloadsSession
     }
@@ -33,5 +37,3 @@ final class DetailsViewController: UIViewController {
         tabBarController?.tabBar.isHidden = false
     }
 }
-
-
