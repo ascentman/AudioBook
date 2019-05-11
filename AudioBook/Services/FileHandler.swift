@@ -21,10 +21,25 @@ final class FileHandler {
         }
     }
 
-    func localFilePath(for url: URL) -> URL? {
+    func localFilePath(for url: URL, bookName: String) -> URL? {
         guard let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
             return nil
         }
-        return documentDirectory.appendingPathComponent(url.lastPathComponent)
+        return documentDirectory.appendingPathComponent(bookName).appendingPathComponent(url.lastPathComponent)
+    }
+
+    func createBookDirectory(name: String) {
+        guard let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            return
+        }
+
+        let bookDirectory = documentDirectory.appendingPathComponent(name)
+        if !fileManager.fileExists(atPath: bookDirectory.path) {
+            do {
+                try fileManager.createDirectory(at: bookDirectory, withIntermediateDirectories: true, attributes: nil)
+            } catch {
+                assertionFailure("Error: can't create book directory")
+            }
+        }
     }
 }

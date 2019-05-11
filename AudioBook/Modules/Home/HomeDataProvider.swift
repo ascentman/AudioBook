@@ -25,6 +25,7 @@ final class HomeDataProvider: NSObject {
     weak var delegate: HomeDataProviderDelegate?
 
     private func downloadSpecific(book: BookOnline) {
+        fileHandler.createBookDirectory(name: book.label)
         downloadService.startDownload(book)
     }
 }
@@ -122,7 +123,8 @@ extension HomeDataProvider: URLSessionDownloadDelegate {
         let download = downloadService.activeDownloads[sourceURL]
         downloadService.activeDownloads[sourceURL] = nil
 
-        guard let destinationURL = fileHandler.localFilePath(for: sourceURL) else {
+        let bookName = sourceURL.deletingLastPathComponent().lastPathComponent
+        guard let destinationURL = fileHandler.localFilePath(for: sourceURL, bookName: bookName) else {
             return
         }
         print(destinationURL)

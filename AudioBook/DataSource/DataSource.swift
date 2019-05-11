@@ -10,10 +10,10 @@ import Foundation
 
 final class DataSource {
 
-    private let mathew = Book(name: "Євангеліє від Матвія", testament: .new, label: "matthew", chaptersCount: 28)
+    private let matthew = Book(name: "Євангеліє від Матвія", testament: .new, label: "matthew", chaptersCount: 28)
     private let mark = Book(name: "Євангеліє від Марка", testament: .new, label: "mark", chaptersCount: 16)
-    private let luke = Book(name: "Євангеліє від Луки", testament: .new, label: "luke", chaptersCount: 28)
-    private let john = Book(name: "Євангеліє від Івана", testament: .new, label: "john", chaptersCount: 24)
+    private let luke = Book(name: "Євангеліє від Луки", testament: .new, label: "luke", chaptersCount: 24)
+    private let john = Book(name: "Євангеліє від Івана", testament: .new, label: "john", chaptersCount: 21)
 
     private let genesis = Book(name: "Буття", testament: .old, label: "Genesis", chaptersCount: 50)
     private let exodus = Book(name: "Вихід", testament: .old, label: "Exodus", chaptersCount: 48)
@@ -25,7 +25,7 @@ final class DataSource {
 
     init() {
         newTestament =
-[mathew, mark, luke, john, mathew, mark, luke, john, mathew, mark, luke, john, mathew, mark, luke, john, mathew, mark, luke]
+[matthew, mark, luke, john, matthew, mark, luke, john, mark, luke, john, mark, luke, john, mark, luke]
         oldTestament = [genesis, exodus, levit, numbers]
     }
 }
