@@ -25,7 +25,7 @@
                                     <constraint firstAttribute="height" constant="140" id="J2S-jm-sj4"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="GGU-Jt-Us5" kind="embed" id="aVX-5D-dyy"/>
+                                    <segue destination="GGU-Jt-Us5" kind="embed" identifier="" id="aVX-5D-dyy"/>
                                 </connections>
                             </containerView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3dH-SR-sSW">
@@ -86,6 +86,7 @@
                         <outlet property="collectionView" destination="3dH-SR-sSW" id="N9e-uF-3y1"/>
                         <outlet property="dataProvider" destination="fSI-Bs-hRE" id="kFl-e0-MhB"/>
                         <outlet property="playerView" destination="WpO-PW-Bov" id="ckd-nY-XTj"/>
+                        <outlet property="playerViewController" destination="WpO-PW-Bov" id="koQ-Bc-K9g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ffq-VO-Yva" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -96,7 +97,7 @@
         <!--Player View Controller-->
         <scene sceneID="8j4-ac-cDI">
             <objects>
-                <viewController id="GGU-Jt-Us5" customClass="PlayerViewController" customModule="AudioBook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AudioBook.PlayerViewController" id="GGU-Jt-Us5" customClass="PlayerViewController" customModule="AudioBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qTp-eR-ICD">
                         <rect key="frame" x="0.0" y="0.0" width="371" height="140"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -137,24 +138,39 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCz-an-PRl">
                                                 <rect key="frame" x="0.0" y="0.0" width="16" height="80"/>
                                                 <state key="normal" image="previous chapter"/>
+                                                <connections>
+                                                    <action selector="previousPressed:" destination="GGU-Jt-Us5" eventType="touchUpInside" id="cqX-ul-A7R"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J0H-hA-3al">
                                                 <rect key="frame" x="51" y="0.0" width="24" height="80"/>
                                                 <state key="normal" image="backward"/>
+                                                <connections>
+                                                    <action selector="moveBackPressed:" destination="GGU-Jt-Us5" eventType="touchUpInside" id="TAx-14-4b7"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WzR-SM-IPv">
                                                 <rect key="frame" x="110" y="0.0" width="80" height="80"/>
                                                 <state key="normal" image="play">
                                                     <color key="titleColor" red="0.091227047145366669" green="0.55192708969116211" blue="0.37101572751998901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="playButtonPressed:" destination="GGU-Jt-Us5" eventType="touchUpInside" id="jY8-6O-h0W"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c6r-gP-gVF">
                                                 <rect key="frame" x="225" y="0.0" width="24" height="80"/>
                                                 <state key="normal" image="forward"/>
+                                                <connections>
+                                                    <action selector="moveForwardPressed:" destination="GGU-Jt-Us5" eventType="touchUpInside" id="EcY-xk-CMr"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2G-gT-Df0">
                                                 <rect key="frame" x="284" y="0.0" width="16" height="80"/>
                                                 <state key="normal" image="next chapter"/>
+                                                <connections>
+                                                    <action selector="nextPressed:" destination="GGU-Jt-Us5" eventType="touchUpInside" id="pe3-Y2-hnz"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -174,6 +190,7 @@
                             <constraint firstAttribute="bottom" secondItem="uIN-vC-cTD" secondAttribute="bottom" constant="5" id="L41-pr-83R"/>
                             <constraint firstAttribute="trailing" secondItem="uIN-vC-cTD" secondAttribute="trailing" id="q4K-BQ-2XL"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="I2N-e1-KEh"/>
                     </view>
                     <connections>
                         <outlet property="moveBackButton" destination="J0H-hA-3al" id="ENf-YC-HCW"/>

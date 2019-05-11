@@ -13,6 +13,7 @@ final class DetailsViewController: UIViewController {
     @IBOutlet var dataProvider: DetailsDataProvider!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var playerView: UIView!
+    @IBOutlet weak var playerViewController: UIView!
 
     // MARK: - Lifecycle
 
@@ -21,6 +22,7 @@ final class DetailsViewController: UIViewController {
 
         playerView.layer.masksToBounds = true
         playerView.layer.cornerRadius = 10.0
+        dataProvider.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -33,5 +35,20 @@ final class DetailsViewController: UIViewController {
         super.viewWillDisappear(true)
 
         tabBarController?.tabBar.isHidden = false
+    }
+}
+
+// MARK: - Extensions
+
+extension DetailsViewController: DetailsDataProviderDelegate {
+
+    //MARK: - DetailsDataProviderDelegate
+
+    func goToPlayer(_ choosenBook: Book, start chapter: Int) {
+        let storyboard = UIStoryboard(name: StoryboardName.details, bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: PlayerViewController.description()) as? PlayerViewController
+        if let viewController = viewController {
+            viewController.startPlaying(book: choosenBook, from: chapter)
+        }
     }
 }
