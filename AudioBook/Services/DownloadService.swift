@@ -18,7 +18,6 @@ final class DownloadService {
     func startDownload(_ book: BookOnline) {
         (1...book.chaptersCount).forEach { (chapter) in
             let chapterUrl = book.previewURL.appendingPathComponent(String(chapter)).appendingPathExtension("mp3")
-            print(chapterUrl)
             let download = Download(track: book)
             download.task = downloadsSession.downloadTask(with: chapterUrl)
             download.task!.resume()

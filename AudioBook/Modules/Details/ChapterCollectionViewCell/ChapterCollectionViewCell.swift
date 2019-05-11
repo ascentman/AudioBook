@@ -15,6 +15,8 @@ final class ChapterCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        layer.borderColor = Colors.appGreen.cgColor
+        layer.borderWidth = 2.0
     }
 
     override func prepareForReuse() {

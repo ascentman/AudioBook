@@ -42,4 +42,19 @@ final class FileHandler {
             }
         }
     }
+
+    func ifBookExists(book: BookOnline) -> Bool {
+        var result: Bool = false
+        guard let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            return false
+        }
+        let bookToCheck = documentDirectory.appendingPathComponent(book.label)
+        (1...book.chaptersCount).forEach { (chapter) in
+            let chapterPath = bookToCheck.appendingPathComponent(String(chapter)).appendingPathExtension("mp3")
+            if fileManager.fileExists(atPath: chapterPath.path) {
+                result = true
+            }
+        }
+        return result
+    }
 }

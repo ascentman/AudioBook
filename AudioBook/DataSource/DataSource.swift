@@ -15,10 +15,10 @@ final class DataSource {
     private let luke = Book(name: "Євангеліє від Луки", testament: .new, label: "luke", chaptersCount: 24)
     private let john = Book(name: "Євангеліє від Івана", testament: .new, label: "john", chaptersCount: 21)
 
-    private let genesis = Book(name: "Буття", testament: .old, label: "Genesis", chaptersCount: 50)
-    private let exodus = Book(name: "Вихід", testament: .old, label: "Exodus", chaptersCount: 48)
-    private let levit = Book(name: "Левит", testament: .old, label: "Levit", chaptersCount: 26)
-    private let numbers = Book(name: "Числа", testament: .old, label: "Numbers", chaptersCount: 30)
+    private let genesis = Book(name: "Буття", testament: .old, label: "genesis", chaptersCount: 50)
+    private let exodus = Book(name: "Вихід", testament: .old, label: "exodus", chaptersCount: 40)
+    private let levit = Book(name: "Левит", testament: .old, label: "leviticus", chaptersCount: 27)
+    private let numbers = Book(name: "Числа", testament: .old, label: "numbers", chaptersCount: 36)
 
     var newTestament: [Book] = []
     var oldTestament: [Book] = []

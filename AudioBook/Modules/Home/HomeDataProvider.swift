@@ -25,8 +25,10 @@ final class HomeDataProvider: NSObject {
     weak var delegate: HomeDataProviderDelegate?
 
     private func downloadSpecific(book: BookOnline) {
-        fileHandler.createBookDirectory(name: book.label)
-        downloadService.startDownload(book)
+        if !fileHandler.ifBookExists(book: book) {
+            fileHandler.createBookDirectory(name: book.label)
+            downloadService.startDownload(book)
+        }
     }
 }
 
@@ -127,7 +129,6 @@ extension HomeDataProvider: URLSessionDownloadDelegate {
         guard let destinationURL = fileHandler.localFilePath(for: sourceURL, bookName: bookName) else {
             return
         }
-        print(destinationURL)
 
         let fileManager = FileManager.default
         try? fileManager.removeItem(at: destinationURL)
@@ -135,7 +136,7 @@ extension HomeDataProvider: URLSessionDownloadDelegate {
             try fileManager.copyItem(at: location, to: destinationURL)
             download?.track.downloaded = true
         } catch let error {
-            print("Could not copy file to disk: \(error.localizedDescription)")
+            assertionFailure("Could not copy file to disk: \(error.localizedDescription)")
         }
     }
 }
