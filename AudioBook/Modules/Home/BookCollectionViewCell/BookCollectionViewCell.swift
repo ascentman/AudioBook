@@ -12,7 +12,9 @@ final class BookCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet private weak var backTextView: UIView!
     @IBOutlet private weak var someLabel: UILabel!
-
+    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var downloadPercentage: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -27,5 +29,9 @@ final class BookCollectionViewCell: UICollectionViewCell {
 
     func setCell(book: Book) {
         someLabel.text = book.name
+    }
+
+    func updateDownloadProgress() {
+        print("fff")
     }
 }

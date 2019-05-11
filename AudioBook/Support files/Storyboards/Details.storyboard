@@ -86,7 +86,6 @@
                         <outlet property="collectionView" destination="3dH-SR-sSW" id="N9e-uF-3y1"/>
                         <outlet property="dataProvider" destination="fSI-Bs-hRE" id="kFl-e0-MhB"/>
                         <outlet property="playerView" destination="WpO-PW-Bov" id="ckd-nY-XTj"/>
-                        <outlet property="playerViewController" destination="WpO-PW-Bov" id="koQ-Bc-K9g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ffq-VO-Yva" userLabel="First Responder" sceneMemberID="firstResponder"/>

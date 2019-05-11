@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="audioCell" translatesAutoresizingMaskIntoConstraints="NO" id="aqC-0w-r8J">
+                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="audioCell" translatesAutoresizingMaskIntoConstraints="NO" id="aqC-0w-r8J">
                     <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eoo-zI-ZVl">
@@ -36,11 +36,29 @@
                         <constraint firstAttribute="height" constant="50" id="uKk-d1-HiY"/>
                     </constraints>
                 </view>
+                <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Jon-QQ-9v4">
+                    <rect key="frame" x="20" y="187" width="260" height="3"/>
+                    <color key="tintColor" red="0.098039215690000001" green="0.54901960780000003" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="3" id="C8D-Wa-ta7"/>
+                    </constraints>
+                </progressView>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5lH-2H-Jeb">
+                    <rect key="frame" x="136" y="108" width="28.5" height="24.5"/>
+                    <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
+                    <color key="textColor" red="0.098039215690000001" green="0.54901960780000003" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="5lH-2H-Jeb" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="20" id="5vu-Sc-HN6"/>
                 <constraint firstAttribute="bottom" secondItem="aqC-0w-r8J" secondAttribute="bottom" id="Bzp-BQ-Mn1"/>
+                <constraint firstItem="5lH-2H-Jeb" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Mv7-KV-tjo"/>
                 <constraint firstAttribute="trailing" secondItem="eoo-zI-ZVl" secondAttribute="trailing" constant="-10" id="NtZ-yc-4Rk"/>
+                <constraint firstAttribute="bottom" secondItem="Jon-QQ-9v4" secondAttribute="bottom" constant="10" id="Pc9-ZL-cqR"/>
+                <constraint firstItem="Jon-QQ-9v4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Xlb-bG-bPS"/>
+                <constraint firstAttribute="trailing" secondItem="Jon-QQ-9v4" secondAttribute="trailing" constant="20" id="dT1-vK-PsI"/>
                 <constraint firstItem="eoo-zI-ZVl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="eH7-2P-nel"/>
                 <constraint firstItem="eoo-zI-ZVl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="pxM-f8-4NW"/>
                 <constraint firstItem="aqC-0w-r8J" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="t5i-eB-Tww"/>
@@ -50,6 +68,8 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="backTextView" destination="eoo-zI-ZVl" id="nWd-8r-lIM"/>
+                <outlet property="downloadPercentage" destination="5lH-2H-Jeb" id="4xc-fm-HIf"/>
+                <outlet property="progressView" destination="Jon-QQ-9v4" id="oTT-XL-y4w"/>
                 <outlet property="someLabel" destination="Oz6-qT-C3X" id="X9I-Bt-cfw"/>
             </connections>
             <point key="canvasLocation" x="-113.59999999999999" y="146.62668665667167"/>

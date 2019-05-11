@@ -13,7 +13,6 @@ final class DetailsViewController: UIViewController {
     @IBOutlet var dataProvider: DetailsDataProvider!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var playerView: UIView!
-    @IBOutlet weak var playerViewController: UIView!
 
     // MARK: - Lifecycle
 
