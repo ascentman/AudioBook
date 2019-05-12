@@ -48,6 +48,8 @@ extension DetailsViewController: DetailsDataProviderDelegate {
         let viewController = storyboard.instantiateViewController(withIdentifier: PlayerViewController.description()) as? PlayerViewController
         if let viewController = viewController {
             viewController.startPlaying(book: choosenBook, from: chapter)
+            addChild(viewController)
+            view.layoutIfNeeded()
         }
     }
 }
