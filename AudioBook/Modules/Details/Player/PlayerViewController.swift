@@ -44,7 +44,13 @@ class PlayerViewController: UIViewController {
     }
 
     @IBAction func playButtonPressed(_ sender: Any) {
-        print("play pressed")
+        if queuePlayer?.timeControlStatus == .playing {
+            queuePlayer?.pause()
+            setupImageForPlayButton(name: "play")
+        } else {
+            queuePlayer?.play()
+            setupImageForPlayButton(name: "pause")
+        }
     }
 
     @IBAction func moveBackPressed(_ sender: Any) {
@@ -60,17 +66,29 @@ class PlayerViewController: UIViewController {
     }
 
     func startPlaying(book: Book, from chapter: Int) {
-
-        labelTitle = "\(book.name) - Розділ \(String(chapter))"
-
-        // localURL
-        let localUrl = fileHandler.documentDirectory?.appendingPathComponent(book.label).appendingPathComponent(String(chapter)).appendingPathExtension("mp3")
-        print(localUrl as Any)
+        setupTitle(book: book, from: chapter)
+        let localUrl = setupLocalUrl(book: book, from: chapter)
 
         // setup player
         let asset = AVAsset(url: localUrl!)
         let playerItem = AVPlayerItem(asset: asset)
         queuePlayer = AVQueuePlayer(items: [playerItem])
         queuePlayer?.play()
+        setupImageForPlayButton(name: "pause")
+    }
+
+    // MARK: - Private
+
+    private func setupImageForPlayButton(name: String) {
+        playButton.setImage(UIImage(named: name), for: .normal)
+    }
+
+    private func setupTitle(book: Book, from chapter: Int) {
+        labelTitle = "\(book.name) - Розділ \(String(chapter))"
+    }
+
+    private func setupLocalUrl(book: Book, from chapter: Int) -> URL? {
+        return fileHandler.documentDirectory?.appendingPathComponent(book.label).appendingPathComponent(String(chapter)).appendingPathExtension("mp3")
     }
 }
+
