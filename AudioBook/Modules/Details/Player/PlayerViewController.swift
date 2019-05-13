@@ -19,7 +19,7 @@ class PlayerViewController: UIViewController {
     @IBOutlet private weak var nextButton: UIButton!
     @IBOutlet private weak var trackLabel: UILabel!
 
-    private var labelTitle = "test" {
+    private var labelTitle = "" {
         didSet {
             trackLabel?.text = labelTitle
         }
@@ -45,7 +45,6 @@ class PlayerViewController: UIViewController {
 
     @IBAction func playButtonPressed(_ sender: Any) {
         print("play pressed")
-        queuePlayer?.pause()
     }
 
     @IBAction func moveBackPressed(_ sender: Any) {
@@ -62,16 +61,16 @@ class PlayerViewController: UIViewController {
 
     func startPlaying(book: Book, from chapter: Int) {
 
-        labelTitle = book.name
+        labelTitle = "\(book.name) - Розділ \(String(chapter))"
 
         // localURL
         let localUrl = fileHandler.documentDirectory?.appendingPathComponent(book.label).appendingPathComponent(String(chapter)).appendingPathExtension("mp3")
         print(localUrl as Any)
 
         // setup player
-//        let asset = AVAsset(url: localUrl!)
-//        let playerItem = AVPlayerItem(asset: asset)
-//        queuePlayer = AVQueuePlayer(items: [playerItem])
-//        queuePlayer?.play()
+        let asset = AVAsset(url: localUrl!)
+        let playerItem = AVPlayerItem(asset: asset)
+        queuePlayer = AVQueuePlayer(items: [playerItem])
+        queuePlayer?.play()
     }
 }

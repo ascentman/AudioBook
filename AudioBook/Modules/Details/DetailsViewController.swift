@@ -21,7 +21,6 @@ final class DetailsViewController: UIViewController {
 
         playerView.layer.masksToBounds = true
         playerView.layer.cornerRadius = 10.0
-        dataProvider.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -35,21 +34,13 @@ final class DetailsViewController: UIViewController {
 
         tabBarController?.tabBar.isHidden = false
     }
-}
 
-// MARK: - Extensions
-
-extension DetailsViewController: DetailsDataProviderDelegate {
-
-    //MARK: - DetailsDataProviderDelegate
-
-    func goToPlayer(_ choosenBook: Book, start chapter: Int) {
-        let storyboard = UIStoryboard(name: StoryboardName.details, bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: PlayerViewController.description()) as? PlayerViewController
-        if let viewController = viewController {
-            viewController.startPlaying(book: choosenBook, from: chapter)
-            addChild(viewController)
-            view.layoutIfNeeded()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.destination {
+        case let viewController as PlayerViewController:
+            dataProvider.playerViewController = viewController
+        default:
+            break
         }
     }
 }

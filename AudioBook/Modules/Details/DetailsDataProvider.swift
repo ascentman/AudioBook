@@ -8,20 +8,16 @@
 
 import UIKit
 
-protocol DetailsDataProviderDelegate: class {
-    func goToPlayer(_ choosenBook: Book, start chapter: Int)
-}
-
 final class DetailsDataProvider: NSObject {
 
     var chosenBook = Book()
+    var startChapter = 1
+    var playerViewController: PlayerViewController?
     private var cells: [Int] {
         get {
             return [Int](1...chosenBook.chaptersCount)
         }
     }
-
-    weak var delegate: DetailsDataProviderDelegate?
 
     // MARK: - Public
 
@@ -63,7 +59,8 @@ extension DetailsDataProvider: UICollectionViewDelegate {
         })
         cell?.layer.transform = CATransform3DIdentity
         cell?.backgroundColor = UIColor.orange
-        delegate?.goToPlayer(chosenBook, start: indexPath.row + 1)
+        startChapter = indexPath.row + 1
+        playerViewController?.startPlaying(book: chosenBook, from: startChapter)
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
