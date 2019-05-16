@@ -31,7 +31,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3dH-SR-sSW">
                                 <rect key="frame" x="0.0" y="20" width="375" height="483"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aNG-2t-8Tv">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="aNG-2t-8Tv">
                                     <size key="itemSize" width="102" height="54"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -213,6 +213,8 @@
                         <viewLayoutGuide key="safeArea" id="I2N-e1-KEh"/>
                     </view>
                     <connections>
+                        <outlet property="currentTimeLabel" destination="1ua-bZ-lq5" id="AIe-Zr-JFi"/>
+                        <outlet property="durationLabel" destination="W91-pn-na4" id="4YG-wo-s1m"/>
                         <outlet property="moveBackButton" destination="J0H-hA-3al" id="ENf-YC-HCW"/>
                         <outlet property="moveForwardButton" destination="c6r-gP-gVF" id="5UP-Rl-4Xt"/>
                         <outlet property="nextButton" destination="Y2G-gT-Df0" id="5vx-E9-1qj"/>

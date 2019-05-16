@@ -75,16 +75,16 @@ extension DetailsDataProvider: UICollectionViewDelegateFlowLayout {
     // MARK: - UICollectionViewDelegateFlowLayout
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let collectionViewSize = collectionView.frame.size.width / 5
+        let collectionViewSize = (collectionView.frame.size.width) / 5
         return CGSize(width: collectionViewSize, height: collectionViewSize)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
+        return 10
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        return UIEdgeInsets(top: 20, left: 20, bottom: 10, right: 20)
     }
 }
 
