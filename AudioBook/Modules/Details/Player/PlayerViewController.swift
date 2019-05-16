@@ -9,7 +9,11 @@
 import UIKit
 import AVFoundation
 
-class PlayerViewController: UIViewController {
+final class PlayerViewController: UIViewController {
+
+    private enum Constants {
+        static let seekDuration: Float64 = 5
+    }
 
     @IBOutlet private weak var slider: UISlider!
     @IBOutlet private weak var previousButton: UIButton!
@@ -26,8 +30,9 @@ class PlayerViewController: UIViewController {
             trackLabel?.text = labelTitle
         }
     }
-    var queuePlayer: AVQueuePlayer?
-    let fileHandler = FileHandler()
+
+    private var queuePlayer: AVQueuePlayer?
+    private let fileHandler = FileHandler()
 
     // MARK: - Lifecycle
 
@@ -54,9 +59,25 @@ class PlayerViewController: UIViewController {
     }
 
     @IBAction func moveBackPressed(_ sender: Any) {
+        let playerCurrentTime = CMTimeGetSeconds(queuePlayer?.currentTime() ?? CMTime.zero)
+        var newTime = playerCurrentTime - Constants.seekDuration
+        if newTime < 0 {
+            newTime = 0
+        }
+        let time2: CMTime = CMTimeMake(value: Int64(newTime * 1000 as Float64), timescale: 1000)
+        queuePlayer?.seek(to: time2, toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero)
     }
 
     @IBAction func moveForwardPressed(_ sender: Any) {
+        guard let duration = queuePlayer?.currentItem?.asset.duration else {
+            return
+        }
+        let playerCurrentTime = CMTimeGetSeconds(queuePlayer?.currentTime() ?? CMTime.zero)
+        let newTime = playerCurrentTime + Constants.seekDuration
+        if newTime < (CMTimeGetSeconds(duration) - Constants.seekDuration) {
+            let time2: CMTime = CMTimeMake(value: Int64(newTime * 1000 as Float64), timescale: 1000)
+            queuePlayer?.seek(to: time2, toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero)
+        }
     }
 
     @IBAction func previousPressed(_ sender: Any) {
