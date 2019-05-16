@@ -108,7 +108,7 @@ final class PlayerViewController: UIViewController {
     @objc private func handleSliderChange() {
         if let duration = queuePlayer?.currentItem?.duration {
             let totalSeconds = CMTimeGetSeconds(duration)
-            let value = Float64(self.slider.value) * totalSeconds
+            let value = Float64(slider.value) * totalSeconds
             let seekTime = CMTime(value: Int64(value), timescale: 1)
             queuePlayer?.seek(to: seekTime, completionHandler: { _ in })
         }
@@ -146,7 +146,9 @@ final class PlayerViewController: UIViewController {
             let minutesText = String(format: "%02d", Int(seconds) / 60)
             let secondsText = String(format: "%02d", Int(seconds) % 60)
             self?.currentTimeLabel.text = "\(minutesText):\(secondsText)"
-            self?.slider.value = Float(seconds / durationSeconds)
+            UIView.animate(withDuration: 0.05, animations: { [weak self] in
+                self?.slider.setValue(Float(seconds / durationSeconds), animated: true)
+            })
         }
     }
 
