@@ -18,8 +18,8 @@ class PlayerViewController: UIViewController {
     @IBOutlet private weak var moveForwardButton: UIButton!
     @IBOutlet private weak var nextButton: UIButton!
     @IBOutlet private weak var trackLabel: UILabel!
-    @IBOutlet weak var currentTimeLabel: UILabel!
-    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet private weak var currentTimeLabel: UILabel!
+    @IBOutlet private weak var durationLabel: UILabel!
 
     private var labelTitle = "" {
         didSet {
@@ -115,17 +115,17 @@ class PlayerViewController: UIViewController {
 
     private func setupPeriodicTimeObserver(player: AVQueuePlayer) {
         let interval = CMTime(value: 1, timescale: 2)
+        guard let duration = player.currentItem?.asset.duration else {
+            return
+        }
+        let durationSeconds = CMTimeGetSeconds(duration)
         player.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main) {
             [weak self] progressTime in
             let seconds = CMTimeGetSeconds(progressTime)
             let minutesText = String(format: "%02d", Int(seconds) / 60)
             let secondsText = String(format: "%02d", Int(seconds) % 60)
             self?.currentTimeLabel.text = "\(minutesText):\(secondsText)"
-
-            if let duration = player.currentItem?.duration {
-                let durationSeconds = CMTimeGetSeconds(duration)
-                self?.slider.value = Float(seconds / durationSeconds)
-            }
+            self?.slider.value = Float(seconds / durationSeconds)
         }
     }
 
