@@ -69,13 +69,14 @@ final class PlayerViewController: UIViewController {
     }
 
     @IBAction func moveBackPressed(_ sender: Any) {
-        let playerCurrentTime = CMTimeGetSeconds(player.currentTime())
-        var newTime = playerCurrentTime - Constants.seekDuration
-        if newTime < 0 {
-            newTime = 0
+        if !CMTimeGetSeconds(player.currentTime()).isNaN {
+            var newTime = CMTimeGetSeconds(player.currentTime()) - Constants.seekDuration
+            if newTime < 0 {
+                newTime = 0
+            }
+            let time2: CMTime = CMTimeMake(value: Int64(newTime * 10 as Float64), timescale: 10)
+            player.seek(to: time2, toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero)
         }
-        let time2: CMTime = CMTimeMake(value: Int64(newTime * 10 as Float64), timescale: 10)
-        player.seek(to: time2, toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero)
     }
 
     @IBAction func moveForwardPressed(_ sender: Any) {
