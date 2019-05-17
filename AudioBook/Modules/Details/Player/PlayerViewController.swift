@@ -12,7 +12,7 @@ import AVFoundation
 final class PlayerViewController: UIViewController {
 
     private enum Constants {
-        static let seekDuration: Float64 = 10
+        static let seekDuration: Float64 = 30
     }
 
     @IBOutlet private weak var slider: UISlider!
@@ -33,8 +33,7 @@ final class PlayerViewController: UIViewController {
         }
     }
 
-    private var playerItems: [AVPlayerItem] = []
-    private var queuePlayer: AVQueuePlayer?
+    private var player: AVPlayer = AVPlayer()
     private let fileHandler = FileHandler()
 
     // MARK: - Lifecycle
@@ -43,7 +42,6 @@ final class PlayerViewController: UIViewController {
         super.viewDidLoad()
 
         setupSlider()
-        queuePlayer = AVQueuePlayer(items: playerItems)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -61,34 +59,34 @@ final class PlayerViewController: UIViewController {
     // MARK: - Actions
 
     @IBAction func playButtonPressed(_ sender: Any) {
-        if queuePlayer?.timeControlStatus == .playing {
-            queuePlayer?.pause()
+        if player.timeControlStatus == .playing {
+            player.pause()
             setupImageForPlayButton(name: "play")
         } else {
-            queuePlayer?.play()
+            player.play()
             setupImageForPlayButton(name: "pause")
         }
     }
 
     @IBAction func moveBackPressed(_ sender: Any) {
-        let playerCurrentTime = CMTimeGetSeconds(queuePlayer?.currentTime() ?? CMTime.zero)
+        let playerCurrentTime = CMTimeGetSeconds(player.currentTime())
         var newTime = playerCurrentTime - Constants.seekDuration
         if newTime < 0 {
             newTime = 0
         }
-        let time2: CMTime = CMTimeMake(value: Int64(newTime * 1000 as Float64), timescale: 1000)
-        queuePlayer?.seek(to: time2, toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero)
+        let time2: CMTime = CMTimeMake(value: Int64(newTime * 10 as Float64), timescale: 10)
+        player.seek(to: time2, toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero)
     }
 
     @IBAction func moveForwardPressed(_ sender: Any) {
-        guard let duration = queuePlayer?.currentItem?.asset.duration else {
+        guard let duration = player.currentItem?.asset.duration else {
             return
         }
-        let playerCurrentTime = CMTimeGetSeconds(queuePlayer?.currentTime() ?? CMTime.zero)
+        let playerCurrentTime = CMTimeGetSeconds(player.currentTime())
         let newTime = playerCurrentTime + Constants.seekDuration
         if newTime < (CMTimeGetSeconds(duration) - Constants.seekDuration) {
-            let time2: CMTime = CMTimeMake(value: Int64(newTime * 1000 as Float64), timescale: 1000)
-            queuePlayer?.seek(to: time2, toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero)
+            let time2: CMTime = CMTimeMake(value: Int64(newTime * 10 as Float64), timescale: 10)
+            player.seek(to: time2, toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero)
         }
     }
 
@@ -102,17 +100,14 @@ final class PlayerViewController: UIViewController {
 
     func startPlaying(book: Book, from chapter: Int) {
         setupTitle(book: book, from: chapter)
-        let localUrl = setupLocalUrl(book: book, from: chapter)
-
-        let asset = AVAsset(url: localUrl!)
+        let startUrl = setupLocalUrl(book: book, from: chapter)
+        let asset = AVAsset(url: startUrl!)
         let playerItem = AVPlayerItem(asset: asset)
-        queuePlayer?.replaceCurrentItem(with: playerItem)
-        queuePlayer?.play()
+        player.replaceCurrentItem(with: playerItem)
+        player.play()
         setupImageForPlayButton(name: "pause")
-        if let queuePlayer = queuePlayer {
-            getTrackDuration(player: queuePlayer)
-            setupPeriodicTimeObserver(player: queuePlayer)
-        }
+        getTrackDuration(player: player)
+        setupPeriodicTimeObserver(player: player)
     }
 
     // MARK: - Private
@@ -136,7 +131,7 @@ final class PlayerViewController: UIViewController {
 
     // tracking time
 
-    private func setupPeriodicTimeObserver(player: AVQueuePlayer) {
+    private func setupPeriodicTimeObserver(player: AVPlayer) {
         let interval = CMTime(value: 1, timescale: 2)
         guard let duration = player.currentItem?.asset.duration else {
             return
@@ -148,20 +143,21 @@ final class PlayerViewController: UIViewController {
             let minutesText = String(format: "%02d", Int(seconds) / 60)
             let secondsText = String(format: "%02d", Int(seconds) % 60)
             self?.currentTimeLabel.text = "\(minutesText):\(secondsText)"
-            UIView.animate(withDuration: 0.05, animations: { [weak self] in
+            UIView.animate(withDuration: 0.1, animations: { [weak self] in
                 self?.slider.setValue(Float(seconds / durationSeconds), animated: true)
+                self?.loadViewIfNeeded()
             })
         }
     }
 
     func removePeriodicTimeObserver() {
         if let timeObserver = timeObserver {
-            queuePlayer?.removeTimeObserver(timeObserver as Any)
+            player.removeTimeObserver(timeObserver as Any)
         }
         timeObserver = nil
     }
 
-    private func getTrackDuration(player: AVQueuePlayer) {
+    private func getTrackDuration(player: AVPlayer) {
         if let duration = player.currentItem?.asset.duration {
             let seconds = CMTimeGetSeconds(duration)
             let minutesText = String(format: "%02d", Int(seconds) / 60)
