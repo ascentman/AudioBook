@@ -13,6 +13,7 @@ final class PlayerViewController: UIViewController {
 
     private enum Constants {
         static let seekDuration: Float64 = 30
+        static let timeFormat: String = "%02d"
     }
 
     @IBOutlet private weak var slider: UISlider!
@@ -42,6 +43,7 @@ final class PlayerViewController: UIViewController {
         super.viewDidLoad()
 
         setupSlider()
+        playButton.isUserInteractionEnabled = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -59,10 +61,11 @@ final class PlayerViewController: UIViewController {
     // MARK: - Actions
 
     @IBAction func playButtonPressed(_ sender: Any) {
+        
         if player.timeControlStatus == .playing {
             player.pause()
             setupImageForPlayButton(name: "play")
-        } else {
+        } else if player.timeControlStatus == .paused {
             player.play()
             setupImageForPlayButton(name: "pause")
         }
@@ -100,6 +103,7 @@ final class PlayerViewController: UIViewController {
     // Build Player
 
     func startPlaying(book: Book, from chapter: Int) {
+        playButton.isUserInteractionEnabled = true
         setupTitle(book: book, from: chapter)
         let startUrl = setupLocalUrl(book: book, from: chapter)
         let asset = AVAsset(url: startUrl!)
@@ -141,8 +145,8 @@ final class PlayerViewController: UIViewController {
         timeObserver = player.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main) {
             [weak self] progressTime in
             let seconds = CMTimeGetSeconds(progressTime)
-            let minutesText = String(format: "%02d", Int(seconds) / 60)
-            let secondsText = String(format: "%02d", Int(seconds) % 60)
+            let minutesText = String(format: Constants.timeFormat, Int(seconds) / 60)
+            let secondsText = String(format: Constants.timeFormat, Int(seconds) % 60)
             self?.currentTimeLabel.text = "\(minutesText):\(secondsText)"
             UIView.animate(withDuration: 0.1, animations: { [weak self] in
                 self?.slider.setValue(Float(seconds / durationSeconds), animated: true)
@@ -161,8 +165,8 @@ final class PlayerViewController: UIViewController {
     private func getTrackDuration(player: AVPlayer) {
         if let duration = player.currentItem?.asset.duration {
             let seconds = CMTimeGetSeconds(duration)
-            let minutesText = String(format: "%02d", Int(seconds) / 60)
-            let secondsText = String(format: "%02d", Int(seconds) % 60)
+            let minutesText = String(format: Constants.timeFormat, Int(seconds) / 60)
+            let secondsText = String(format: Constants.timeFormat, Int(seconds) % 60)
             self.durationLabel.text = "\(minutesText):\(secondsText)"
         }
     }
