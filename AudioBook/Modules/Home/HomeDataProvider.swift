@@ -48,8 +48,6 @@ extension HomeDataProvider: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifier, for: indexPath) as? BookCollectionViewCell
-        cell?.layer.cornerRadius = 10
-        cell?.layer.masksToBounds = true
         if selectedSegment == 0 {
             cell?.setCell(book: dataManager.newTestament[indexPath.row])
             return cell ?? UICollectionViewCell()

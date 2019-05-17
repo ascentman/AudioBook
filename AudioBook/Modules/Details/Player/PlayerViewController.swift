@@ -12,7 +12,7 @@ import AVFoundation
 final class PlayerViewController: UIViewController {
 
     private enum Constants {
-        static let seekDuration: Float64 = 5
+        static let seekDuration: Float64 = 10
     }
 
     @IBOutlet private weak var slider: UISlider!
@@ -47,6 +47,8 @@ final class PlayerViewController: UIViewController {
 
         trackLabel.text = labelTitle
     }
+
+    // MARK: - Actions
 
     @IBAction func playButtonPressed(_ sender: Any) {
         if queuePlayer?.timeControlStatus == .playing {
@@ -86,11 +88,11 @@ final class PlayerViewController: UIViewController {
     @IBAction func nextPressed(_ sender: Any) {
     }
 
+    // Build Player
+
     func startPlaying(book: Book, from chapter: Int) {
         setupTitle(book: book, from: chapter)
         let localUrl = setupLocalUrl(book: book, from: chapter)
-
-        // setup player
 
         let asset = AVAsset(url: localUrl!)
         let playerItem = AVPlayerItem(asset: asset)
@@ -105,15 +107,6 @@ final class PlayerViewController: UIViewController {
 
     // MARK: - Private
 
-    @objc private func handleSliderChange() {
-        if let duration = queuePlayer?.currentItem?.duration {
-            let totalSeconds = CMTimeGetSeconds(duration)
-            let value = Float64(slider.value) * totalSeconds
-            let seekTime = CMTime(value: Int64(value), timescale: 1)
-            queuePlayer?.seek(to: seekTime, completionHandler: { _ in })
-        }
-    }
-
     private func setupImageForPlayButton(name: String) {
         playButton.setImage(UIImage(named: name), for: .normal)
     }
@@ -125,7 +118,6 @@ final class PlayerViewController: UIViewController {
     private func setupSlider() {
         slider.setThumbImage(UIImage(named: "oval"), for: .normal)
         slider.setThumbImage(UIImage(named: "oval2"), for: .highlighted)
-        slider.addTarget(self, action: #selector(handleSliderChange), for: .valueChanged)
     }
 
     private func setupLocalUrl(book: Book, from chapter: Int) -> URL? {

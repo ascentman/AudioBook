@@ -12,14 +12,18 @@ final class BookCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet private weak var backTextView: UIView!
     @IBOutlet private weak var someLabel: UILabel!
-    @IBOutlet weak var progressView: UIProgressView!
-    @IBOutlet weak var downloadPercentage: UILabel!
+    @IBOutlet weak var backImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        layer.cornerRadius = 10
+        layer.masksToBounds = true
+        layer.borderColor = UIColor.white.cgColor
+
         backTextView.backgroundColor = UIColor.orange
         backTextView.layer.cornerRadius = 10
+        backTextView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
     }
 
     override func prepareForReuse() {
@@ -29,9 +33,5 @@ final class BookCollectionViewCell: UICollectionViewCell {
 
     func setCell(book: Book) {
         someLabel.text = book.name
-    }
-
-    func updateDownloadProgress() {
-        print("fff")
     }
 }
