@@ -25,12 +25,15 @@ final class PlayerViewController: UIViewController {
     @IBOutlet private weak var currentTimeLabel: UILabel!
     @IBOutlet private weak var durationLabel: UILabel!
 
+    private var timeObserver: Any?
+
     private var labelTitle = "" {
         didSet {
             trackLabel?.text = labelTitle
         }
     }
 
+    private var playerItems: [AVPlayerItem] = []
     private var queuePlayer: AVQueuePlayer?
     private let fileHandler = FileHandler()
 
@@ -40,12 +43,19 @@ final class PlayerViewController: UIViewController {
         super.viewDidLoad()
 
         setupSlider()
+        queuePlayer = AVQueuePlayer(items: playerItems)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         trackLabel.text = labelTitle
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        removePeriodicTimeObserver()
     }
 
     // MARK: - Actions
@@ -96,12 +106,12 @@ final class PlayerViewController: UIViewController {
 
         let asset = AVAsset(url: localUrl!)
         let playerItem = AVPlayerItem(asset: asset)
-        queuePlayer = AVQueuePlayer(items: [playerItem])
+        queuePlayer?.replaceCurrentItem(with: playerItem)
         queuePlayer?.play()
         setupImageForPlayButton(name: "pause")
-        if let player = queuePlayer {
-            setupPeriodicTimeObserver(player: player)
-            getTrackDuration(player: player)
+        if let queuePlayer = queuePlayer {
+            getTrackDuration(player: queuePlayer)
+            setupPeriodicTimeObserver(player: queuePlayer)
         }
     }
 
@@ -132,7 +142,7 @@ final class PlayerViewController: UIViewController {
             return
         }
         let durationSeconds = CMTimeGetSeconds(duration)
-        player.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main) {
+        timeObserver = player.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main) {
             [weak self] progressTime in
             let seconds = CMTimeGetSeconds(progressTime)
             let minutesText = String(format: "%02d", Int(seconds) / 60)
@@ -142,6 +152,13 @@ final class PlayerViewController: UIViewController {
                 self?.slider.setValue(Float(seconds / durationSeconds), animated: true)
             })
         }
+    }
+
+    func removePeriodicTimeObserver() {
+        if let timeObserver = timeObserver {
+            queuePlayer?.removeTimeObserver(timeObserver as Any)
+        }
+        timeObserver = nil
     }
 
     private func getTrackDuration(player: AVQueuePlayer) {

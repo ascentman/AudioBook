@@ -62,8 +62,8 @@ extension HomeViewController: HomeDataProviderDelegate {
             viewController?.title = dataProvider.dataManager.oldTestament[index].name
             viewController?.dataProvider.fillChosen(book: dataProvider.dataManager.oldTestament[index])
         }
-        if let vc = viewController {
-            navigationController?.pushViewController(vc, animated: true)
+        if let viewController = viewController {
+            navigationController?.pushViewController(viewController, animated: true)
         }
     }
 }

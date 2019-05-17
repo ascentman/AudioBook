@@ -17,6 +17,20 @@ final class BookCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        setupUI()
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        someLabel.text = nil
+
+    }
+
+    func setCell(book: Book) {
+        someLabel.text = book.name
+    }
+
+    private func setupUI() {
         layer.cornerRadius = 10
         layer.masksToBounds = true
         layer.borderColor = UIColor.white.cgColor
@@ -24,14 +38,5 @@ final class BookCollectionViewCell: UICollectionViewCell {
         backTextView.backgroundColor = UIColor.orange
         backTextView.layer.cornerRadius = 10
         backTextView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
-    }
-
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        someLabel.text = nil
-    }
-
-    func setCell(book: Book) {
-        someLabel.text = book.name
     }
 }
