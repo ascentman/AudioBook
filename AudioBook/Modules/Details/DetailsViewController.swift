@@ -10,7 +10,7 @@ import UIKit
 
 final class DetailsViewController: UIViewController {
 
-    @IBOutlet var dataProvider: DetailsDataProvider!
+    @IBOutlet private var dataProvider: DetailsDataProvider!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var playerView: UIView!
 
@@ -19,17 +19,16 @@ final class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        playerView.layer.masksToBounds = true
-        playerView.layer.cornerRadius = 10.0
+        setupUI()
 
         DownloadService.shared.onProgress = { [weak self] (index, progress) in
-            if let chapterCell = self?.collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? ChapterCollectionViewCell {
+            if let chapterCell = self?.collectionView.cellForItem(at: IndexPath(item: index - 1, section: 0)) as? ChapterCollectionViewCell {
                 chapterCell.updateDownloadProgress(progress: progress)
             }
         }
 
         DownloadService.shared.onCompleted = { [weak self] (index) in
-            if let chapterCell = self?.collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? ChapterCollectionViewCell {
+            if let chapterCell = self?.collectionView.cellForItem(at: IndexPath(item: index - 1, section: 0)) as? ChapterCollectionViewCell {
                 chapterCell.downloadCompleted()
             }
         }
@@ -47,6 +46,8 @@ final class DetailsViewController: UIViewController {
         tabBarController?.tabBar.isHidden = false
     }
 
+    // MARK: - Segues
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.destination {
         case let viewController as PlayerViewController:
@@ -54,5 +55,12 @@ final class DetailsViewController: UIViewController {
         default:
             break
         }
+    }
+
+    // MARK - Private
+
+    private func setupUI() {
+        playerView.layer.masksToBounds = true
+        playerView.layer.cornerRadius = 10.0
     }
 }

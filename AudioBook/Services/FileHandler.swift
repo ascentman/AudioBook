@@ -50,4 +50,29 @@ final class FileHandler {
         }
         return result
     }
+
+    func isBookChaptersLoaded(book: BookOnline) -> Bool {
+        var result = false
+        let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let bookToCheck = documentDirectory + "/" + book.label
+        let dirContents = try? fileManager.contentsOfDirectory(atPath: bookToCheck)
+        let count = dirContents?.count
+        if count == book.chaptersCount {
+            result = true
+        }
+        return result
+    }
+
+    func remove(book: BookOnline) {
+        guard let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            return
+        }
+
+        let bookDirectory = documentDirectory.appendingPathComponent(book.label)
+        if !fileManager.fileExists(atPath: bookDirectory.path) {
+            do {
+                try fileManager.removeItem(at: bookDirectory)
+            } catch {}
+        }
+    }
 }

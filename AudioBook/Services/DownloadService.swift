@@ -14,7 +14,6 @@ final class DownloadService: NSObject {
 
     private override init() {}
 
-    var currentBook: String = ""
     var activeDownloads: [URL: Download] = [:]
     lazy var downloadsSession: URLSession = {
         let configuration = URLSessionConfiguration.background(withIdentifier: "bgSessionConfiguration")
@@ -90,8 +89,10 @@ extension DownloadService: URLSessionDownloadDelegate {
         } catch let error {
             assertionFailure("Could not copy file to disk: \(error.localizedDescription)")
         }
-        DispatchQueue.main.async {
-            self.onCompleted?(downloadTask.taskIdentifier)
+        if let index = Int(sourceURL.deletingPathExtension().lastPathComponent) {
+            DispatchQueue.main.async {
+                self.onCompleted?(index)
+            }
         }
     }
 
@@ -107,18 +108,10 @@ extension DownloadService: URLSessionDownloadDelegate {
 
         let progress = Double(Double(totalBytesWritten) / Double(totalBytesExpectedToWrite))
 
-        //        for chapter in activeDownloads {
-        //            let index = chapter.key.deletingPathExtension().lastPathComponent
-        //            print(index, "+++++")
-        //            DispatchQueue.main.async {
-        //                self.onProgress?(Int(index)!, Float(progress))
-        //            }
-        //        }
-
-        let index = sourceURL.deletingPathExtension().lastPathComponent
-        print(index, "+++++")
-        DispatchQueue.main.async {
-            self.onProgress?(Int(index)! - 1, Float(progress))
+        if let index = Int(sourceURL.deletingPathExtension().lastPathComponent) {
+            DispatchQueue.main.async {
+                self.onProgress?(index, Float(progress))
+            }
         }
     }
 }

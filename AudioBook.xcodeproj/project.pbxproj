@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CE12A9CC22786E4000CDB66E /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12A9CA22786E4000CDB66E /* PlayerViewController.swift */; };
-		CE12A9D1227887AE00CDB66E /* ErrorToThrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12A9D0227887AE00CDB66E /* ErrorToThrow.swift */; };
 		CE12A9D822788BC100CDB66E /* ChapterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12A9D622788BC100CDB66E /* ChapterCollectionViewCell.swift */; };
 		CE12A9E02278988500CDB66E /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12A9DF2278988500CDB66E /* Book.swift */; };
 		CE12A9E22278BDCF00CDB66E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12A9E12278BDCF00CDB66E /* Colors.swift */; };
@@ -37,7 +36,6 @@
 
 /* Begin PBXFileReference section */
 		CE12A9CA22786E4000CDB66E /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
-		CE12A9D0227887AE00CDB66E /* ErrorToThrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorToThrow.swift; sourceTree = "<group>"; };
 		CE12A9D622788BC100CDB66E /* ChapterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE12A9DF2278988500CDB66E /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		CE12A9E12278BDCF00CDB66E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -115,8 +113,8 @@
 		CE29C84522710252003FDAB6 /* Support Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CE12A9E12278BDCF00CDB66E /* Colors.swift */,
 				CE29C8462271027B003FDAB6 /* CustomSegmentedControl.swift */,
-				CE12A9D0227887AE00CDB66E /* ErrorToThrow.swift */,
 			);
 			path = "Support Classes";
 			sourceTree = "<group>";
@@ -187,7 +185,6 @@
 				CE568F2E22625E4A000D0A3B /* Assets.xcassets */,
 				CE568F2722625E49000D0A3B /* AppDelegate.swift */,
 				CE568F3322625E4A000D0A3B /* Info.plist */,
-				CE12A9E12278BDCF00CDB66E /* Colors.swift */,
 			);
 			path = "Support files";
 			sourceTree = "<group>";
@@ -319,7 +316,6 @@
 				CE12A9E62278C97F00CDB66E /* DetailsDataProvider.swift in Sources */,
 				CE29C83F2270F82E003FDAB6 /* DataSource.swift in Sources */,
 				CE29C84B2271131A003FDAB6 /* DetailsViewController.swift in Sources */,
-				CE12A9D1227887AE00CDB66E /* ErrorToThrow.swift in Sources */,
 				CE29C8432270FFE4003FDAB6 /* UICollectionViewCell+Extensions.swift in Sources */,
 				CED6C3E8227E3C05008DBAC9 /* Download.swift in Sources */,
 				CED6C3ED227E3D16008DBAC9 /* DownloadService.swift in Sources */,

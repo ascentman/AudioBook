@@ -101,7 +101,6 @@ class CustomSegmentControl: UIControl {
     @objc private func buttonTapped(button: UIButton) {
         for (buttonIndex, btn) in buttons.enumerated() {
             btn.setTitleColor(textColor, for: .normal)
-
             if btn == button {
                 selectedSegmentIndex = buttonIndex
                 let selectorStartPosition = frame.width / CGFloat(self.buttons.count) * CGFloat(buttonIndex)

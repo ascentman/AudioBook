@@ -101,7 +101,6 @@ final class PlayerViewController: UIViewController {
     }
 
     // Build Player
-
     func startPlaying(book: Book, from chapter: Int) {
         playButton.isUserInteractionEnabled = true
         setupTitle(book: book, from: chapter)

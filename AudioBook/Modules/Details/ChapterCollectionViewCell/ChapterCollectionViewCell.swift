@@ -11,20 +11,25 @@ import UIKit
 final class ChapterCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet private weak var chapterNumber: UILabel!
-    @IBOutlet weak var percentageLabel: UILabel!
-    @IBOutlet weak var downloadProgress: UIProgressView!
-    
+    @IBOutlet private weak var percentageLabel: UILabel!
+    @IBOutlet private weak var downloadProgress: UIProgressView!
+
+    // MARK: - Lifecycle
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        layer.borderColor = Colors.appGreen.cgColor
-        layer.borderWidth = 2.0
+        setupUI()
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
         chapterNumber.text = nil
+        downloadProgress.isHidden = true
+        percentageLabel.isHidden = true
     }
+
+    // MARK: - Setup cell
 
     func setCell(index: String) {
         chapterNumber.text = index
@@ -38,6 +43,16 @@ final class ChapterCollectionViewCell: UICollectionViewCell {
     }
 
     func downloadCompleted() {
+        downloadProgress.isHidden = true
+        percentageLabel.isHidden = true
+    }
 
+    // MARK: - Private
+
+    private func setupUI() {
+        layer.borderColor = Colors.appGreen.cgColor
+        layer.borderWidth = 2.0
+        downloadProgress.isHidden = true
+        percentageLabel.isHidden = true
     }
 }

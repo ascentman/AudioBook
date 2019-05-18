@@ -10,7 +10,7 @@ import UIKit
 
 final class HomeViewController: UIViewController {
 
-    @IBOutlet private var dataProvider: HomeDataProvider!
+    @IBOutlet var dataProvider: HomeDataProvider!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var segmentedControl: CustomSegmentControl!
 
