@@ -24,13 +24,12 @@ final class DetailsViewController: UIViewController {
 
         DownloadService.shared.onProgress = { [weak self] (index, progress) in
             if let chapterCell = self?.collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? ChapterCollectionViewCell {
-                chapterCell.updateDownloadProgress(progress: progress, totalSize: "totalSize")
+                chapterCell.updateDownloadProgress(progress: progress)
             }
         }
 
         DownloadService.shared.onCompleted = { [weak self] (index) in
             if let chapterCell = self?.collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? ChapterCollectionViewCell {
-                print(index, "completed")
                 chapterCell.downloadCompleted()
             }
         }

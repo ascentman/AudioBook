@@ -30,15 +30,14 @@ final class ChapterCollectionViewCell: UICollectionViewCell {
         chapterNumber.text = index
     }
 
-    func updateDownloadProgress(progress: Float, totalSize : String) {
+    func updateDownloadProgress(progress: Float) {
         downloadProgress.isHidden = false
         percentageLabel.isHidden = false
         downloadProgress.progress = progress
-        percentageLabel.text = String(format: "%.1f%%", progress * 100, totalSize)
+        percentageLabel.text = String(format: "%.1f%%", progress * 100)
     }
 
     func downloadCompleted() {
-        downloadProgress.isHidden = true
-        percentageLabel.isHidden = true
+
     }
 }

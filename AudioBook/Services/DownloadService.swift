@@ -31,7 +31,7 @@ final class DownloadService: NSObject {
             download.task = downloadsSession.downloadTask(with: chapterUrl)
             download.task!.resume()
             download.isDownloading = true
-            activeDownloads[download.track.previewURL] = download
+            activeDownloads[chapterUrl] = download
         }
     }
 
@@ -101,11 +101,24 @@ extension DownloadService: URLSessionDownloadDelegate {
             return
         }
 
+        guard let sourceURL = downloadTask.originalRequest?.url else {
+            return
+        }
+
         let progress = Double(Double(totalBytesWritten) / Double(totalBytesExpectedToWrite))
 
+        //        for chapter in activeDownloads {
+        //            let index = chapter.key.deletingPathExtension().lastPathComponent
+        //            print(index, "+++++")
+        //            DispatchQueue.main.async {
+        //                self.onProgress?(Int(index)!, Float(progress))
+        //            }
+        //        }
+
+        let index = sourceURL.deletingPathExtension().lastPathComponent
+        print(index, "+++++")
         DispatchQueue.main.async {
-            print(downloadTask.taskIdentifier)
-            self.onProgress?(downloadTask.taskIdentifier, Float(progress))
+            self.onProgress?(Int(index)! - 1, Float(progress))
         }
     }
 }
