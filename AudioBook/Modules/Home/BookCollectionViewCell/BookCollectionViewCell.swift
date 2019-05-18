@@ -13,7 +13,7 @@ final class BookCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var backTextView: UIView!
     @IBOutlet private weak var someLabel: UILabel!
     @IBOutlet weak var backImageView: UIImageView!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
 

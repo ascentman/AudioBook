@@ -21,13 +21,6 @@ final class FileHandler {
         }
     }
 
-    func localFilePath(for url: URL, bookName: String) -> URL? {
-        guard let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
-            return nil
-        }
-        return documentDirectory.appendingPathComponent(bookName).appendingPathComponent(url.lastPathComponent)
-    }
-
     func createBookDirectory(name: String) {
         guard let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
             return

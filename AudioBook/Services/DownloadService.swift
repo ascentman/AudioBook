@@ -8,12 +8,21 @@
 
 import Foundation
 
-final class DownloadService {
+final class DownloadService: NSObject {
 
-    var downloadsSession: URLSession!
+    static let shared = DownloadService()
+
+    private override init() {}
+
+    var currentBook: String = ""
     var activeDownloads: [URL: Download] = [:]
+    lazy var downloadsSession: URLSession = {
+        let configuration = URLSessionConfiguration.background(withIdentifier: "bgSessionConfiguration")
+        return URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
+    }()
 
-    // MARK: - Download methods called by TrackCell delegate methods
+    var onProgress: ((Int, Float) -> ())?
+    var onCompleted: ((Int) -> ())?
 
     func startDownload(_ book: BookOnline) {
         (1...book.chaptersCount).forEach { (chapter) in
@@ -26,32 +35,88 @@ final class DownloadService {
         }
     }
 
-//    func pauseDownload(_ track: BookOnline) {
-//        guard let download = activeDownloads[track.previewURL] else { return }
-//        if download.isDownloading {
-//            download.task?.cancel(byProducingResumeData: { data in
-//                download.resumeData = data
-//            })
-//            download.isDownloading = false
-//        }
-//    }
-//
-//    func cancelDownload(_ track: BookOnline) {
-//        if let download = activeDownloads[track.previewURL] {
-//            download.task?.cancel()
-//            activeDownloads[track.previewURL] = nil
-//        }
-//    }
+    func pauseDownload(_ book: BookOnline) {
+        guard let download = activeDownloads[book.previewURL] else { return }
+        if download.isDownloading {
+            download.task?.cancel(byProducingResumeData: { data in
+                download.resumeData = data
+            })
+            download.isDownloading = false
+        }
+    }
 
-//    func resumeDownload(_ track: BookOnline) {
-//        guard let download = activeDownloads[track.previewURL] else { return }
-//        if let resumeData = download.resumeData {
-//            download.task = downloadsSession.downloadTask(withResumeData: resumeData)
-//        } else {
-//            download.task = downloadsSession.downloadTask(with: download.track.previewURL)
-//        }
-//        download.task!.resume()
-//        download.isDownloading = true
-//    }
+    func cancelDownload(_ book: BookOnline) {
+        if let download = activeDownloads[book.previewURL] {
+            download.task?.cancel()
+            activeDownloads[book.previewURL] = nil
+        }
+    }
 
+    func resumeDownload(_ book: BookOnline) {
+        guard let download = activeDownloads[book.previewURL] else { return }
+        if let resumeData = download.resumeData {
+            download.task = downloadsSession.downloadTask(withResumeData: resumeData)
+        } else {
+            download.task = downloadsSession.downloadTask(with: download.track.previewURL)
+        }
+        download.task!.resume()
+        download.isDownloading = true
+    }
+
+}
+
+extension DownloadService: URLSessionDownloadDelegate {
+
+    // MARK: - URLSessionDownloadDelegate
+
+    // Stores downloaded file
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        guard let sourceURL = downloadTask.originalRequest?.url else {
+            return
+        }
+        let download = activeDownloads[sourceURL]
+        activeDownloads[sourceURL] = nil
+
+        let bookName = sourceURL.deletingLastPathComponent().lastPathComponent
+        let fileManager = FileManager.default
+        guard let destinationURL = fileManager.localFilePath(for: sourceURL, bookName: bookName) else {
+            return
+        }
+
+        try? fileManager.removeItem(at: destinationURL)
+        do {
+            try fileManager.copyItem(at: location, to: destinationURL)
+            download?.track.downloaded = true
+        } catch let error {
+            assertionFailure("Could not copy file to disk: \(error.localizedDescription)")
+        }
+        DispatchQueue.main.async {
+            self.onCompleted?(downloadTask.taskIdentifier)
+        }
+    }
+
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+
+        guard totalBytesExpectedToWrite != NSURLSessionTransferSizeUnknown else {
+            return
+        }
+
+        let progress = Double(Double(totalBytesWritten) / Double(totalBytesExpectedToWrite))
+
+        DispatchQueue.main.async {
+            print(downloadTask.taskIdentifier)
+            self.onProgress?(downloadTask.taskIdentifier, Float(progress))
+        }
+    }
+}
+
+private extension FileManager {
+
+    func localFilePath(for url: URL, bookName: String) -> URL? {
+        let fileManager = FileManager.default
+        guard let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            return nil
+        }
+        return documentDirectory.appendingPathComponent(bookName).appendingPathComponent(url.lastPathComponent)
+    }
 }

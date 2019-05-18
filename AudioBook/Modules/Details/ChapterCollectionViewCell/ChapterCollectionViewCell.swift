@@ -11,7 +11,9 @@ import UIKit
 final class ChapterCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet private weak var chapterNumber: UILabel!
-
+    @IBOutlet weak var percentageLabel: UILabel!
+    @IBOutlet weak var downloadProgress: UIProgressView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -26,5 +28,17 @@ final class ChapterCollectionViewCell: UICollectionViewCell {
 
     func setCell(index: String) {
         chapterNumber.text = index
+    }
+
+    func updateDownloadProgress(progress: Float, totalSize : String) {
+        downloadProgress.isHidden = false
+        percentageLabel.isHidden = false
+        downloadProgress.progress = progress
+        percentageLabel.text = String(format: "%.1f%%", progress * 100, totalSize)
+    }
+
+    func downloadCompleted() {
+        downloadProgress.isHidden = true
+        percentageLabel.isHidden = true
     }
 }

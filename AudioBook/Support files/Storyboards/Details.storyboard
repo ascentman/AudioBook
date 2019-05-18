@@ -51,15 +51,32 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6sT-wh-1Kc">
+                                                    <rect key="frame" x="10" y="47" width="82" height="2"/>
+                                                    <color key="tintColor" red="0.098039215690000001" green="0.54901960780000003" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </progressView>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nil-wu-Cdt">
+                                                    <rect key="frame" x="42.5" y="29" width="17" height="15"/>
+                                                    <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="12"/>
+                                                    <color key="textColor" red="0.098039215690000001" green="0.54901960780000003" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="hDb-aZ-8Mt" firstAttribute="centerX" secondItem="rOI-YB-OJr" secondAttribute="centerX" id="1fz-j3-rq2"/>
+                                            <constraint firstItem="Nil-wu-Cdt" firstAttribute="centerX" secondItem="rOI-YB-OJr" secondAttribute="centerX" id="5AI-WO-mdG"/>
+                                            <constraint firstAttribute="bottom" secondItem="6sT-wh-1Kc" secondAttribute="bottom" constant="5" id="awD-wf-4cS"/>
                                             <constraint firstItem="hDb-aZ-8Mt" firstAttribute="centerY" secondItem="rOI-YB-OJr" secondAttribute="centerY" id="bOX-Dy-xts"/>
+                                            <constraint firstAttribute="trailing" secondItem="6sT-wh-1Kc" secondAttribute="trailing" constant="10" id="kd9-CK-jiC"/>
+                                            <constraint firstItem="6sT-wh-1Kc" firstAttribute="top" secondItem="Nil-wu-Cdt" secondAttribute="bottom" constant="3" id="oXB-62-q2M"/>
+                                            <constraint firstItem="6sT-wh-1Kc" firstAttribute="leading" secondItem="rOI-YB-OJr" secondAttribute="leading" constant="10" id="z16-nc-Dui"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="chapterNumber" destination="hDb-aZ-8Mt" id="OwA-K0-0Oi"/>
+                                            <outlet property="downloadProgress" destination="6sT-wh-1Kc" id="hob-PI-7cg"/>
+                                            <outlet property="percentageLabel" destination="Nil-wu-Cdt" id="7Pb-5O-Yoo"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

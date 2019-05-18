@@ -15,19 +15,15 @@ protocol HomeDataProviderDelegate: class {
 final class HomeDataProvider: NSObject {
 
     let dataManager = DataSource()
-    let downloadService = DownloadService()
     let fileHandler = FileHandler()
-    lazy var downloadsSession: URLSession = {
-        let configuration = URLSessionConfiguration.background(withIdentifier: "bgSessionConfiguration")
-        return URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
-    }()
+
     var selectedSegment = 0
     weak var delegate: HomeDataProviderDelegate?
 
     private func downloadSpecific(book: BookOnline) {
         if !fileHandler.ifBookExists(book: book) {
             fileHandler.createBookDirectory(name: book.label)
-            downloadService.startDownload(book)
+            DownloadService.shared.startDownload(book)
         }
     }
 }
@@ -108,33 +104,5 @@ extension HomeDataProvider: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-    }
-}
-
-extension HomeDataProvider: URLSessionDownloadDelegate {
-
-    // MARK: - URLSessionDownloadDelegate
-
-    // Stores downloaded file
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        guard let sourceURL = downloadTask.originalRequest?.url else {
-            return
-        }
-        let download = downloadService.activeDownloads[sourceURL]
-        downloadService.activeDownloads[sourceURL] = nil
-
-        let bookName = sourceURL.deletingLastPathComponent().lastPathComponent
-        guard let destinationURL = fileHandler.localFilePath(for: sourceURL, bookName: bookName) else {
-            return
-        }
-
-        let fileManager = FileManager.default
-        try? fileManager.removeItem(at: destinationURL)
-        do {
-            try fileManager.copyItem(at: location, to: destinationURL)
-            download?.track.downloaded = true
-        } catch let error {
-            assertionFailure("Could not copy file to disk: \(error.localizedDescription)")
-        }
     }
 }
