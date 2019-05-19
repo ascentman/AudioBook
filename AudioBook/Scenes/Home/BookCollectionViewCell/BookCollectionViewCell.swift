@@ -34,8 +34,6 @@ final class BookCollectionViewCell: UICollectionViewCell {
         layer.cornerRadius = 10
         layer.masksToBounds = true
         layer.borderColor = UIColor.white.cgColor
-
-        backTextView.backgroundColor = UIColor.orange
         backTextView.layer.cornerRadius = 10
         backTextView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
     }

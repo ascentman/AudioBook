@@ -24,6 +24,8 @@
 		CE568F2F22625E4A000D0A3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE568F2E22625E4A000D0A3B /* Assets.xcassets */; };
 		CE86F69C22913E4200138628 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE86F69B22913E4200138628 /* Start.storyboard */; };
 		CE86F69F2291410C00138628 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE86F69E2291410C00138628 /* StartViewController.swift */; };
+		CE86F6C42291F17D00138628 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE86F6C32291F17D00138628 /* SettingsTableViewController.swift */; };
+		CE86F6C72291FFFE00138628 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE86F6C62291FFFE00138628 /* AboutViewController.swift */; };
 		CE9E0E12227594D800E214C1 /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE9E0E11227594D800E214C1 /* Details.storyboard */; };
 		CE9E0E142275950F00E214C1 /* StoryboardName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9E0E132275950F00E214C1 /* StoryboardName.swift */; };
 		CE9E0E1C227856B000E214C1 /* PlayerIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE9E0E1B227856B000E214C1 /* PlayerIcons.xcassets */; };
@@ -55,6 +57,8 @@
 		CE568F3322625E4A000D0A3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE86F69B22913E4200138628 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		CE86F69E2291410C00138628 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		CE86F6C32291F17D00138628 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		CE86F6C62291FFFE00138628 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		CE9E0E11227594D800E214C1 /* Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
 		CE9E0E132275950F00E214C1 /* StoryboardName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardName.swift; sourceTree = "<group>"; };
 		CE9E0E1B227856B000E214C1 /* PlayerIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PlayerIcons.xcassets; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 		CE414C33226C62EA0063C468 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				CE86F6C52291FFE200138628 /* About */,
+				CE86F6C22291F14B00138628 /* Settings */,
 				CE86F69D229140E900138628 /* Start */,
 				CE29C849227112E5003FDAB6 /* Details */,
 				CEC82100226C900500A1AA8D /* Home */,
@@ -198,6 +204,22 @@
 				CE86F69E2291410C00138628 /* StartViewController.swift */,
 			);
 			path = Start;
+			sourceTree = "<group>";
+		};
+		CE86F6C22291F14B00138628 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CE86F6C32291F17D00138628 /* SettingsTableViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		CE86F6C52291FFE200138628 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				CE86F6C62291FFFE00138628 /* AboutViewController.swift */,
+			);
+			path = About;
 			sourceTree = "<group>";
 		};
 		CE9E0E152275964E00E214C1 /* Storyboards */ = {
@@ -320,6 +342,7 @@
 			files = (
 				CE12A9D822788BC100CDB66E /* ChapterCollectionViewCell.swift in Sources */,
 				CE12A9E22278BDCF00CDB66E /* Colors.swift in Sources */,
+				CE86F6C72291FFFE00138628 /* AboutViewController.swift in Sources */,
 				CE29C8472271027B003FDAB6 /* CustomSegmentedControl.swift in Sources */,
 				CED6C3EF227E54B4008DBAC9 /* FileHandler.swift in Sources */,
 				CE568F2822625E49000D0A3B /* AppDelegate.swift in Sources */,
@@ -338,6 +361,7 @@
 				CEC82106226C909000A1AA8D /* BookCollectionViewCell.swift in Sources */,
 				CEC82102226C902600A1AA8D /* HomeViewController.swift in Sources */,
 				CE12A9CC22786E4000CDB66E /* PlayerViewController.swift in Sources */,
+				CE86F6C42291F17D00138628 /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
