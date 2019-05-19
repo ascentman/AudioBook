@@ -35,6 +35,21 @@ final class DetailsDataProvider: NSObject {
             DownloadService.shared.startDownload(onlineBook)
         }
     }
+
+    // MARK: - Private
+
+    private func highlightCell(cell: UICollectionViewCell, isActive: Bool) {
+        if isActive {
+            UIView.animate(withDuration: 0.3, animations: {
+                cell.alpha = 1
+                cell.layer.transform = CATransform3DScale(CATransform3DIdentity, 0.9, 0.9, 0.9)
+            })
+            cell.layer.transform = CATransform3DIdentity
+            cell.backgroundColor = UIColor.orange
+        } else {
+            cell.backgroundColor = UIColor.lightGray
+        }
+    }
 }
 
 // MARK: - Extensions
@@ -63,20 +78,17 @@ extension DetailsDataProvider: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        let cell = collectionView.cellForItem(at: indexPath)
-        UIView.animate(withDuration: 0.3, animations: {
-            cell?.alpha = 1
-            cell?.layer.transform = CATransform3DScale(CATransform3DIdentity, 0.9, 0.9, 0.9)
-        })
-        cell?.layer.transform = CATransform3DIdentity
-        cell?.backgroundColor = UIColor.orange
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            highlightCell(cell: cell, isActive: true)
+        }
         startChapter = indexPath.row + 1
         playerViewController?.startPlaying(book: chosenBook, from: startChapter)
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
-        cell?.backgroundColor = UIColor.lightGray
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            highlightCell(cell: cell, isActive: false)
+        }
     }
 }
 
@@ -97,4 +109,3 @@ extension DetailsDataProvider: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets(top: 20, left: 20, bottom: 10, right: 20)
     }
 }
-

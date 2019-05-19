@@ -34,6 +34,9 @@ final class PlayerViewController: UIViewController {
         }
     }
 
+    private var currentBook: Book?
+    private var currentChapter: Int = 1
+
     private var player: AVPlayer = AVPlayer()
     private let fileHandler = FileHandler()
 
@@ -95,18 +98,23 @@ final class PlayerViewController: UIViewController {
     }
 
     @IBAction func previousPressed(_ sender: Any) {
+        previousChapterToPlay()
     }
 
     @IBAction func nextPressed(_ sender: Any) {
+        nextChapterToPlay()
     }
 
     // Build Player
     func startPlaying(book: Book, from chapter: Int) {
+        self.currentBook = book
+        self.currentChapter = chapter
         playButton.isUserInteractionEnabled = true
         setupTitle(book: book, from: chapter)
         let startUrl = setupLocalUrl(book: book, from: chapter)
         let asset = AVAsset(url: startUrl!)
         let playerItem = AVPlayerItem(asset: asset)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidFinishPlaying(sender:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
         player.replaceCurrentItem(with: playerItem)
         player.play()
         setupImageForPlayButton(name: "pause")
@@ -133,7 +141,27 @@ final class PlayerViewController: UIViewController {
         return fileHandler.documentDirectory?.appendingPathComponent(book.label).appendingPathComponent(String(chapter)).appendingPathExtension("mp3")
     }
 
+    private func nextChapterToPlay() {
+        if let currentBook = currentBook {
+            if currentChapter < currentBook.chaptersCount {
+                startPlaying(book: currentBook, from: currentChapter + 1)
+            }
+        }
+    }
+
+    private func previousChapterToPlay() {
+        if let currentBook = currentBook {
+            if currentChapter > 1 {
+                startPlaying(book: currentBook, from: currentChapter - 1)
+            }
+        }
+    }
+
     // tracking time
+
+    @objc private func playerDidFinishPlaying(sender: Notification) {
+        nextChapterToPlay()
+    }
 
     private func setupPeriodicTimeObserver(player: AVPlayer) {
         let interval = CMTime(value: 1, timescale: 2)
