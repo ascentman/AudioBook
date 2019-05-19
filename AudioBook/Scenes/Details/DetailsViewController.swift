@@ -10,7 +10,7 @@ import UIKit
 
 final class DetailsViewController: UIViewController {
 
-    @IBOutlet private var dataProvider: DetailsDataProvider!
+    @IBOutlet var dataProvider: DetailsDataProvider!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var playerView: UIView!
 
@@ -19,7 +19,9 @@ final class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        dataProvider.reloadBookIfNeeded()
         setupUI()
+
 
         DownloadService.shared.onProgress = { [weak self] (index, progress) in
             if let chapterCell = self?.collectionView.cellForItem(at: IndexPath(item: index - 1, section: 0)) as? ChapterCollectionViewCell {
@@ -60,6 +62,7 @@ final class DetailsViewController: UIViewController {
     // MARK - Private
 
     private func setupUI() {
+        collectionView.collectionViewLayout.invalidateLayout()
         playerView.layer.masksToBounds = true
         playerView.layer.cornerRadius = 10.0
     }

@@ -10,6 +10,7 @@ import Foundation
 
 enum StoryboardName {
 
+    static let start = "Start"
     static let main = "Main"
     static let details = "Details"
 }

@@ -24,10 +24,6 @@ final class HomeDataProvider: NSObject {
         if !fileHandler.ifBookExists(book: book) {
             fileHandler.createBookDirectory(name: book.label)
             DownloadService.shared.startDownload(book)
-        } else if !fileHandler.isBookChaptersLoaded(book: book) {
-            fileHandler.remove(book: book)
-            fileHandler.createBookDirectory(name: book.label)
-            DownloadService.shared.startDownload(book)
         }
     }
 }

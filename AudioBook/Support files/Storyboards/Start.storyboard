@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UGx-ki-Vde">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Start View Controller-->
+        <scene sceneID="zGf-nB-JFC">
+            <objects>
+                <viewController storyboardIdentifier="Start" id="UGx-ki-Vde" customClass="StartViewController" customModule="AudioBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tHC-Qg-KoT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashScreen" translatesAutoresizingMaskIntoConstraints="NO" id="mGX-h3-faH">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Віра від слухання" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvC-TB-M1K">
+                                <rect key="frame" x="131.5" y="419" width="192" height="29"/>
+                                <fontDescription key="fontDescription" name="Charter-BoldItalic" family="Charter" pointSize="23"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuB-6K-ggq">
+                                <rect key="frame" x="326.5" y="433.5" width="21" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="21" id="GxK-Wn-Jnd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Charter-BoldItalic" family="Charter" pointSize="23"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mGX-h3-faH" firstAttribute="top" secondItem="tHC-Qg-KoT" secondAttribute="top" id="DU0-vY-aHp"/>
+                            <constraint firstItem="iuB-6K-ggq" firstAttribute="leading" secondItem="uvC-TB-M1K" secondAttribute="trailing" constant="3" id="FSf-hz-yuj"/>
+                            <constraint firstItem="iuB-6K-ggq" firstAttribute="centerY" secondItem="uvC-TB-M1K" secondAttribute="centerY" id="FaY-zf-mu5"/>
+                            <constraint firstItem="uvC-TB-M1K" firstAttribute="centerY" secondItem="tHC-Qg-KoT" secondAttribute="centerY" constant="100" id="H8l-lR-OmU"/>
+                            <constraint firstItem="mGX-h3-faH" firstAttribute="leading" secondItem="sKP-tS-pGU" secondAttribute="leading" id="dZS-FC-Ci1"/>
+                            <constraint firstItem="uvC-TB-M1K" firstAttribute="centerX" secondItem="tHC-Qg-KoT" secondAttribute="centerX" constant="40" id="e3T-KJ-6nB"/>
+                            <constraint firstItem="mGX-h3-faH" firstAttribute="trailing" secondItem="sKP-tS-pGU" secondAttribute="trailing" id="hiI-pA-irU"/>
+                            <constraint firstItem="mGX-h3-faH" firstAttribute="bottom" secondItem="sKP-tS-pGU" secondAttribute="bottom" id="qAo-NV-Odw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sKP-tS-pGU"/>
+                    </view>
+                    <connections>
+                        <outlet property="dotsLabel" destination="iuB-6K-ggq" id="wjC-sM-ITK"/>
+                        <segue destination="NZR-WZ-sbA" kind="show" identifier="toMain" id="oJd-SW-tfS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="39T-50-pDO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-367" y="74"/>
+        </scene>
+        <!--TabBar-->
+        <scene sceneID="aVh-Sr-hMA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="TabBar" id="NZR-WZ-sbA" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uvW-dv-mYo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="278" y="91"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="splashScreen" width="375" height="667"/>
+    </resources>
+</document>
