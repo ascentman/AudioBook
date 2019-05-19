@@ -10,9 +10,14 @@ import UIKit
 
 final class StartViewController: UIViewController {
 
+    private enum Constants {
+        static let delay: TimeInterval = 1
+        static let animatedLabelQueue = "com.audioBible.animatedLabel.queue"
+        static let loadingText = "..."
+    }
+
     @IBOutlet weak var dotsLabel: UILabel!
-    private let serialQueue = DispatchQueue(label: "com.audioBible.animatedLabel.queue")
-    private let delay: TimeInterval = 1
+    private let serialQueue = DispatchQueue(label: Constants.animatedLabelQueue)
 
     // MARK: - Lifecycle
 
@@ -25,15 +30,15 @@ final class StartViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        serialQueue.asyncAfter(deadline: .now() + delay) {
-            for char in "..." {
+        serialQueue.asyncAfter(deadline: .now() + Constants.delay) {
+            for char in Constants.loadingText {
                 DispatchQueue.main.async {
                     self.dotsLabel.text = self.dotsLabel.text! + String(char)
                 }
-                Thread.sleep(forTimeInterval: self.delay)
+                Thread.sleep(forTimeInterval: Constants.delay)
             }
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3 * Constants.delay) {
             self.performSegue(withIdentifier: "toMain", sender: self)
         }
     }
