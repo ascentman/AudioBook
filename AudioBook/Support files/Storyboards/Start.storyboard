@@ -13,7 +13,7 @@
         <!--Start View Controller-->
         <scene sceneID="zGf-nB-JFC">
             <objects>
-                <viewController storyboardIdentifier="Start" id="UGx-ki-Vde" customClass="StartViewController" customModule="AudioBook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Start" modalTransitionStyle="crossDissolve" id="UGx-ki-Vde" customClass="StartViewController" customModule="AudioBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tHC-Qg-KoT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,7 +37,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="mGX-h3-faH" firstAttribute="top" secondItem="tHC-Qg-KoT" secondAttribute="top" id="DU0-vY-aHp"/>
                             <constraint firstItem="iuB-6K-ggq" firstAttribute="leading" secondItem="uvC-TB-M1K" secondAttribute="trailing" constant="3" id="FSf-hz-yuj"/>
