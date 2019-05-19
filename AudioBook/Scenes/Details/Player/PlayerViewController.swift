@@ -12,7 +12,7 @@ import AVFoundation
 final class PlayerViewController: UIViewController {
 
     private enum Constants {
-        static let seekDuration: Float64 = 30
+        static let seekDuration: Float64 = 10
         static let timeFormat: String = "%02d"
     }
 
@@ -144,7 +144,8 @@ final class PlayerViewController: UIViewController {
     private func nextChapterToPlay() {
         if let currentBook = currentBook {
             if currentChapter < currentBook.chaptersCount {
-                startPlaying(book: currentBook, from: currentChapter + 1)
+                currentChapter += 1
+                startPlaying(book: currentBook, from: currentChapter)
             }
         }
     }
@@ -152,7 +153,8 @@ final class PlayerViewController: UIViewController {
     private func previousChapterToPlay() {
         if let currentBook = currentBook {
             if currentChapter > 1 {
-                startPlaying(book: currentBook, from: currentChapter - 1)
+                currentChapter -= 1
+                startPlaying(book: currentBook, from: currentChapter)
             }
         }
     }
