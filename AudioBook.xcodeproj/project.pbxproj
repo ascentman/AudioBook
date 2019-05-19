@@ -24,7 +24,6 @@
 		CE568F2F22625E4A000D0A3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE568F2E22625E4A000D0A3B /* Assets.xcassets */; };
 		CE86F69C22913E4200138628 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE86F69B22913E4200138628 /* Start.storyboard */; };
 		CE86F69F2291410C00138628 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE86F69E2291410C00138628 /* StartViewController.swift */; };
-		CE86F6A32291494000138628 /* AnimatedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE86F6A22291494000138628 /* AnimatedLabel.swift */; };
 		CE9E0E12227594D800E214C1 /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE9E0E11227594D800E214C1 /* Details.storyboard */; };
 		CE9E0E142275950F00E214C1 /* StoryboardName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9E0E132275950F00E214C1 /* StoryboardName.swift */; };
 		CE9E0E1C227856B000E214C1 /* PlayerIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE9E0E1B227856B000E214C1 /* PlayerIcons.xcassets */; };
@@ -56,7 +55,6 @@
 		CE568F3322625E4A000D0A3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE86F69B22913E4200138628 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		CE86F69E2291410C00138628 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
-		CE86F6A22291494000138628 /* AnimatedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedLabel.swift; sourceTree = "<group>"; };
 		CE9E0E11227594D800E214C1 /* Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
 		CE9E0E132275950F00E214C1 /* StoryboardName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardName.swift; sourceTree = "<group>"; };
 		CE9E0E1B227856B000E214C1 /* PlayerIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PlayerIcons.xcassets; sourceTree = "<group>"; };
@@ -119,7 +117,6 @@
 			children = (
 				CE12A9E12278BDCF00CDB66E /* Colors.swift */,
 				CE29C8462271027B003FDAB6 /* CustomSegmentedControl.swift */,
-				CE86F6A22291494000138628 /* AnimatedLabel.swift */,
 			);
 			path = "Support Classes";
 			sourceTree = "<group>";
@@ -321,7 +318,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE86F6A32291494000138628 /* AnimatedLabel.swift in Sources */,
 				CE12A9D822788BC100CDB66E /* ChapterCollectionViewCell.swift in Sources */,
 				CE12A9E22278BDCF00CDB66E /* Colors.swift in Sources */,
 				CE29C8472271027B003FDAB6 /* CustomSegmentedControl.swift in Sources */,

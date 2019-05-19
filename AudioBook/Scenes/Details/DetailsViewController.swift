@@ -19,7 +19,7 @@ final class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        dataProvider.reloadBookIfNeeded()
+//        dataProvider.reloadBookIfNeeded()
         setupUI()
 
 

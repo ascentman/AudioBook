@@ -29,12 +29,12 @@ final class DetailsDataProvider: NSObject {
         let fileHandler = FileHandler()
         let onlineBook = BookOnline(label: chosenBook.label, previewURL: URL(string: chosenBook.bookUrl)!, chaptersCount: chosenBook.chaptersCount)
         if !fileHandler.isBookChaptersLoaded(book: onlineBook) {
+            print("show popUp to reload book")
             fileHandler.remove(book: onlineBook)
             fileHandler.createBookDirectory(name: onlineBook.label)
             DownloadService.shared.startDownload(onlineBook)
         }
     }
-
 }
 
 // MARK: - Extensions
