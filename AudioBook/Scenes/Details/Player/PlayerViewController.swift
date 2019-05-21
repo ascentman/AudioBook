@@ -81,7 +81,7 @@ final class PlayerViewController: UIViewController {
                 newTime = 0
             }
             let time2: CMTime = CMTimeMake(value: Int64(newTime * 10 as Float64), timescale: 10)
-            player.seek(to: time2, toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero)
+            player.seek(to: time2, toleranceBefore: CMTime.indefinite, toleranceAfter: CMTime.indefinite)
         }
     }
 
@@ -93,7 +93,7 @@ final class PlayerViewController: UIViewController {
         let newTime = playerCurrentTime + Constants.seekDuration
         if newTime < (CMTimeGetSeconds(duration) - Constants.seekDuration) {
             let time2: CMTime = CMTimeMake(value: Int64(newTime * 10 as Float64), timescale: 10)
-            player.seek(to: time2, toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero)
+            player.seek(to: time2, toleranceBefore: CMTime.indefinite, toleranceAfter: CMTime.indefinite)
         }
     }
 
@@ -114,12 +114,12 @@ final class PlayerViewController: UIViewController {
         let startUrl = setupLocalUrl(book: book, from: chapter)
         let asset = AVAsset(url: startUrl!)
         let playerItem = AVPlayerItem(asset: asset)
+        getTrackDuration(asset: asset)
         NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidFinishPlaying(sender:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
         player.replaceCurrentItem(with: playerItem)
         player.play()
         setupImageForPlayButton(name: "pause")
-        getTrackDuration(player: player)
-        setupPeriodicTimeObserver(player: player)
+        setupPeriodicTimeObserver(player: player, asset: asset)
     }
 
     // MARK: - Private
@@ -165,22 +165,16 @@ final class PlayerViewController: UIViewController {
         nextChapterToPlay()
     }
 
-    private func setupPeriodicTimeObserver(player: AVPlayer) {
+    private func setupPeriodicTimeObserver(player: AVPlayer, asset: AVAsset) {
         let interval = CMTime(value: 1, timescale: 2)
-        guard let duration = player.currentItem?.asset.duration else {
-            return
-        }
-        let durationSeconds = CMTimeGetSeconds(duration)
+        let durationSeconds = CMTimeGetSeconds(asset.duration)
         timeObserver = player.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main) {
             [weak self] progressTime in
             let seconds = CMTimeGetSeconds(progressTime)
             let minutesText = String(format: Constants.timeFormat, Int(seconds) / 60)
             let secondsText = String(format: Constants.timeFormat, Int(seconds) % 60)
             self?.currentTimeLabel.text = "\(minutesText):\(secondsText)"
-            UIView.animate(withDuration: 0.1, animations: { [weak self] in
-                self?.slider.setValue(Float(seconds / durationSeconds), animated: true)
-                self?.loadViewIfNeeded()
-            })
+            self?.slider.setValue(Float(seconds / durationSeconds), animated: true)
         }
     }
 
@@ -191,13 +185,11 @@ final class PlayerViewController: UIViewController {
         timeObserver = nil
     }
 
-    private func getTrackDuration(player: AVPlayer) {
-        if let duration = player.currentItem?.asset.duration {
-            let seconds = CMTimeGetSeconds(duration)
-            let minutesText = String(format: Constants.timeFormat, Int(seconds) / 60)
-            let secondsText = String(format: Constants.timeFormat, Int(seconds) % 60)
-            self.durationLabel.text = "\(minutesText):\(secondsText)"
-        }
+    private func getTrackDuration(asset: AVAsset) {
+        let seconds = CMTimeGetSeconds(asset.duration)
+        let minutesText = String(format: Constants.timeFormat, Int(seconds) / 60)
+        let secondsText = String(format: Constants.timeFormat, Int(seconds) % 60)
+        self.durationLabel.text = "\(minutesText):\(secondsText)"
     }
 }
 
