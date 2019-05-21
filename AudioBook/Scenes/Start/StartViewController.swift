@@ -11,7 +11,7 @@ import UIKit
 final class StartViewController: UIViewController {
 
     private enum Constants {
-        static let delay: TimeInterval = 0.5
+        static let delay: TimeInterval = 0.3
         static let animatedLabelQueue = "com.audioBible.animatedLabel.queue"
         static let loadingText = "..."
     }

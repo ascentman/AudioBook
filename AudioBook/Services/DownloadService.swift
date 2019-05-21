@@ -17,6 +17,9 @@ final class DownloadService: NSObject {
     var activeDownloads: [URL: Download] = [:]
     lazy var downloadsSession: URLSession = {
         let configuration = URLSessionConfiguration.background(withIdentifier: "bgSessionConfiguration")
+        configuration.httpMaximumConnectionsPerHost = 1
+        configuration.timeoutIntervalForRequest = 120
+        configuration.timeoutIntervalForResource = 120
         return URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
     }()
 

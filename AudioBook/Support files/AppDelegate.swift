@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        setupInitialViewController()
+//        setupInitialViewController()
 
         UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -5), for: .default)
         do {
@@ -37,5 +37,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = startViewController
         window?.makeKeyAndVisible()
     }
-
 }
