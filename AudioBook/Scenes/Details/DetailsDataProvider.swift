@@ -25,9 +25,7 @@ final class DetailsDataProvider: NSObject {
         self.chosenBook = book
     }
 
-    // MARK: - Private
-
-    private func highlightCell(cell: UICollectionViewCell, isActive: Bool) {
+    func highlightCell(cell: UICollectionViewCell, isActive: Bool) {
         if isActive {
             UIView.animate(withDuration: 0.3, animations: {
                 cell.alpha = 1

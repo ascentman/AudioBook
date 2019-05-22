@@ -9,6 +9,10 @@
 import UIKit
 import AVFoundation
 
+protocol PlayerViewControllerDelegate: class {
+    func updateCurrentChapter(index: Int)
+}
+
 final class PlayerViewController: UIViewController {
 
     private enum Constants {
@@ -39,6 +43,8 @@ final class PlayerViewController: UIViewController {
 
     private var player: AVPlayer = AVPlayer()
     private let fileHandler = FileHandler()
+
+    weak var delegate: PlayerViewControllerDelegate?
 
     // MARK: - Lifecycle
 
@@ -146,6 +152,7 @@ final class PlayerViewController: UIViewController {
             if currentChapter < currentBook.chaptersCount {
                 currentChapter += 1
                 startPlaying(book: currentBook, from: currentChapter)
+                delegate?.updateCurrentChapter(index: currentChapter - 1)
             }
         }
     }
@@ -155,6 +162,7 @@ final class PlayerViewController: UIViewController {
             if currentChapter > 1 {
                 currentChapter -= 1
                 startPlaying(book: currentBook, from: currentChapter)
+                delegate?.updateCurrentChapter(index: currentChapter - 1)
             }
         }
     }

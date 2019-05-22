@@ -21,6 +21,8 @@ final class DetailsViewController: UIViewController {
 
         setupUI()
 
+        dataProvider.playerViewController?.delegate = self
+
         DownloadService.shared.onProgress = { [weak self] (index, progress) in
             if let chapterCell = self?.collectionView.cellForItem(at: IndexPath(item: index - 1, section: 0)) as? ChapterCollectionViewCell {
                 chapterCell.updateDownloadProgress(progress: progress)
@@ -62,6 +64,24 @@ final class DetailsViewController: UIViewController {
     private func setupUI() {
         collectionView.collectionViewLayout.invalidateLayout()
         playerView.layer.masksToBounds = true
-        playerView.layer.cornerRadius = 10.0
+        playerView.layer.cornerRadius = 10
+        playerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+    }
+}
+
+
+extension DetailsViewController: PlayerViewControllerDelegate {
+
+    // MARK: - PlayerViewControllerDelegate
+
+    func updateCurrentChapter(index: Int) {
+        let indexPathCurrent = IndexPath(row: index - 1, section: 0)
+        let indexPathNext = IndexPath(row: index, section: 0)
+        if let nextCell = collectionView.cellForItem(at: indexPathNext),
+            let currentCell = collectionView.cellForItem(at: indexPathCurrent) {
+            dataProvider.highlightCell(cell: currentCell, isActive: false)
+            dataProvider.highlightCell(cell: nextCell, isActive: true)
+            view.layoutIfNeeded()
+        }
     }
 }
