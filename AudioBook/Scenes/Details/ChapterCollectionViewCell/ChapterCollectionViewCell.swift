@@ -14,6 +14,22 @@ final class ChapterCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var percentageLabel: UILabel!
     @IBOutlet private weak var downloadProgress: UIProgressView!
 
+    override var isSelected: Bool {
+        didSet {
+            if self.isSelected {
+                UIView.animate(withDuration: 0.3) { [weak self] in
+                    self?.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+                    self?.contentView.backgroundColor = UIColor.orange
+                }
+            } else {
+                UIView.animate(withDuration: 0.3) { [weak self] in
+                    self?.transform = CGAffineTransform.identity
+                    self?.contentView.backgroundColor = UIColor.lightGray
+                }
+            }
+        }
+    }
+
     // MARK: - Lifecycle
 
     override func awakeFromNib() {
@@ -27,6 +43,7 @@ final class ChapterCollectionViewCell: UICollectionViewCell {
         chapterNumber.text = nil
         downloadProgress.isHidden = true
         percentageLabel.isHidden = true
+        backgroundColor = UIColor.lightGray
     }
 
     // MARK: - Setup cell

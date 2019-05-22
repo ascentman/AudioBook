@@ -71,6 +71,16 @@ final class DetailsViewController: UIViewController {
 
 
 extension DetailsViewController: PlayerViewControllerDelegate {
+    func updateCurrentChapter(currentIndex: Int, toPlay: Int) {
+        let indexPathCurrent = IndexPath(row: currentIndex - 1, section: 0)
+        let indexToPlay = IndexPath(row: toPlay - 1, section: 0)
+        if let toPlayCell = collectionView.cellForItem(at: indexToPlay),
+            let currentCell = collectionView.cellForItem(at: indexPathCurrent) {
+            currentCell.isSelected = false
+            toPlayCell.isSelected = true
+        }
+    }
+
 
     // MARK: - PlayerViewControllerDelegate
 
@@ -79,9 +89,8 @@ extension DetailsViewController: PlayerViewControllerDelegate {
         let indexPathNext = IndexPath(row: index, section: 0)
         if let nextCell = collectionView.cellForItem(at: indexPathNext),
             let currentCell = collectionView.cellForItem(at: indexPathCurrent) {
-            dataProvider.highlightCell(cell: currentCell, isActive: false)
-            dataProvider.highlightCell(cell: nextCell, isActive: true)
-            view.layoutIfNeeded()
+            currentCell.isSelected = false
+            nextCell.isSelected = true
         }
     }
 }

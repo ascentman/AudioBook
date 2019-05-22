@@ -11,7 +11,6 @@ import UIKit
 final class DetailsDataProvider: NSObject {
 
     var chosenBook = Book()
-    var startChapter = 1
     var playerViewController: PlayerViewController?
     private var cells: [Int] {
         get {
@@ -23,19 +22,6 @@ final class DetailsDataProvider: NSObject {
 
     func fillChosen(book: Book) {
         self.chosenBook = book
-    }
-
-    func highlightCell(cell: UICollectionViewCell, isActive: Bool) {
-        if isActive {
-            UIView.animate(withDuration: 0.3, animations: {
-                cell.alpha = 1
-                cell.layer.transform = CATransform3DScale(CATransform3DIdentity, 0.9, 0.9, 0.9)
-            })
-            cell.layer.transform = CATransform3DIdentity
-            cell.backgroundColor = UIColor.orange
-        } else {
-            cell.backgroundColor = UIColor.lightGray
-        }
     }
 }
 
@@ -52,8 +38,6 @@ extension DetailsDataProvider: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let chapter = cells[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChapterCollectionViewCell.identifier, for: indexPath) as? ChapterCollectionViewCell
-        cell?.layer.cornerRadius = 10
-        cell?.layer.masksToBounds = true
         cell?.setCell(index: String(chapter))
         return cell ?? UICollectionViewCell()
     }
@@ -63,19 +47,14 @@ extension DetailsDataProvider: UICollectionViewDelegate {
 
     // MARK: - UICollectionViewDelegate
 
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        if let cell = collectionView.cellForItem(at: indexPath) {
-            highlightCell(cell: cell, isActive: true)
-        }
-        startChapter = indexPath.row + 1
-        playerViewController?.startPlaying(book: chosenBook, from: startChapter)
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        cell.layer.cornerRadius = 10
+        cell.layer.masksToBounds = true
+        cell.backgroundColor = UIColor.lightGray
     }
 
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) {
-            highlightCell(cell: cell, isActive: false)
-        }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        playerViewController?.startPlaying(book: chosenBook, from: indexPath.row + 1)
     }
 }
 
