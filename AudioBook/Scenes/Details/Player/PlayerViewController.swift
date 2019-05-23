@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 protocol PlayerViewControllerDelegate: class {
-    func updateCurrentChapter(all: Int, currentIndex: Int, toPlay: Int)
+    func updateCurrentChapter(currentIndex: Int, toPlay: Int)
 }
 
 final class PlayerViewController: UIViewController {
@@ -151,7 +151,7 @@ final class PlayerViewController: UIViewController {
         if let currentBook = currentBook {
             if currentChapter < currentBook.chaptersCount {
                 currentChapter += 1
-                delegate?.updateCurrentChapter(all: currentBook.chaptersCount, currentIndex: currentChapter - 1, toPlay: currentChapter)
+                delegate?.updateCurrentChapter(currentIndex: currentChapter - 1, toPlay: currentChapter)
                 startPlaying(book: currentBook, from: currentChapter)
             }
         }
@@ -161,8 +161,8 @@ final class PlayerViewController: UIViewController {
         if let currentBook = currentBook {
             if currentChapter > 1 {
                 currentChapter -= 1
+                delegate?.updateCurrentChapter(currentIndex: currentChapter + 1, toPlay: currentChapter)
                 startPlaying(book: currentBook, from: currentChapter)
-                delegate?.updateCurrentChapter(all: currentBook.chaptersCount, currentIndex: currentChapter + 1, toPlay: currentChapter)
             }
         }
     }
@@ -174,7 +174,7 @@ final class PlayerViewController: UIViewController {
     }
 
     private func setupPeriodicTimeObserver(player: AVPlayer, asset: AVAsset) {
-        let interval = CMTime(value: 1, timescale: 2)
+        let interval = CMTime(seconds: 1.0, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
         let durationSeconds = CMTimeGetSeconds(asset.duration)
         timeObserver = player.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main) {
             [weak self] progressTime in
@@ -182,6 +182,7 @@ final class PlayerViewController: UIViewController {
             let minutesText = String(format: Constants.timeFormat, Int(seconds) / 60)
             let secondsText = String(format: Constants.timeFormat, Int(seconds) % 60)
             self?.currentTimeLabel.text = "\(minutesText):\(secondsText)"
+            self?.slider.isContinuous = false
             self?.slider.setValue(Float(seconds / durationSeconds), animated: true)
         }
     }

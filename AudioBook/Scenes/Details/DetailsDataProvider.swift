@@ -57,6 +57,10 @@ extension DetailsDataProvider: UICollectionViewDelegate {
         collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
         playerViewController?.startPlaying(book: chosenBook, from: indexPath.row + 1)
     }
+
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        collectionView.cellForItem(at: indexPath)?.backgroundColor = UIColor.lightGray
+    }
 }
 
 extension DetailsDataProvider: UICollectionViewDelegateFlowLayout {

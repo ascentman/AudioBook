@@ -74,21 +74,10 @@ extension DetailsViewController: PlayerViewControllerDelegate {
 
     // MARK: - PlayerViewControllerDelegate
 
-    func updateCurrentChapter(all: Int, currentIndex: Int, toPlay: Int) {
+    func updateCurrentChapter(currentIndex: Int, toPlay: Int) {
         let indexPathCurrent = IndexPath(row: currentIndex - 1, section: 0)
-        let indexToPlay = IndexPath(row: toPlay - 1, section: 0)
-        if let toPlayCell = collectionView.cellForItem(at: indexToPlay),
-            let currentCell = collectionView.cellForItem(at: indexPathCurrent) {
-            currentCell.isSelected = false
-            toPlayCell.isSelected = true
-        }
-
-        if toPlay > 4 && toPlay < all - 4 {
-            if toPlay >= currentIndex {
-                collectionView.scrollToItem(at: IndexPath(item: toPlay - 5, section: 0), at: .top, animated: true)
-            } else {
-                collectionView.scrollToItem(at: IndexPath(item: toPlay + 5, section: 0), at: .bottom, animated: true)
-            }
-        }
+        let indexPathToPlay = IndexPath(row: toPlay - 1, section: 0)
+        collectionView.deselectItem(at: indexPathCurrent, animated: true)
+        collectionView.selectItem(at: indexPathToPlay, animated: true, scrollPosition: .centeredVertically)
     }
 }
