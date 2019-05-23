@@ -71,7 +71,10 @@ final class DetailsViewController: UIViewController {
 
 
 extension DetailsViewController: PlayerViewControllerDelegate {
-    func updateCurrentChapter(currentIndex: Int, toPlay: Int) {
+
+    // MARK: - PlayerViewControllerDelegate
+
+    func updateCurrentChapter(all: Int, currentIndex: Int, toPlay: Int) {
         let indexPathCurrent = IndexPath(row: currentIndex - 1, section: 0)
         let indexToPlay = IndexPath(row: toPlay - 1, section: 0)
         if let toPlayCell = collectionView.cellForItem(at: indexToPlay),
@@ -79,18 +82,13 @@ extension DetailsViewController: PlayerViewControllerDelegate {
             currentCell.isSelected = false
             toPlayCell.isSelected = true
         }
-    }
 
-
-    // MARK: - PlayerViewControllerDelegate
-
-    func updateCurrentChapter(index: Int) {
-        let indexPathCurrent = IndexPath(row: index - 1, section: 0)
-        let indexPathNext = IndexPath(row: index, section: 0)
-        if let nextCell = collectionView.cellForItem(at: indexPathNext),
-            let currentCell = collectionView.cellForItem(at: indexPathCurrent) {
-            currentCell.isSelected = false
-            nextCell.isSelected = true
+        if toPlay > 4 && toPlay < all - 4 {
+            if toPlay >= currentIndex {
+                collectionView.scrollToItem(at: IndexPath(item: toPlay - 5, section: 0), at: .top, animated: true)
+            } else {
+                collectionView.scrollToItem(at: IndexPath(item: toPlay + 5, section: 0), at: .bottom, animated: true)
+            }
         }
     }
 }

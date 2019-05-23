@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 protocol PlayerViewControllerDelegate: class {
-    func updateCurrentChapter(currentIndex: Int, toPlay: Int)
+    func updateCurrentChapter(all: Int, currentIndex: Int, toPlay: Int)
 }
 
 final class PlayerViewController: UIViewController {
@@ -151,7 +151,7 @@ final class PlayerViewController: UIViewController {
         if let currentBook = currentBook {
             if currentChapter < currentBook.chaptersCount {
                 currentChapter += 1
-                delegate?.updateCurrentChapter(currentIndex: currentChapter - 1, toPlay: currentChapter)
+                delegate?.updateCurrentChapter(all: currentBook.chaptersCount, currentIndex: currentChapter - 1, toPlay: currentChapter)
                 startPlaying(book: currentBook, from: currentChapter)
             }
         }
@@ -162,7 +162,7 @@ final class PlayerViewController: UIViewController {
             if currentChapter > 1 {
                 currentChapter -= 1
                 startPlaying(book: currentBook, from: currentChapter)
-                delegate?.updateCurrentChapter(currentIndex: currentChapter + 1, toPlay: currentChapter)
+                delegate?.updateCurrentChapter(all: currentBook.chaptersCount, currentIndex: currentChapter + 1, toPlay: currentChapter)
             }
         }
     }

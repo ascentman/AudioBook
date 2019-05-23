@@ -54,6 +54,7 @@ extension DetailsDataProvider: UICollectionViewDelegate {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
         playerViewController?.startPlaying(book: chosenBook, from: indexPath.row + 1)
     }
 }
@@ -68,10 +69,10 @@ extension DetailsDataProvider: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        return 15
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 20, left: 20, bottom: 10, right: 20)
+        return UIEdgeInsets(top: 30, left: 20, bottom: 30, right: 20)
     }
 }
