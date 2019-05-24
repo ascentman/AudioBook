@@ -48,6 +48,10 @@ final class DetailsViewController: UIViewController {
         tabBarController?.tabBar.isHidden = false
     }
 
+    @IBAction func downloadPressed(_ sender: Any) {
+        print("dwdddwdw")
+    }
+
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

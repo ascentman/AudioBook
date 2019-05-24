@@ -183,7 +183,6 @@
         <!--Налаштування-->
         <scene sceneID="ro6-HS-xG8">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="l6T-0V-hVU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="usY-wk-8lT" customClass="SettingsTableViewController" customModule="AudioBook" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="TRe-8A-ZZ5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
@@ -298,6 +297,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Налаштування" id="Bhv-0R-w5H"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l6T-0V-hVU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-863.20000000000005" y="698.5007496251875"/>
         </scene>

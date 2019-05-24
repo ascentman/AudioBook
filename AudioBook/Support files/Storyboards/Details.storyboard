@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3ar-m5-Ahy">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -29,7 +29,7 @@
                                 </connections>
                             </containerView>
                             <collectionView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3dH-SR-sSW">
-                                <rect key="frame" x="0.0" y="20" width="375" height="487"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="aNG-2t-8Tv">
                                     <size key="itemSize" width="102" height="54"/>
@@ -99,6 +99,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OCX-cQ-Yuz"/>
                     </view>
+                    <navigationItem key="navigationItem" id="JkM-0a-oli">
+                        <barButtonItem key="rightBarButtonItem" image="download" id="tCQ-Xq-CLw">
+                            <connections>
+                                <action selector="downloadPressed:" destination="jjP-xC-yJj" id="ypI-Q0-qep"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="3dH-SR-sSW" id="N9e-uF-3y1"/>
                         <outlet property="dataProvider" destination="fSI-Bs-hRE" id="kFl-e0-MhB"/>
@@ -108,7 +115,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ffq-VO-Yva" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="fSI-Bs-hRE" customClass="DetailsDataProvider" customModule="AudioBook" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="-105" y="-122"/>
+            <point key="canvasLocation" x="832.79999999999995" y="-122.78860569715144"/>
         </scene>
         <!--Player View Controller-->
         <scene sceneID="8j4-ac-cDI">
@@ -148,7 +155,7 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="SJH-dS-GnP">
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="SJH-dS-GnP">
                                                 <rect key="frame" x="42" y="2.5" width="281" height="31"/>
                                                 <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </slider>
@@ -245,9 +252,28 @@
             </objects>
             <point key="canvasLocation" x="79" y="420"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Fru-cs-0jF">
+            <objects>
+                <navigationController storyboardIdentifier="toChapter" automaticallyAdjustsScrollViewInsets="NO" id="3ar-m5-Ahy" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="w50-YX-yee">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jjP-xC-yJj" kind="relationship" relationship="rootViewController" id="8do-Cs-ytM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ipi-D5-tFN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-106.40000000000001" y="-122.78860569715144"/>
+        </scene>
     </scenes>
     <resources>
         <image name="backward" width="24" height="21"/>
+        <image name="download" width="36" height="36"/>
         <image name="forward" width="24" height="21"/>
         <image name="next chapter" width="16" height="22"/>
         <image name="play" width="80" height="80"/>
