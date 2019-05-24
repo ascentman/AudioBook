@@ -12,6 +12,7 @@ final class DetailsDataProvider: NSObject {
 
     var chosenBook = Book()
     var playerViewController: PlayerViewController?
+    let fileHandler = FileHandler()
     private var cells: [Int] {
         get {
             return [Int](1...chosenBook.chaptersCount)
@@ -22,6 +23,13 @@ final class DetailsDataProvider: NSObject {
 
     func fillChosen(book: Book) {
         self.chosenBook = book
+    }
+
+    func downloadSpecific(book: BookOnline) {
+        if !fileHandler.ifBookExists(book: book) {
+            fileHandler.createBookDirectory(name: book.label)
+            DownloadService.shared.startDownload(book)
+        }
     }
 }
 

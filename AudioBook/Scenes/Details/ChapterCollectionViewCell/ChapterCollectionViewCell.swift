@@ -12,6 +12,7 @@ final class ChapterCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet private weak var chapterNumber: UILabel!
     @IBOutlet private weak var percentageLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var downloadProgress: UIProgressView!
 
     override var isSelected: Bool {
@@ -44,6 +45,7 @@ final class ChapterCollectionViewCell: UICollectionViewCell {
         downloadProgress.isHidden = true
         percentageLabel.isHidden = true
         backgroundColor = UIColor.lightGray
+        activityIndicator.isHidden = true
     }
 
     // MARK: - Setup cell
@@ -53,15 +55,22 @@ final class ChapterCollectionViewCell: UICollectionViewCell {
     }
 
     func updateDownloadProgress(progress: Float) {
+        chapterNumber.isHidden = true
+        alpha = 0.7
         downloadProgress.isHidden = false
         percentageLabel.isHidden = false
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
         downloadProgress.progress = progress
-        percentageLabel.text = String(format: "%.1f%%", progress * 100)
+        percentageLabel.text = String(format: "%.0f", progress * 100)
     }
 
     func downloadCompleted() {
+        activityIndicator.stopAnimating()
         downloadProgress.isHidden = true
         percentageLabel.isHidden = true
+        chapterNumber.isHidden = false
+        alpha = 1.0
     }
 
     // MARK: - Private

@@ -49,7 +49,10 @@ final class DetailsViewController: UIViewController {
     }
 
     @IBAction func downloadPressed(_ sender: Any) {
-        print("dwdddwdw")
+        let bookOnline = BookOnline(label: dataProvider.chosenBook.label,
+                                    previewURL: URL(string: dataProvider.chosenBook.bookUrl)!,
+                                    chaptersCount: dataProvider.chosenBook.chaptersCount)
+        dataProvider.downloadSpecific(book: bookOnline)
     }
 
     // MARK: - Segues

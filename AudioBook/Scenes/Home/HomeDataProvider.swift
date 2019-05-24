@@ -15,17 +15,9 @@ protocol HomeDataProviderDelegate: class {
 final class HomeDataProvider: NSObject {
 
     let dataManager = DataSource()
-    let fileHandler = FileHandler()
 
     var selectedSegment = 0
     weak var delegate: HomeDataProviderDelegate?
-
-    private func downloadSpecific(book: BookOnline) {
-        if !fileHandler.ifBookExists(book: book) {
-            fileHandler.createBookDirectory(name: book.label)
-            DownloadService.shared.startDownload(book)
-        }
-    }
 }
 
 // MARK: - Extensions
@@ -59,21 +51,6 @@ extension HomeDataProvider: UICollectionViewDelegate {
     // MARK: - UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if selectedSegment == 0 {
-            if let selectedBookUrl = URL(string: dataManager.newTestament[indexPath.row].bookUrl) {
-                let bookOnline = BookOnline(label: dataManager.newTestament[indexPath.row].label,
-                                      previewURL: selectedBookUrl,
-                                      chaptersCount: dataManager.newTestament[indexPath.row].chaptersCount)
-                downloadSpecific(book: bookOnline)
-            }
-        } else {
-            if let selectedBookUrl = URL(string: dataManager.oldTestament[indexPath.row].bookUrl) {
-                let bookOnline = BookOnline(label: dataManager.oldTestament[indexPath.row].label,
-                                            previewURL: selectedBookUrl,
-                                            chaptersCount: dataManager.oldTestament[indexPath.row].chaptersCount)
-                downloadSpecific(book: bookOnline)
-            }
-        }
         delegate?.goToDetails(selectedSegment, index: indexPath.row)
     }
 
