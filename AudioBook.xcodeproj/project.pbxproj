@@ -30,6 +30,8 @@
 		CE9E0E142275950F00E214C1 /* StoryboardName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9E0E132275950F00E214C1 /* StoryboardName.swift */; };
 		CE9E0E1C227856B000E214C1 /* PlayerIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE9E0E1B227856B000E214C1 /* PlayerIcons.xcassets */; };
 		CEB3F4FE2293C5C600DDDC83 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB3F4FD2293C5C600DDDC83 /* Launch Screen.storyboard */; };
+		CEB723B82298479B006B6302 /* DeleteBooksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB723B72298479B006B6302 /* DeleteBooksTableViewController.swift */; };
+		CEB723BA22984B63006B6302 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB723B922984B63006B6302 /* Settings.storyboard */; };
 		CEC82102226C902600A1AA8D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC82101226C902600A1AA8D /* HomeViewController.swift */; };
 		CEC82106226C909000A1AA8D /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC82105226C909000A1AA8D /* BookCollectionViewCell.swift */; };
 		CED6C3E8227E3C05008DBAC9 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6C3E7227E3C05008DBAC9 /* Download.swift */; };
@@ -64,6 +66,8 @@
 		CE9E0E132275950F00E214C1 /* StoryboardName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardName.swift; sourceTree = "<group>"; };
 		CE9E0E1B227856B000E214C1 /* PlayerIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PlayerIcons.xcassets; sourceTree = "<group>"; };
 		CEB3F4FD2293C5C600DDDC83 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		CEB723B72298479B006B6302 /* DeleteBooksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBooksTableViewController.swift; sourceTree = "<group>"; };
+		CEB723B922984B63006B6302 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		CEC82101226C902600A1AA8D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CEC82105226C909000A1AA8D /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
 		CED6C3E7227E3C05008DBAC9 /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				CE86F6C32291F17D00138628 /* SettingsTableViewController.swift */,
+				CEB723B72298479B006B6302 /* DeleteBooksTableViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -232,6 +237,7 @@
 				CE9E0E11227594D800E214C1 /* Details.storyboard */,
 				CE86F69B22913E4200138628 /* Start.storyboard */,
 				CEB3F4FD2293C5C600DDDC83 /* Launch Screen.storyboard */,
+				CEB723B922984B63006B6302 /* Settings.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -330,6 +336,7 @@
 				CE9E0E12227594D800E214C1 /* Details.storyboard in Resources */,
 				CE9E0E1C227856B000E214C1 /* PlayerIcons.xcassets in Resources */,
 				CE29C8412270FAA5003FDAB6 /* BookCollectionViewCell.xib in Resources */,
+				CEB723BA22984B63006B6302 /* Settings.storyboard in Resources */,
 				CE86F69C22913E4200138628 /* Start.storyboard in Resources */,
 				CE568F2F22625E4A000D0A3B /* Assets.xcassets in Resources */,
 				CE568F2D22625E49000D0A3B /* Main.storyboard in Resources */,
@@ -360,6 +367,7 @@
 				CED6C3ED227E3D16008DBAC9 /* DownloadService.swift in Sources */,
 				CE12A9E02278988500CDB66E /* Book.swift in Sources */,
 				CE29C83C2270F712003FDAB6 /* HomeDataProvider.swift in Sources */,
+				CEB723B82298479B006B6302 /* DeleteBooksTableViewController.swift in Sources */,
 				CE9E0E142275950F00E214C1 /* StoryboardName.swift in Sources */,
 				CE12A9E42278C5AD00CDB66E /* UIViewController+Extensions.swift in Sources */,
 				CEC82106226C909000A1AA8D /* BookCollectionViewCell.swift in Sources */,
