@@ -77,7 +77,9 @@ extension DetailsViewController: PlayerViewControllerDelegate {
     func updateCurrentChapter(currentIndex: Int, toPlay: Int) {
         let indexPathCurrent = IndexPath(row: currentIndex - 1, section: 0)
         let indexPathToPlay = IndexPath(row: toPlay - 1, section: 0)
-        collectionView.deselectItem(at: indexPathCurrent, animated: true)
-        collectionView.selectItem(at: indexPathToPlay, animated: true, scrollPosition: .centeredVertically)
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.deselectItem(at: indexPathCurrent, animated: true)
+            self?.collectionView.selectItem(at: indexPathToPlay, animated: true, scrollPosition: .centeredVertically)
+        }
     }
 }
