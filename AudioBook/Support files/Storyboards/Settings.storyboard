@@ -36,14 +36,13 @@
         <!--Налаштування-->
         <scene sceneID="jA7-mX-dUM">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vjz-BS-dB5" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Fy0-vf-8Na" customClass="SettingsTableViewController" customModule="AudioBook" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="oHt-6t-xsM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Аудіо" id="AAe-y0-enc">
+                            <tableViewSection headerTitle="Аудіо" footerTitle="Задає швидкість відтворення аудіо" id="AAe-y0-enc">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="pQ8-Gl-0Yp">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
@@ -52,87 +51,125 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="xa9-Ft-5fz">
-                                                    <rect key="frame" x="15" y="7.5" width="346.5" height="29"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="xa9-Ft-5fz">
+                                                    <rect key="frame" x="15" y="-3.5" width="344" height="50.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Швидкість відтворення:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7z-7q-YkG">
-                                                            <rect key="frame" x="0.0" y="0.0" width="198" height="29"/>
+                                                            <rect key="frame" x="0.0" y="14.5" width="200" height="22"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="l1f-Ef-tzl"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1x" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A1x-30-IVa">
-                                                            <rect key="frame" x="215" y="0.0" width="20.5" height="29"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A1x-30-IVa">
+                                                            <rect key="frame" x="217" y="0.0" width="16" height="50.5"/>
                                                             <fontDescription key="fontDescription" name="Charter-Bold" family="Charter" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="H2A-bP-pgX">
-                                                            <rect key="frame" x="252.5" y="0.0" width="94" height="29"/>
+                                                            <rect key="frame" x="250" y="11" width="94" height="29"/>
+                                                            <connections>
+                                                                <action selector="speedChangePressed:" destination="Fy0-vf-8Na" eventType="valueChanged" id="aOb-gu-rkT"/>
+                                                            </connections>
                                                         </stepper>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="xa9-Ft-5fz" firstAttribute="centerY" secondItem="x2Z-Lh-3iI" secondAttribute="centerY" id="3G5-e8-0RS"/>
+                                                <constraint firstAttribute="trailing" secondItem="xa9-Ft-5fz" secondAttribute="trailing" constant="16" id="PPd-gK-Hdp"/>
+                                                <constraint firstItem="xa9-Ft-5fz" firstAttribute="centerY" secondItem="x2Z-Lh-3iI" secondAttribute="centerY" id="iRZ-AU-fE4"/>
                                                 <constraint firstItem="xa9-Ft-5fz" firstAttribute="leading" secondItem="x2Z-Lh-3iI" secondAttribute="leading" constant="15" id="uQx-cz-AMY"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="257" id="8Bs-0N-I9f">
-                                        <rect key="frame" x="0.0" y="99.5" width="375" height="257"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Bs-0N-I9f" id="SNX-XX-VwP">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="256.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="qQ0-SL-HZD">
-                                                    <rect key="frame" x="15" y="6" width="320" height="245"/>
-                                                    <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="83" translatesAutoresizingMaskIntoConstraints="NO" id="cZR-fT-Rnp">
-                                                            <rect key="frame" x="0.0" y="0.0" width="243" height="22"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Перемотування: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLJ-qV-BSj">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="140" height="22"/>
-                                                                    <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="18"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfW-LO-UbT">
-                                                                    <rect key="frame" x="223" y="0.0" width="20" height="22"/>
-                                                                    <fontDescription key="fontDescription" name="Charter-Bold" family="Charter" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </stackView>
-                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Srb-uT-5dR">
-                                                            <rect key="frame" x="0.0" y="29" width="320" height="216"/>
-                                                            <date key="date" timeIntervalSinceReferenceDate="580402838.22423804">
-                                                                <!--2019-05-24 15:00:38 +0000-->
-                                                            </date>
-                                                        </datePicker>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="qQ0-SL-HZD" firstAttribute="centerY" secondItem="SNX-XX-VwP" secondAttribute="centerY" id="YmW-f5-RBr"/>
-                                                <constraint firstItem="qQ0-SL-HZD" firstAttribute="leading" secondItem="SNX-XX-VwP" secondAttribute="leading" constant="15" id="wDc-Y7-11t"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Завантаження" id="okJ-ud-yaE">
+                            <tableViewSection headerTitle="Перемотування" footerTitle="Дозволяє задати час,  на який перемотувати аудіофайл використовуючи кнопки плеєра" id="okJ-ud-yaE">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="deleteBooks" id="o3L-nq-DKS">
-                                        <rect key="frame" x="0.0" y="412.5" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="8Bs-0N-I9f">
+                                        <rect key="frame" x="0.0" y="175" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="o3L-nq-DKS" id="asH-5P-xiT">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Bs-0N-I9f" id="SNX-XX-VwP">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="cZR-fT-Rnp">
+                                                    <rect key="frame" x="15" y="-3.5" width="344" height="50.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Перемотування: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLJ-qV-BSj">
+                                                            <rect key="frame" x="0.0" y="14.5" width="200" height="22"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="lFm-tc-I7N"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="18"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfW-LO-UbT">
+                                                            <rect key="frame" x="217" y="0.0" width="16" height="50.5"/>
+                                                            <fontDescription key="fontDescription" name="Charter-Bold" family="Charter" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Rq6-4b-GEd">
+                                                            <rect key="frame" x="250" y="11" width="94" height="29"/>
+                                                            <connections>
+                                                                <action selector="timeChanfePressed:" destination="Fy0-vf-8Na" eventType="valueChanged" id="HId-j9-Kig"/>
+                                                            </connections>
+                                                        </stepper>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="cZR-fT-Rnp" secondAttribute="trailing" constant="16" id="0S5-cJ-IV5"/>
+                                                <constraint firstItem="cZR-fT-Rnp" firstAttribute="leading" secondItem="SNX-XX-VwP" secondAttribute="leading" constant="15" id="3vY-LC-Yag"/>
+                                                <constraint firstItem="cZR-fT-Rnp" firstAttribute="centerY" secondItem="SNX-XX-VwP" secondAttribute="centerY" id="ifT-fe-NFG"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Управління завантаженнями" footerTitle="Дозволяє видалити скачені раніше книги, щоб зменшити розмір програми" id="7R4-4n-fO3">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="deleteBooks" id="0h7-bA-krr" userLabel="downloadedBooks">
+                                        <rect key="frame" x="0.0" y="310.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0h7-bA-krr" id="cmq-gj-rdx">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Показувати лише завантажені" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8h-NQ-n4l">
+                                                    <rect key="frame" x="16" y="11" width="250.5" height="22"/>
+                                                    <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c7L-vj-ni5">
+                                                    <rect key="frame" x="310" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="showOnlyDownloadedPressed:" destination="Fy0-vf-8Na" eventType="valueChanged" id="ScV-1F-WDQ"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="u8h-NQ-n4l" firstAttribute="leading" secondItem="cmq-gj-rdx" secondAttribute="leadingMargin" id="4mu-aM-hJi"/>
+                                                <constraint firstItem="c7L-vj-ni5" firstAttribute="centerY" secondItem="cmq-gj-rdx" secondAttribute="centerY" id="BKu-fY-lg4"/>
+                                                <constraint firstAttribute="trailing" secondItem="c7L-vj-ni5" secondAttribute="trailing" constant="16" id="shB-3a-egn"/>
+                                                <constraint firstItem="u8h-NQ-n4l" firstAttribute="centerY" secondItem="cmq-gj-rdx" secondAttribute="centerY" id="tTp-n1-mUb"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="deleteBooks" id="Z8M-fq-anL">
+                                        <rect key="frame" x="0.0" y="354.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z8M-fq-anL" id="rMO-7j-S8h">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Видалити завантажені книги" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GKT-HS-Vd1">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Видалити завантажені книги" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MrO-1r-XL2">
                                                     <rect key="frame" x="16" y="11" width="241" height="22"/>
                                                     <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="18"/>
                                                     <nil key="textColor"/>
@@ -140,12 +177,12 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="GKT-HS-Vd1" firstAttribute="leading" secondItem="asH-5P-xiT" secondAttribute="leadingMargin" id="N5N-c3-khU"/>
-                                                <constraint firstItem="GKT-HS-Vd1" firstAttribute="centerY" secondItem="asH-5P-xiT" secondAttribute="centerY" id="hvo-bU-lHp"/>
+                                                <constraint firstItem="MrO-1r-XL2" firstAttribute="centerY" secondItem="rMO-7j-S8h" secondAttribute="centerY" id="gwD-WS-dwy"/>
+                                                <constraint firstItem="MrO-1r-XL2" firstAttribute="leading" secondItem="rMO-7j-S8h" secondAttribute="leadingMargin" id="ls6-VU-aSN"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Bnx-eE-V53" kind="show" identifier="toDeleteBooks" id="jyU-dJ-NYx"/>
+                                            <segue destination="Bnx-eE-V53" kind="show" id="KT2-XV-m0p"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -157,14 +194,21 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Налаштування" id="5kZ-0Y-ecE"/>
+                    <connections>
+                        <outlet property="onlyDownloadedSwitch" destination="c7L-vj-ni5" id="aT1-ZM-lJX"/>
+                        <outlet property="rewindLabel" destination="vfW-LO-UbT" id="bgX-Xf-8Wx"/>
+                        <outlet property="rewindStepper" destination="Rq6-4b-GEd" id="7z4-BP-zPA"/>
+                        <outlet property="speedLabel" destination="A1x-30-IVa" id="LAs-dg-z8K"/>
+                        <outlet property="speedStepper" destination="H2A-bP-pgX" id="7Jo-th-ilu"/>
+                    </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vjz-BS-dB5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-894" y="699"/>
+            <point key="canvasLocation" x="-895.20000000000005" y="698.5007496251875"/>
         </scene>
         <!--Delete Books Table View Controller-->
         <scene sceneID="WLH-mb-YKb">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="N1D-Mn-AhF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Bnx-eE-V53" customClass="DeleteBooksTableViewController" customModule="AudioBook" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="jd2-SL-zFT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
@@ -186,6 +230,7 @@
                         </connections>
                     </tableView>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N1D-Mn-AhF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-100" y="699"/>
         </scene>
