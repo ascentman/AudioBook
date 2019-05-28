@@ -38,6 +38,9 @@
 		CED6C3EA227E3C3E008DBAC9 /* BookOnline.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6C3E9227E3C3E008DBAC9 /* BookOnline.swift */; };
 		CED6C3ED227E3D16008DBAC9 /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6C3EC227E3D16008DBAC9 /* DownloadService.swift */; };
 		CED6C3EF227E54B4008DBAC9 /* FileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6C3EE227E54B4008DBAC9 /* FileHandler.swift */; };
+		CEEAB9E5229DBF9700A8E345 /* UserDefaults+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEAB9E4229DBF9700A8E345 /* UserDefaults+Settings.swift */; };
+		CEEAB9E8229DE5AB00A8E345 /* DeleteBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEAB9E7229DE5AB00A8E345 /* DeleteBookTableViewCell.swift */; };
+		CEEAB9EA229DF7CB00A8E345 /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEAB9E9229DF7CB00A8E345 /* Dictionary+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +77,9 @@
 		CED6C3E9227E3C3E008DBAC9 /* BookOnline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookOnline.swift; sourceTree = "<group>"; };
 		CED6C3EC227E3D16008DBAC9 /* DownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadService.swift; sourceTree = "<group>"; };
 		CED6C3EE227E54B4008DBAC9 /* FileHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHandler.swift; sourceTree = "<group>"; };
+		CEEAB9E4229DBF9700A8E345 /* UserDefaults+Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Settings.swift"; sourceTree = "<group>"; };
+		CEEAB9E7229DE5AB00A8E345 /* DeleteBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBookTableViewCell.swift; sourceTree = "<group>"; };
+		CEEAB9E9229DF7CB00A8E345 /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +133,7 @@
 			children = (
 				CE12A9E12278BDCF00CDB66E /* Colors.swift */,
 				CE29C8462271027B003FDAB6 /* CustomSegmentedControl.swift */,
+				CEEAB9E4229DBF9700A8E345 /* UserDefaults+Settings.swift */,
 			);
 			path = "Support Classes";
 			sourceTree = "<group>";
@@ -136,6 +143,7 @@
 			children = (
 				CE29C8422270FFE4003FDAB6 /* UICollectionViewCell+Extensions.swift */,
 				CE12A9E32278C5AD00CDB66E /* UIViewController+Extensions.swift */,
+				CEEAB9E9229DF7CB00A8E345 /* Dictionary+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -217,6 +225,7 @@
 			children = (
 				CE86F6C32291F17D00138628 /* SettingsTableViewController.swift */,
 				CEB723B72298479B006B6302 /* DeleteBooksTableViewController.swift */,
+				CEEAB9E6229DE57A00A8E345 /* DeleteBookTableViewCell */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -268,6 +277,14 @@
 				CED6C3EE227E54B4008DBAC9 /* FileHandler.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		CEEAB9E6229DE57A00A8E345 /* DeleteBookTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CEEAB9E7229DE5AB00A8E345 /* DeleteBookTableViewCell.swift */,
+			);
+			path = DeleteBookTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,10 +385,13 @@
 				CE12A9E02278988500CDB66E /* Book.swift in Sources */,
 				CE29C83C2270F712003FDAB6 /* HomeDataProvider.swift in Sources */,
 				CEB723B82298479B006B6302 /* DeleteBooksTableViewController.swift in Sources */,
+				CEEAB9E5229DBF9700A8E345 /* UserDefaults+Settings.swift in Sources */,
 				CE9E0E142275950F00E214C1 /* StoryboardName.swift in Sources */,
+				CEEAB9E8229DE5AB00A8E345 /* DeleteBookTableViewCell.swift in Sources */,
 				CE12A9E42278C5AD00CDB66E /* UIViewController+Extensions.swift in Sources */,
 				CEC82106226C909000A1AA8D /* BookCollectionViewCell.swift in Sources */,
 				CEC82102226C902600A1AA8D /* HomeViewController.swift in Sources */,
+				CEEAB9EA229DF7CB00A8E345 /* Dictionary+Extensions.swift in Sources */,
 				CE12A9CC22786E4000CDB66E /* PlayerViewController.swift in Sources */,
 				CE86F6C42291F17D00138628 /* SettingsTableViewController.swift in Sources */,
 			);

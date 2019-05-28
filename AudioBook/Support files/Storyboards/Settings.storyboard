@@ -42,74 +42,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Аудіо" footerTitle="Задає швидкість відтворення аудіо" id="AAe-y0-enc">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="pQ8-Gl-0Yp">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pQ8-Gl-0Yp" id="x2Z-Lh-3iI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="xa9-Ft-5fz">
-                                                    <rect key="frame" x="15" y="-3.5" width="344" height="50.5"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Швидкість відтворення:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7z-7q-YkG">
-                                                            <rect key="frame" x="0.0" y="14.5" width="200" height="22"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="l1f-Ef-tzl"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="18"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A1x-30-IVa">
-                                                            <rect key="frame" x="217" y="0.0" width="16" height="50.5"/>
-                                                            <fontDescription key="fontDescription" name="Charter-Bold" family="Charter" pointSize="18"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="H2A-bP-pgX">
-                                                            <rect key="frame" x="250" y="11" width="94" height="29"/>
-                                                            <connections>
-                                                                <action selector="speedChangePressed:" destination="Fy0-vf-8Na" eventType="valueChanged" id="aOb-gu-rkT"/>
-                                                            </connections>
-                                                        </stepper>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="xa9-Ft-5fz" secondAttribute="trailing" constant="16" id="PPd-gK-Hdp"/>
-                                                <constraint firstItem="xa9-Ft-5fz" firstAttribute="centerY" secondItem="x2Z-Lh-3iI" secondAttribute="centerY" id="iRZ-AU-fE4"/>
-                                                <constraint firstItem="xa9-Ft-5fz" firstAttribute="leading" secondItem="x2Z-Lh-3iI" secondAttribute="leading" constant="15" id="uQx-cz-AMY"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Перемотування" footerTitle="Дозволяє задати час,  на який перемотувати аудіофайл використовуючи кнопки плеєра" id="okJ-ud-yaE">
+                            <tableViewSection headerTitle="Аудіо" footerTitle="Дозволяє задати час у секундах, на який перемотувати аудіофайл, використовуючи кнопки плеєра" id="okJ-ud-yaE">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="8Bs-0N-I9f">
-                                        <rect key="frame" x="0.0" y="175" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Bs-0N-I9f" id="SNX-XX-VwP">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="cZR-fT-Rnp">
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cZR-fT-Rnp">
                                                     <rect key="frame" x="15" y="-3.5" width="344" height="50.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Перемотування: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLJ-qV-BSj">
-                                                            <rect key="frame" x="0.0" y="14.5" width="200" height="22"/>
+                                                            <rect key="frame" x="0.0" y="14.5" width="140" height="22"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="lFm-tc-I7N"/>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="lFm-tc-I7N"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfW-LO-UbT">
-                                                            <rect key="frame" x="217" y="0.0" width="16" height="50.5"/>
+                                                            <rect key="frame" x="158.5" y="0.0" width="50" height="50.5"/>
                                                             <fontDescription key="fontDescription" name="Charter-Bold" family="Charter" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -132,45 +87,17 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Управління завантаженнями" footerTitle="Дозволяє видалити скачені раніше книги, щоб зменшити розмір програми" id="7R4-4n-fO3">
+                            <tableViewSection headerTitle="Управління завантаженнями" footerTitle="Дозволяє видалити скачені раніше книги, щоб зменшити загальний розмір програми" id="7R4-4n-fO3">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="deleteBooks" id="0h7-bA-krr" userLabel="downloadedBooks">
-                                        <rect key="frame" x="0.0" y="310.5" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0h7-bA-krr" id="cmq-gj-rdx">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Показувати лише завантажені" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8h-NQ-n4l">
-                                                    <rect key="frame" x="16" y="11" width="250.5" height="22"/>
-                                                    <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="18"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c7L-vj-ni5">
-                                                    <rect key="frame" x="310" y="6.5" width="51" height="31"/>
-                                                    <connections>
-                                                        <action selector="showOnlyDownloadedPressed:" destination="Fy0-vf-8Na" eventType="valueChanged" id="ScV-1F-WDQ"/>
-                                                    </connections>
-                                                </switch>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="u8h-NQ-n4l" firstAttribute="leading" secondItem="cmq-gj-rdx" secondAttribute="leadingMargin" id="4mu-aM-hJi"/>
-                                                <constraint firstItem="c7L-vj-ni5" firstAttribute="centerY" secondItem="cmq-gj-rdx" secondAttribute="centerY" id="BKu-fY-lg4"/>
-                                                <constraint firstAttribute="trailing" secondItem="c7L-vj-ni5" secondAttribute="trailing" constant="16" id="shB-3a-egn"/>
-                                                <constraint firstItem="u8h-NQ-n4l" firstAttribute="centerY" secondItem="cmq-gj-rdx" secondAttribute="centerY" id="tTp-n1-mUb"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="deleteBooks" id="Z8M-fq-anL">
-                                        <rect key="frame" x="0.0" y="354.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="207" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z8M-fq-anL" id="rMO-7j-S8h">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Видалити завантажені книги" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MrO-1r-XL2">
-                                                    <rect key="frame" x="16" y="11" width="241" height="22"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Книги" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MrO-1r-XL2">
+                                                    <rect key="frame" x="16" y="11" width="52" height="22"/>
                                                     <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -195,18 +122,15 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Налаштування" id="5kZ-0Y-ecE"/>
                     <connections>
-                        <outlet property="onlyDownloadedSwitch" destination="c7L-vj-ni5" id="aT1-ZM-lJX"/>
                         <outlet property="rewindLabel" destination="vfW-LO-UbT" id="bgX-Xf-8Wx"/>
                         <outlet property="rewindStepper" destination="Rq6-4b-GEd" id="7z4-BP-zPA"/>
-                        <outlet property="speedLabel" destination="A1x-30-IVa" id="LAs-dg-z8K"/>
-                        <outlet property="speedStepper" destination="H2A-bP-pgX" id="7Jo-th-ilu"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vjz-BS-dB5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-895.20000000000005" y="698.5007496251875"/>
         </scene>
-        <!--Delete Books Table View Controller-->
+        <!--Книги-->
         <scene sceneID="WLH-mb-YKb">
             <objects>
                 <tableViewController id="Bnx-eE-V53" customClass="DeleteBooksTableViewController" customModule="AudioBook" customModuleProvider="target" sceneMemberID="viewController">
@@ -215,13 +139,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="deleteBookCell" id="4az-ko-RbU">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="AudioBook.DeleteBookTableViewCell" rowHeight="44" id="4az-ko-RbU" customClass="DeleteBookTableViewCell" customModule="AudioBook" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4az-ko-RbU" id="F2i-Uy-elm">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1k8-cW-mNb">
+                                            <rect key="frame" x="16" y="22" width="250" height="0.0"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="3wG-8H-JhV"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="1k8-cW-mNb" firstAttribute="leading" secondItem="F2i-Uy-elm" secondAttribute="leading" constant="16" id="fUv-SY-ftT"/>
+                                        <constraint firstItem="1k8-cW-mNb" firstAttribute="centerY" secondItem="F2i-Uy-elm" secondAttribute="centerY" id="mgc-oD-XYM"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="deleteBookLabel" destination="1k8-cW-mNb" id="iSc-9E-96c"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -229,6 +172,13 @@
                             <outlet property="delegate" destination="Bnx-eE-V53" id="PXB-Fx-9Gt"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Книги" id="9mE-x0-jFO">
+                        <barButtonItem key="rightBarButtonItem" title="Редагувати" id="Kz9-gQ-HEs">
+                            <connections>
+                                <action selector="editPressed:" destination="Bnx-eE-V53" id="4MY-4l-jkT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N1D-Mn-AhF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

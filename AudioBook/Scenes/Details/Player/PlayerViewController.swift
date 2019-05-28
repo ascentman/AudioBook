@@ -16,7 +16,7 @@ protocol PlayerViewControllerDelegate: class {
 final class PlayerViewController: UIViewController {
 
     private enum Constants {
-        static let seekDuration: Float64 = 10
+        static let seekDuration: Float64 = UserDefaults.standard.rewindTime
         static let timeFormat: String = "%02d"
     }
 

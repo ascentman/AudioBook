@@ -22,6 +22,7 @@ final class HomeViewController: UIViewController {
         BookCollectionViewCell.register(for: collectionView)
         dataProvider.delegate = self
         setupNavigationBar()
+        setupDefaultsSettings()
     }
 
     // MARK: - IBActions
@@ -42,6 +43,12 @@ final class HomeViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         let attributes = [NSAttributedString.Key.font: UIFont(name: "Charter", size: 22)!]
         navigationController?.navigationBar.titleTextAttributes = attributes
+    }
+
+    private func setupDefaultsSettings() {
+        if !UserDefaults.standard.isRewindTimePresentInUserDefaults() {
+            UserDefaults.standard.updateRewindTime(5.0)
+        }
     }
 }
 

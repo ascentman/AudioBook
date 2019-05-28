@@ -63,16 +63,29 @@ final class FileHandler {
         return result
     }
 
-    func remove(book: BookOnline) {
+    func createBookArray() -> [String] {
+        let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        if let dirContents = try? fileManager.contentsOfDirectory(atPath: documentDirectory) {
+            return dirContents
+        }
+        return []
+    }
+
+    func remove(book: BookOnline, completion: (Bool) -> ()) {
         guard let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
             return
         }
 
+        print(documentDirectory)
         let bookDirectory = documentDirectory.appendingPathComponent(book.label)
-        if !fileManager.fileExists(atPath: bookDirectory.path) {
+        if fileManager.fileExists(atPath: bookDirectory.path) {
             do {
                 try fileManager.removeItem(at: bookDirectory)
-            } catch {}
+                completion(true)
+            } catch {
+                assertionFailure("no such file or directory")
+                completion(false)
+            }
         }
     }
 }

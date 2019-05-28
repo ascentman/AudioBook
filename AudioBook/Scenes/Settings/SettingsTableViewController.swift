@@ -11,37 +11,25 @@ import UIKit
 final class SettingsTableViewController: UITableViewController {
 
     // first section
-    @IBOutlet private weak var speedStepper: UIStepper!
-    @IBOutlet private weak var speedLabel: UILabel!
-
-    //second section
     @IBOutlet private weak var rewindLabel: UILabel!
     @IBOutlet private weak var rewindStepper: UIStepper!
-
-    //third section
-    @IBOutlet weak var onlyDownloadedSwitch: UISwitch!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupNavigationBar()
+        setupSettings()
         setupSteppers()
     }
 
     // MARK: - Actions
 
-    @IBAction func speedChangePressed(_ sender: UIStepper) {
-        speedLabel.text = sender.value.description + "x"
-    }
-
     @IBAction func timeChanfePressed(_ sender: UIStepper) {
-        rewindLabel.text = Int(sender.value).description
-    }
-    @IBAction func showOnlyDownloadedPressed(_ sender: Any) {
-
+        rewindLabel.text = sender.value.description
+        UserDefaults.standard.updateRewindTime(Float64(sender.value))
     }
 
-    // MARK: - Privates
+    // MARK: - Private
 
     private func setupNavigationBar() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
@@ -51,16 +39,14 @@ final class SettingsTableViewController: UITableViewController {
     }
 
     private func setupSteppers() {
-        speedStepper.wraps = true
-        speedStepper.autorepeat = true
-        speedStepper.stepValue = 0.5
-        speedStepper.minimumValue = 0.5
-        speedStepper.maximumValue = 2
-
         rewindStepper.wraps = true
         rewindStepper.autorepeat = true
-        rewindStepper.stepValue = 5
-        rewindStepper.minimumValue = 5
-        rewindStepper.maximumValue = 30
+        rewindStepper.stepValue = 5.0
+        rewindStepper.minimumValue = 5.0
+        rewindStepper.maximumValue = 30.0
+    }
+
+    private func setupSettings() {
+        rewindLabel.text = String(UserDefaults.standard.rewindTime)
     }
 }

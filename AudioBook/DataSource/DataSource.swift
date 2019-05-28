@@ -8,6 +8,17 @@
 
 import Foundation
 
+let BooksDict: [String: String] = [
+    "matthew": "Євангеліє від Матвія",
+    "mark": "Євангеліє від Марка",
+    "luke": "Євангеліє від Луки",
+    "john": "Євангеліє від Івана",
+    "genesis": "Буття",
+    "exodus": "Вихід",
+    "leviticus": "Левит",
+    "numbers": "Числа"
+]
+
 final class DataSource {
 
     private let matthew = Book(name: "Євангеліє від Матвія", testament: .new, label: "matthew", chaptersCount: 28)
