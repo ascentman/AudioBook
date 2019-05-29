@@ -49,25 +49,14 @@ final class DeleteBooksTableViewController: UITableViewController {
         return 44
     }
 
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        switch editingStyle {
-        case .delete:
-            if let bookLabel = BooksDict.someKey(forValue: foundBooks[indexPath.row]) {
-                let book = BookOnline(label: bookLabel, previewURL: URL(string: "/")!, chaptersCount: 0)
-                fileHandler.remove(book: book, completion: { result in
-                    if result {
-                        foundBooks.remove(at: indexPath.row)
-                        DispatchQueue.main.async { [weak self] in
-                            self?.tableView.beginUpdates()
-                            self?.tableView.deleteRows(at: [indexPath], with: .fade)
-                            self?.tableView.endUpdates()
-                        }
-                    }
-                })
-            }
-        default:
-            break
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Видалити") { [weak self] (_, _, _) in
+            self?.deleteBook(indexPath: indexPath)
         }
+        deleteAction.backgroundColor = .red
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        configuration.performsFirstActionWithFullSwipe = false
+        return configuration
     }
 
     // MARK: - Private
@@ -78,6 +67,18 @@ final class DeleteBooksTableViewController: UITableViewController {
             if let name = BooksDict[label] {
                 foundBooks.append(name)
             }
+        }
+    }
+
+    private func deleteBook(indexPath: IndexPath) {
+        if let bookLabel = BooksDict.someKey(forValue: foundBooks[indexPath.row]) {
+            let book = BookOnline(label: bookLabel, previewURL: URL(string: "/")!, chaptersCount: 0)
+            fileHandler.remove(book: book, completion: { result in
+                if result {
+                    foundBooks.remove(at: indexPath.row)
+                    tableView.reloadData()
+                }
+            })
         }
     }
 }
