@@ -19,6 +19,17 @@ let BooksDict: [String: String] = [
     "numbers": "Числа"
 ]
 
+let ChaptersDict: [String: Int] = [
+    "matthew": 28,
+    "mark": 16,
+    "luke": 24,
+    "john": 21,
+    "genesis": 50,
+    "exodus": 40,
+    "leviticus": 27,
+    "numbers": 36
+]
+
 final class DataSource {
 
     private let matthew = Book(name: "Євангеліє від Матвія", testament: .new, label: "matthew", chaptersCount: 28)

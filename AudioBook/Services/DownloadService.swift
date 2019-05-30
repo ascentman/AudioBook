@@ -24,7 +24,7 @@ final class DownloadService: NSObject {
     }()
 
     var onProgress: ((Int, Float) -> ())?
-    var onCompleted: ((Int) -> ())?
+    var onCompleted: ((Int, Int) -> ())?
 
     func startDownload(_ book: BookOnline) {
         (1...book.chaptersCount).forEach { (chapter) in
@@ -47,11 +47,11 @@ final class DownloadService: NSObject {
         }
     }
 
-    func cancelDownload(_ book: BookOnline) {
-        if let download = activeDownloads[book.previewURL] {
-            download.task?.cancel()
-            activeDownloads[book.previewURL] = nil
+    func cancelDownload() {
+        activeDownloads.forEach { (_, value) in
+            value.task?.cancel()
         }
+        activeDownloads.removeAll()
     }
 
     func resumeDownload(_ book: BookOnline) {
@@ -94,7 +94,7 @@ extension DownloadService: URLSessionDownloadDelegate {
         }
         if let index = Int(sourceURL.deletingPathExtension().lastPathComponent) {
             DispatchQueue.main.async {
-                self.onCompleted?(index)
+                self.onCompleted?(index, ChaptersDict[bookName] ?? -1)
             }
         }
     }

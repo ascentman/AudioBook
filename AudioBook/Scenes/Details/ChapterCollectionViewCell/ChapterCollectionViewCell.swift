@@ -56,7 +56,6 @@ final class ChapterCollectionViewCell: UICollectionViewCell {
 
     func updateDownloadProgress(progress: Float) {
         chapterNumber.isHidden = true
-        alpha = 0.7
         downloadProgress.isHidden = false
         percentageLabel.isHidden = false
         activityIndicator.isHidden = false

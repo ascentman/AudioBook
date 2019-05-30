@@ -8,11 +8,18 @@
 
 import UIKit
 
+private enum ActiveState {
+    case downloading
+    case normal
+}
+
 final class DetailsViewController: UIViewController {
 
     @IBOutlet var dataProvider: DetailsDataProvider!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var playerView: UIView!
+    private var state: ActiveState = .normal
+    private var bookOnline: BookOnline?
 
     // MARK: - Lifecycle
 
@@ -20,18 +27,24 @@ final class DetailsViewController: UIViewController {
         super.viewDidLoad()
 
         setupUI()
-
         dataProvider.playerViewController?.delegate = self
 
         DownloadService.shared.onProgress = { [weak self] (index, progress) in
-            if let chapterCell = self?.collectionView.cellForItem(at: IndexPath(item: index - 1, section: 0)) as? ChapterCollectionViewCell {
+            let indexPath = IndexPath(item: index - 1, section: 0)
+            if let chapterCell = self?.collectionView.cellForItem(at: indexPath) as? ChapterCollectionViewCell {
+                self?.state = .downloading
+                self?.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
                 chapterCell.updateDownloadProgress(progress: progress)
             }
         }
 
-        DownloadService.shared.onCompleted = { [weak self] (index) in
+        DownloadService.shared.onCompleted = { [weak self] (index, chaptersCount) in
             if let chapterCell = self?.collectionView.cellForItem(at: IndexPath(item: index - 1, section: 0)) as? ChapterCollectionViewCell {
                 chapterCell.downloadCompleted()
+                if index == chaptersCount {
+                    self?.state = .normal
+                    print("done!!!!!!!!")
+                }
             }
         }
     }
@@ -50,9 +63,22 @@ final class DetailsViewController: UIViewController {
 
     @IBAction func downloadPressed(_ sender: Any) {
         let bookOnline = BookOnline(label: dataProvider.chosenBook.label,
-                                    previewURL: URL(string: dataProvider.chosenBook.bookUrl)!,
-                                    chaptersCount: dataProvider.chosenBook.chaptersCount)
-        dataProvider.downloadSpecific(book: bookOnline)
+                                previewURL: URL(string: dataProvider.chosenBook.bookUrl)!,
+                                chaptersCount: dataProvider.chosenBook.chaptersCount)
+        dataProvider.downloadSpecific(book: bookOnline) { status in
+            switch status {
+            case .finished:
+                presentAlert("Інформація", message: "Усі розділи уже завантажені", acceptTitle: "Ok", declineTitle: nil)
+            case .partly:
+                presentAlert("Інформація", message: "Не всі розділи завантажені", acceptTitle: "Перезавантажити", declineTitle: nil, okActionHandler: {
+                    DownloadService.shared.startDownload(bookOnline)
+                }, cancelActionHandler: nil)
+            case .notStarted:
+                presentAlert("Інформація", message: "Завантажити цю книгу і слухати без інтернету?", acceptTitle: "Завантажити", declineTitle: "Скасувати", okActionHandler: {
+                    DownloadService.shared.startDownload(bookOnline)
+                }, cancelActionHandler: nil)
+            }
+        }
     }
 
     // MARK: - Segues
@@ -69,10 +95,29 @@ final class DetailsViewController: UIViewController {
     // MARK - Private
 
     private func setupUI() {
+        setupCustomBackItem()
         collectionView.collectionViewLayout.invalidateLayout()
         playerView.layer.masksToBounds = true
         playerView.layer.cornerRadius = 10
         playerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+    }
+
+    private func setupCustomBackItem() {
+        navigationItem.hidesBackButton = true
+        let newBackButton = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.backPressed(_:)))
+        newBackButton.setBackgroundImage(UIImage(named: "back-arrow-circular-symbol"), for: .normal, barMetrics: .default)
+        self.navigationItem.leftBarButtonItem = newBackButton
+    }
+
+    @objc func backPressed(_ sender: UIBarButtonItem) {
+        if state == .downloading {
+            presentAlert("Увага", message: "Скасувати завантаження", acceptTitle: "Продовжити", declineTitle: "Скасувати", okActionHandler: nil) { [weak self] in
+                DownloadService.shared.cancelDownload()
+                self?.navigationController?.popViewController(animated: true)
+            }
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
     }
 }
 

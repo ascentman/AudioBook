@@ -8,6 +8,12 @@
 
 import UIKit
 
+enum LoadingStatus {
+    case finished
+    case partly
+    case notStarted
+}
+
 final class DetailsDataProvider: NSObject {
 
     var chosenBook = Book()
@@ -25,10 +31,14 @@ final class DetailsDataProvider: NSObject {
         self.chosenBook = book
     }
 
-    func downloadSpecific(book: BookOnline) {
+    func downloadSpecific(book: BookOnline, completion: (LoadingStatus) -> Void) {
         if !fileHandler.ifBookExists(book: book) {
             fileHandler.createBookDirectory(name: book.label)
-            DownloadService.shared.startDownload(book)
+            completion(.notStarted)
+        } else if fileHandler.isBookChaptersLoaded(book: book) {
+            completion(.finished)
+        } else {
+            completion(.partly)
         }
     }
 }
