@@ -39,11 +39,12 @@ final class DetailsViewController: UIViewController {
         }
 
         DownloadService.shared.onCompleted = { [weak self] (index, chaptersCount) in
-            if let chapterCell = self?.collectionView.cellForItem(at: IndexPath(item: index - 1, section: 0)) as? ChapterCollectionViewCell {
+            let indexPath = IndexPath(item: index - 1, section: 0)
+            if let chapterCell = self?.collectionView.cellForItem(at: indexPath) as? ChapterCollectionViewCell {
                 chapterCell.downloadCompleted()
                 if index == chaptersCount {
                     self?.state = .normal
-                    print("done!!!!!!!!")
+                    print("done!!!")
                 }
             }
         }
