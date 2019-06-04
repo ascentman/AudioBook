@@ -63,9 +63,14 @@ final class DetailsViewController: UIViewController {
     }
 
     @IBAction func downloadPressed(_ sender: Any) {
-        let bookOnline = BookOnline(label: dataProvider.chosenBook.label,
+        bookOnline = BookOnline(label: dataProvider.chosenBook.label,
                                 previewURL: URL(string: dataProvider.chosenBook.bookUrl)!,
                                 chaptersCount: dataProvider.chosenBook.chaptersCount)
+
+        guard let bookOnline = bookOnline else {
+            return
+        }
+
         dataProvider.downloadSpecific(book: bookOnline) { status in
             switch status {
             case .finished:
@@ -112,8 +117,11 @@ final class DetailsViewController: UIViewController {
 
     @objc func backPressed(_ sender: UIBarButtonItem) {
         if state == .downloading {
-            presentAlert("Увага", message: "Скасувати завантаження", acceptTitle: "Продовжити", declineTitle: "Скасувати", okActionHandler: nil) { [weak self] in
+            presentAlert("Інформація", message: "Завантаження у прогресі...", acceptTitle: "Продовжити", declineTitle: "Скасувати", okActionHandler: nil) { [weak self] in
                 DownloadService.shared.cancelDownload()
+                if let book = self?.bookOnline {
+                    self?.dataProvider.fileHandler.remove(book: book, completion: { _ in })
+                }
                 self?.navigationController?.popViewController(animated: true)
             }
         } else {
