@@ -13,6 +13,8 @@ final class HomeViewController: UIViewController {
     @IBOutlet var dataProvider: HomeDataProvider!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var segmentedControl: CustomSegmentControl!
+    @IBOutlet private var searchBarButtonItem: UIBarButtonItem!
+    var searchBar = UISearchBar()
 
     // MARK: - Lifecycle
 
@@ -22,7 +24,12 @@ final class HomeViewController: UIViewController {
         BookCollectionViewCell.register(for: collectionView)
         dataProvider.delegate = self
         setupNavigationBar()
+        setupSearchBar(searchBar: searchBar)
         setupDefaultsSettings()
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
     }
 
     // MARK: - IBActions
@@ -35,7 +42,10 @@ final class HomeViewController: UIViewController {
         }
         collectionView.reloadData()
     }
-
+    @IBAction func searchClicked(_ sender: Any) {
+        showSearchBar(searchBar: searchBar)
+    }
+    
     // MARK: - Private
 
     private func setupNavigationBar() {
@@ -49,6 +59,17 @@ final class HomeViewController: UIViewController {
         if !UserDefaults.standard.isRewindTimePresentInUserDefaults() {
             UserDefaults.standard.updateRewindTime(5.0)
         }
+    }
+
+    private func setupSearchBar(searchBar: UISearchBar) {
+        searchBar.delegate = self
+        searchBar.searchBarStyle = .minimal
+        searchBar.showsCancelButton = true
+        searchBar.barTintColor = .white
+        searchBar.returnKeyType = UIReturnKeyType.done
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = .white
+        searchBarButtonItem = navigationItem.rightBarButtonItem
     }
 }
 
@@ -72,4 +93,19 @@ extension HomeViewController: HomeDataProviderDelegate {
             navigationController?.pushViewController(viewController, animated: true)
         }
     }
+}
+
+extension HomeViewController: UISearchBarDelegate {
+
+    // MARK: - UISearchBarDelegate
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        hideSearchBar(searchBarButtonItem: searchBarButtonItem)
+    }
+}
+
+extension HomeViewController: SearchViewAnimatable {
+
+    // MARK: - SearchViewAnimatable
+
 }

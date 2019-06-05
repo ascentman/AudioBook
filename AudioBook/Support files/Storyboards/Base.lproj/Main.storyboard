@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IQI-vJ-MTs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IQI-vJ-MTs">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -101,10 +101,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DYE-pf-NhJ"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Біблія" id="AJI-hE-5WA"/>
+                    <navigationItem key="navigationItem" title="Біблія" id="AJI-hE-5WA">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="TBc-V1-Ypa">
+                            <connections>
+                                <action selector="searchClicked:" destination="ETB-Di-JRu" id="5sm-Eq-vbP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="Nog-ch-QRu" id="cBN-93-j7j"/>
                         <outlet property="dataProvider" destination="1mG-xb-fWP" id="zLJ-Cm-beC"/>
+                        <outlet property="searchBarButtonItem" destination="TBc-V1-Ypa" id="CKY-SF-wcZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ln4-3q-Lwy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -192,9 +199,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="back-arrow-circular-symbol" width="48" height="48"/>
-        <image name="bible50" width="37.5" height="37.5"/>
-        <image name="info50" width="37.5" height="37.5"/>
-        <image name="settings50" width="37.5" height="37.5"/>
+        <image name="back-arrow-circular-symbol" width="32" height="32"/>
+        <image name="bible50" width="25" height="25"/>
+        <image name="info50" width="25" height="25"/>
+        <image name="settings50" width="25" height="25"/>
     </resources>
 </document>

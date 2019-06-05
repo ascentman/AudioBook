@@ -22,6 +22,7 @@
 		CE568F2822625E49000D0A3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE568F2722625E49000D0A3B /* AppDelegate.swift */; };
 		CE568F2D22625E49000D0A3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE568F2B22625E49000D0A3B /* Main.storyboard */; };
 		CE568F2F22625E4A000D0A3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE568F2E22625E4A000D0A3B /* Assets.xcassets */; };
+		CE60FC0E22A71B6100A71626 /* SearchViewAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60FC0D22A71B6100A71626 /* SearchViewAnimatable.swift */; };
 		CE86F69C22913E4200138628 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE86F69B22913E4200138628 /* Start.storyboard */; };
 		CE86F69F2291410C00138628 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE86F69E2291410C00138628 /* StartViewController.swift */; };
 		CE86F6C42291F17D00138628 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE86F6C32291F17D00138628 /* SettingsTableViewController.swift */; };
@@ -61,6 +62,7 @@
 		CE568F2C22625E49000D0A3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE568F2E22625E4A000D0A3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE568F3322625E4A000D0A3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE60FC0D22A71B6100A71626 /* SearchViewAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewAnimatable.swift; sourceTree = "<group>"; };
 		CE86F69B22913E4200138628 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		CE86F69E2291410C00138628 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		CE86F6C32291F17D00138628 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -196,9 +198,18 @@
 				CED6C3EB227E3CF5008DBAC9 /* Services */,
 				CE29C83D2270F813003FDAB6 /* DataSource */,
 				CE29C84522710252003FDAB6 /* Support Classes */,
+				CE60FC0C22A71B4200A71626 /* Protocols */,
 				CE29C848227102E4003FDAB6 /* Extensions */,
 			);
 			path = AudioBook;
+			sourceTree = "<group>";
+		};
+		CE60FC0C22A71B4200A71626 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CE60FC0D22A71B6100A71626 /* SearchViewAnimatable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		CE7CD36C226293B900166616 /* Support files */ = {
@@ -319,6 +330,7 @@
 				TargetAttributes = {
 					CE568F2322625E49000D0A3B = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -386,6 +398,7 @@
 				CE29C83C2270F712003FDAB6 /* HomeDataProvider.swift in Sources */,
 				CEB723B82298479B006B6302 /* DeleteBooksTableViewController.swift in Sources */,
 				CEEAB9E5229DBF9700A8E345 /* UserDefaults+Settings.swift in Sources */,
+				CE60FC0E22A71B6100A71626 /* SearchViewAnimatable.swift in Sources */,
 				CE9E0E142275950F00E214C1 /* StoryboardName.swift in Sources */,
 				CEEAB9E8229DE5AB00A8E345 /* DeleteBookTableViewCell.swift in Sources */,
 				CE12A9E42278C5AD00CDB66E /* UIViewController+Extensions.swift in Sources */,
@@ -541,7 +554,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = home.AudioBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -560,7 +573,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = home.AudioBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
