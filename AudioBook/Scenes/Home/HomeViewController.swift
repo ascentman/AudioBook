@@ -8,13 +8,13 @@
 
 import UIKit
 
-final class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController, SearchViewAnimatable {
 
     @IBOutlet var dataProvider: HomeDataProvider!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var segmentedControl: CustomSegmentControl!
     @IBOutlet private var searchBarButtonItem: UIBarButtonItem!
-    var searchBar = UISearchBar()
+    private var searchBar = UISearchBar()
 
     // MARK: - Lifecycle
 
@@ -22,6 +22,7 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         BookCollectionViewCell.register(for: collectionView)
+        collectionView.alwaysBounceVertical = true
         dataProvider.delegate = self
         setupNavigationBar()
         setupSearchBar(searchBar: searchBar)
@@ -82,11 +83,21 @@ extension HomeViewController: HomeDataProviderDelegate {
     // MARK: - HomeDataProviderDelegate
 
     func goToDetails(_ selectedSegment: Int, index: Int) {
+        navigationItem.titleView = nil
+        searchBar.text = ""
+        hideSearchBar(searchBarButtonItem: searchBarButtonItem)
+        collectionView.reloadData()
+
         let storyboard = UIStoryboard(name: StoryboardName.details, bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: DetailsViewController.description()) as? DetailsViewController
         if selectedSegment == 0 {
-            viewController?.title = dataProvider.dataManager.newTestament[index].name
-            viewController?.dataProvider.fillChosen(book: dataProvider.dataManager.newTestament[index])
+            if dataProvider.isSearchBarEmpty {
+                viewController?.title = dataProvider.filteredNewTestament[index].name
+                viewController?.dataProvider.fillChosen(book: dataProvider.filteredNewTestament[index])
+            } else {
+                viewController?.title = dataProvider.dataManager.newTestament[index].name
+                viewController?.dataProvider.fillChosen(book: dataProvider.dataManager.newTestament[index])
+            }
         } else {
             viewController?.title = dataProvider.dataManager.oldTestament[index].name
             viewController?.dataProvider.fillChosen(book: dataProvider.dataManager.oldTestament[index])
@@ -94,6 +105,10 @@ extension HomeViewController: HomeDataProviderDelegate {
         if let viewController = viewController {
             navigationController?.pushViewController(viewController, animated: true)
         }
+    }
+
+    func isSearchBarActive(_ state: Bool) -> Bool {
+        return state
     }
 }
 
@@ -103,11 +118,18 @@ extension HomeViewController: UISearchBarDelegate {
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         hideSearchBar(searchBarButtonItem: searchBarButtonItem)
+        searchBar.text = ""
+        collectionView.reloadData()
     }
-}
 
-extension HomeViewController: SearchViewAnimatable {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        dataProvider.filterBookForSearchedText(searchText) {
+            collectionView.reloadData()
+        }
+    }
 
-    // MARK: - SearchViewAnimatable
-
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        let result = !(searchBar.text?.isEmpty ?? true)
+        _ = isSearchBarActive(result)
+    }
 }

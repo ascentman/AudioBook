@@ -10,6 +10,7 @@ import UIKit
 
 protocol HomeDataProviderDelegate: class {
     func goToDetails(_ selectedSegment: Int, index: Int)
+    func isSearchBarActive(_ state: Bool) -> Bool
 }
 
 final class HomeDataProvider: NSObject {
@@ -18,6 +19,21 @@ final class HomeDataProvider: NSObject {
 
     var selectedSegment = 0
     weak var delegate: HomeDataProviderDelegate?
+    var filteredNewTestament: [Book] = []
+    var isSearchBarEmpty: Bool = false {
+        didSet {
+            isSearchBarEmpty = delegate?.isSearchBarActive(true) ?? false
+        }
+    }
+
+    // MARK: - Search
+
+    func filterBookForSearchedText(_ searchText: String, completion: () -> Void) {
+        filteredNewTestament = dataManager.newTestament.filter( { book -> Bool in
+            return book.name.lowercased().contains(searchText.lowercased())
+        })
+        completion()
+    }
 }
 
 // MARK: - Extensions
@@ -27,8 +43,13 @@ extension HomeDataProvider: UICollectionViewDataSource {
     // MARK: - UICollectionViewDataSource
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
         if selectedSegment == 0 {
-            return dataManager.newTestament.count
+            if isSearchBarEmpty {
+                return filteredNewTestament.count
+            } else {
+                return dataManager.newTestament.count
+            }
         } else {
             return dataManager.oldTestament.count
         }
@@ -36,9 +57,15 @@ extension HomeDataProvider: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifier, for: indexPath) as? BookCollectionViewCell
+
         if selectedSegment == 0 {
-            cell?.setCell(book: dataManager.newTestament[indexPath.row])
-            return cell ?? UICollectionViewCell()
+            if isSearchBarEmpty {
+                cell?.setCell(book: filteredNewTestament[indexPath.row])
+                return cell ?? UICollectionViewCell()
+            } else {
+                cell?.setCell(book: dataManager.newTestament[indexPath.row])
+                return cell ?? UICollectionViewCell()
+            }
         } else {
             cell?.setCell(book: dataManager.oldTestament[indexPath.row])
             return cell ?? UICollectionViewCell()
