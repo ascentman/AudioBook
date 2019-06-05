@@ -28,6 +28,8 @@ final class HomeViewController: UIViewController {
         setupDefaultsSettings()
     }
 
+    // MARK: - SearchBar
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
     }
