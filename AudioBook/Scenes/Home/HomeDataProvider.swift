@@ -19,14 +19,21 @@ final class HomeDataProvider: NSObject {
     var selectedSegment = 0
     weak var delegate: HomeDataProviderDelegate?
     var filteredNewTestament: [Book] = []
+    var filteredOldTestament: [Book] = []
     var isSearchBarEmpty: Bool = true
 
     // MARK: - Search
 
     func filterBookForSearchedText(_ searchText: String, completion: () -> Void) {
-        filteredNewTestament = dataManager.newTestament.filter( { book -> Bool in
-            return book.name.lowercased().contains(searchText.lowercased())
-        })
+        if selectedSegment == 0 {
+            filteredNewTestament = dataManager.newTestament.filter( { book -> Bool in
+                return book.name.lowercased().contains(searchText.lowercased())
+            })
+        } else {
+            filteredOldTestament = dataManager.oldTestament.filter( { book -> Bool in
+                return book.name.lowercased().contains(searchText.lowercased())
+            })
+        }
         completion()
     }
 }
@@ -46,7 +53,11 @@ extension HomeDataProvider: UICollectionViewDataSource {
                 return dataManager.newTestament.count
             }
         } else {
-            return dataManager.oldTestament.count
+            if !isSearchBarEmpty {
+                return filteredOldTestament.count
+            } else {
+                return dataManager.oldTestament.count
+            }
         }
     }
 
@@ -62,8 +73,13 @@ extension HomeDataProvider: UICollectionViewDataSource {
                 return cell ?? UICollectionViewCell()
             }
         } else {
-            cell?.setCell(book: dataManager.oldTestament[indexPath.row])
-            return cell ?? UICollectionViewCell()
+            if !isSearchBarEmpty {
+                cell?.setCell(book: filteredOldTestament[indexPath.row])
+                return cell ?? UICollectionViewCell()
+            } else {
+                cell?.setCell(book: dataManager.oldTestament[indexPath.row])
+                return cell ?? UICollectionViewCell()
+            }
         }
     }
 }
