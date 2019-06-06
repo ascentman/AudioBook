@@ -10,7 +10,6 @@ import UIKit
 
 protocol HomeDataProviderDelegate: class {
     func goToDetails(_ selectedSegment: Int, index: Int)
-    func isSearchBarActive(_ state: Bool) -> Bool
 }
 
 final class HomeDataProvider: NSObject {
@@ -20,11 +19,7 @@ final class HomeDataProvider: NSObject {
     var selectedSegment = 0
     weak var delegate: HomeDataProviderDelegate?
     var filteredNewTestament: [Book] = []
-    var isSearchBarEmpty: Bool = false {
-        didSet {
-            isSearchBarEmpty = delegate?.isSearchBarActive(true) ?? false
-        }
-    }
+    var isSearchBarEmpty: Bool = true
 
     // MARK: - Search
 
@@ -45,7 +40,7 @@ extension HomeDataProvider: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
         if selectedSegment == 0 {
-            if isSearchBarEmpty {
+            if !isSearchBarEmpty {
                 return filteredNewTestament.count
             } else {
                 return dataManager.newTestament.count
@@ -59,7 +54,7 @@ extension HomeDataProvider: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifier, for: indexPath) as? BookCollectionViewCell
 
         if selectedSegment == 0 {
-            if isSearchBarEmpty {
+            if !isSearchBarEmpty {
                 cell?.setCell(book: filteredNewTestament[indexPath.row])
                 return cell ?? UICollectionViewCell()
             } else {

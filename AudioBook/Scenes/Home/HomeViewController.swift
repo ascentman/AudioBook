@@ -48,6 +48,13 @@ final class HomeViewController: UIViewController, SearchViewAnimatable {
     @IBAction func searchClicked(_ sender: Any) {
         showSearchBar(searchBar: searchBar)
     }
+
+    // MARK: - SearchViewAnimatable
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        hideSearchBar(searchBarButtonItem: searchBarButtonItem)
+        searchBar.text = ""
+    }
     
     // MARK: - Private
 
@@ -91,7 +98,7 @@ extension HomeViewController: HomeDataProviderDelegate {
         let storyboard = UIStoryboard(name: StoryboardName.details, bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: DetailsViewController.description()) as? DetailsViewController
         if selectedSegment == 0 {
-            if dataProvider.isSearchBarEmpty {
+            if !dataProvider.isSearchBarEmpty {
                 viewController?.title = dataProvider.filteredNewTestament[index].name
                 viewController?.dataProvider.fillChosen(book: dataProvider.filteredNewTestament[index])
             } else {
@@ -106,30 +113,16 @@ extension HomeViewController: HomeDataProviderDelegate {
             navigationController?.pushViewController(viewController, animated: true)
         }
     }
-
-    func isSearchBarActive(_ state: Bool) -> Bool {
-        return state
-    }
 }
 
 extension HomeViewController: UISearchBarDelegate {
 
     // MARK: - UISearchBarDelegate
 
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        hideSearchBar(searchBarButtonItem: searchBarButtonItem)
-        searchBar.text = ""
-        collectionView.reloadData()
-    }
-
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        dataProvider.isSearchBarEmpty = searchBar.text?.isEmpty ?? true
         dataProvider.filterBookForSearchedText(searchText) {
             collectionView.reloadData()
         }
-    }
-
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        let result = !(searchBar.text?.isEmpty ?? true)
-        _ = isSearchBarActive(result)
     }
 }
