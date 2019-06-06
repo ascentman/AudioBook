@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEO-sB-RjY">
-                                <rect key="frame" x="16" y="16" width="382" height="742"/>
+                                <rect key="frame" x="16" y="0.0" width="382" height="774"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
@@ -32,7 +32,7 @@
                                     <constraint firstAttribute="height" constant="80" id="bmH-9I-5l0"/>
                                     <constraint firstAttribute="width" constant="80" id="h0G-Pj-mfM"/>
                                 </constraints>
-                                <state key="normal" image="Oval-uah">
+                                <state key="normal" image="donateButton">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -43,8 +43,8 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="YEO-sB-RjY" firstAttribute="leading" secondItem="Kfa-N4-2e5" secondAttribute="leading" constant="16" id="3mH-Gy-hev"/>
-                            <constraint firstItem="Kfa-N4-2e5" firstAttribute="bottom" secondItem="YEO-sB-RjY" secondAttribute="bottom" constant="16" id="PuP-AM-pd2"/>
-                            <constraint firstItem="YEO-sB-RjY" firstAttribute="top" secondItem="Kfa-N4-2e5" secondAttribute="top" constant="16" id="Y1q-iT-ngL"/>
+                            <constraint firstItem="Kfa-N4-2e5" firstAttribute="bottom" secondItem="YEO-sB-RjY" secondAttribute="bottom" id="PuP-AM-pd2"/>
+                            <constraint firstItem="YEO-sB-RjY" firstAttribute="top" secondItem="Kfa-N4-2e5" secondAttribute="top" id="Y1q-iT-ngL"/>
                             <constraint firstItem="Kfa-N4-2e5" firstAttribute="bottom" secondItem="W8L-0Q-DAM" secondAttribute="bottom" constant="40" id="dhb-xr-LLt"/>
                             <constraint firstItem="Kfa-N4-2e5" firstAttribute="trailing" secondItem="W8L-0Q-DAM" secondAttribute="trailing" constant="40" id="vFp-sK-jww"/>
                             <constraint firstItem="YEO-sB-RjY" firstAttribute="trailing" secondItem="Kfa-N4-2e5" secondAttribute="trailing" constant="-16" id="xqS-lm-5Cc"/>
@@ -53,6 +53,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Про програму" id="tN3-Df-8uy"/>
                     <connections>
+                        <outlet property="donateButton" destination="W8L-0Q-DAM" id="hSk-Uc-NQd"/>
                         <outlet property="generalTextView" destination="YEO-sB-RjY" id="gRH-Jq-Uxq"/>
                     </connections>
                 </viewController>
@@ -110,8 +111,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Oval-uah" width="76" height="76"/>
         <image name="back-arrow-circular-symbol" width="32" height="32"/>
+        <image name="donateButton" width="90" height="90"/>
         <image name="info50" width="25" height="25"/>
     </resources>
 </document>

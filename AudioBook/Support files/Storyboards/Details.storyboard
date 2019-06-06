@@ -15,11 +15,11 @@
             <objects>
                 <viewController storyboardIdentifier="AudioBook.DetailsViewController" id="jjP-xC-yJj" customClass="DetailsViewController" customModule="AudioBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YWX-zx-xeH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WpO-PW-Bov">
-                                <rect key="frame" x="0.0" y="507" width="375" height="160"/>
+                                <rect key="frame" x="0.0" y="443" width="375" height="160"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="J2S-jm-sj4"/>
@@ -29,7 +29,7 @@
                                 </connections>
                             </containerView>
                             <collectionView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3dH-SR-sSW">
-                                <rect key="frame" x="0.0" y="64" width="375" height="443"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="443"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="aNG-2t-8Tv">
                                     <size key="itemSize" width="102" height="54"/>
@@ -263,9 +263,14 @@
             <objects>
                 <navigationController storyboardIdentifier="toChapter" automaticallyAdjustsScrollViewInsets="NO" id="3ar-m5-Ahy" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="w50-YX-yee">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="w50-YX-yee">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.098039215690000001" green="0.54901960780000003" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
