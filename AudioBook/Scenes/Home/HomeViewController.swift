@@ -53,7 +53,6 @@ final class HomeViewController: UIViewController, SearchViewAnimatable {
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         hideSearchBar(searchBarButtonItem: searchBarButtonItem)
-        searchBar.text = ""
     }
     
     // MARK: - Private
@@ -91,7 +90,6 @@ extension HomeViewController: HomeDataProviderDelegate {
 
     func goToDetails(_ selectedSegment: Int, index: Int) {
         navigationItem.titleView = nil
-        searchBar.text = ""
         hideSearchBar(searchBarButtonItem: searchBarButtonItem)
         collectionView.reloadData()
 

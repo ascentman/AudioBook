@@ -15,7 +15,6 @@ protocol HomeDataProviderDelegate: class {
 final class HomeDataProvider: NSObject {
 
     let dataManager = DataSource()
-
     var selectedSegment = 0
     weak var delegate: HomeDataProviderDelegate?
     var filteredNewTestament: [Book] = []
