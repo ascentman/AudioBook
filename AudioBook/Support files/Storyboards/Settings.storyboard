@@ -44,7 +44,7 @@
                         <sections>
                             <tableViewSection headerTitle="Аудіо" footerTitle="Дозволяє задати час у секундах, на який перемотувати аудіофайл, використовуючи кнопки плеєра" id="okJ-ud-yaE">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="8Bs-0N-I9f">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="8Bs-0N-I9f">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Bs-0N-I9f" id="SNX-XX-VwP">

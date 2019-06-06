@@ -8,12 +8,15 @@
 
 import UIKit
 
-class AboutViewController: UIViewController {
+final class AboutViewController: UIViewController {
+
+    @IBOutlet weak var generalTextView: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupNavigationBar()
+        generalTextView.alwaysBounceVertical = true
     }
 
     // MARK: - Private

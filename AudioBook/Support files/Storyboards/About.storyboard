@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8rj-8X-EBV">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Про програму-->
+        <scene sceneID="Wr0-Aw-fc7">
+            <objects>
+                <viewController id="3bW-Bt-51D" customClass="AboutViewController" customModule="AudioBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dla-QF-rvS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEO-sB-RjY">
+                                <rect key="frame" x="16" y="16" width="382" height="742"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W8L-0Q-DAM">
+                                <rect key="frame" x="294" y="654" width="80" height="80"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="bmH-9I-5l0"/>
+                                    <constraint firstAttribute="width" constant="80" id="h0G-Pj-mfM"/>
+                                </constraints>
+                                <state key="normal" image="Oval-uah">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="f4Q-Je-aaY" kind="show" id="aO0-bD-6be"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YEO-sB-RjY" firstAttribute="leading" secondItem="Kfa-N4-2e5" secondAttribute="leading" constant="16" id="3mH-Gy-hev"/>
+                            <constraint firstItem="Kfa-N4-2e5" firstAttribute="bottom" secondItem="YEO-sB-RjY" secondAttribute="bottom" constant="16" id="PuP-AM-pd2"/>
+                            <constraint firstItem="YEO-sB-RjY" firstAttribute="top" secondItem="Kfa-N4-2e5" secondAttribute="top" constant="16" id="Y1q-iT-ngL"/>
+                            <constraint firstItem="Kfa-N4-2e5" firstAttribute="bottom" secondItem="W8L-0Q-DAM" secondAttribute="bottom" constant="40" id="dhb-xr-LLt"/>
+                            <constraint firstItem="Kfa-N4-2e5" firstAttribute="trailing" secondItem="W8L-0Q-DAM" secondAttribute="trailing" constant="40" id="vFp-sK-jww"/>
+                            <constraint firstItem="YEO-sB-RjY" firstAttribute="trailing" secondItem="Kfa-N4-2e5" secondAttribute="trailing" constant="-16" id="xqS-lm-5Cc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Kfa-N4-2e5"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Про програму" id="tN3-Df-8uy"/>
+                    <connections>
+                        <outlet property="generalTextView" destination="YEO-sB-RjY" id="gRH-Jq-Uxq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4q2-YT-uBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1719.2" y="804.64767616191909"/>
+        </scene>
+        <!--Підтримати проект-->
+        <scene sceneID="Obq-CQ-oWg">
+            <objects>
+                <viewController id="f4Q-Je-aaY" customClass="SupportViewController" customModule="AudioBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lwf-YQ-uVf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="lQy-ui-Rtg"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Підтримати проект" id="CCf-yp-pcG">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="back-arrow-circular-symbol" id="mgl-WD-KxU">
+                            <color key="tintColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="backAction:" destination="f4Q-Je-aaY" id="9oS-0b-TF7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="36S-iH-4vE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-870" y="805"/>
+        </scene>
+        <!--Про програму-->
+        <scene sceneID="rzZ-vp-0AF">
+            <objects>
+                <navigationController storyboardIdentifier="toAbout" automaticallyAdjustsScrollViewInsets="NO" id="8rj-8X-EBV" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Про програму" image="info50" id="HRW-Co-YH2"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" backIndicatorImage="back-arrow-circular-symbol" backIndicatorTransitionMaskImage="back-arrow-circular-symbol" id="boD-ku-7b0">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.098039215690000001" green="0.54901960780000003" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.098039215690000001" green="0.54901960780000003" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3bW-Bt-51D" kind="relationship" relationship="rootViewController" id="l4S-lv-bkt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jAv-Ee-zVB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2586" y="805"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Oval-uah" width="76" height="76"/>
+        <image name="back-arrow-circular-symbol" width="32" height="32"/>
+        <image name="info50" width="25" height="25"/>
+    </resources>
+</document>

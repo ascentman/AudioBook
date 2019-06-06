@@ -23,6 +23,8 @@
 		CE568F2D22625E49000D0A3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE568F2B22625E49000D0A3B /* Main.storyboard */; };
 		CE568F2F22625E4A000D0A3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE568F2E22625E4A000D0A3B /* Assets.xcassets */; };
 		CE60FC0E22A71B6100A71626 /* SearchViewAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60FC0D22A71B6100A71626 /* SearchViewAnimatable.swift */; };
+		CE6FEC9922A9BE0D00CAC507 /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FEC9822A9BE0D00CAC507 /* SupportViewController.swift */; };
+		CE6FEC9B22A9C1C500CAC507 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6FEC9A22A9C1C500CAC507 /* About.storyboard */; };
 		CE86F69C22913E4200138628 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE86F69B22913E4200138628 /* Start.storyboard */; };
 		CE86F69F2291410C00138628 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE86F69E2291410C00138628 /* StartViewController.swift */; };
 		CE86F6C42291F17D00138628 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE86F6C32291F17D00138628 /* SettingsTableViewController.swift */; };
@@ -63,6 +65,8 @@
 		CE568F2E22625E4A000D0A3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE568F3322625E4A000D0A3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE60FC0D22A71B6100A71626 /* SearchViewAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewAnimatable.swift; sourceTree = "<group>"; };
+		CE6FEC9822A9BE0D00CAC507 /* SupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SupportViewController.swift; path = ../Settings/SupportViewController.swift; sourceTree = "<group>"; };
+		CE6FEC9A22A9C1C500CAC507 /* About.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
 		CE86F69B22913E4200138628 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		CE86F69E2291410C00138628 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		CE86F6C32291F17D00138628 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -245,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				CE86F6C62291FFFE00138628 /* AboutViewController.swift */,
+				CE6FEC9822A9BE0D00CAC507 /* SupportViewController.swift */,
 			);
 			path = About;
 			sourceTree = "<group>";
@@ -258,6 +263,7 @@
 				CE86F69B22913E4200138628 /* Start.storyboard */,
 				CEB3F4FD2293C5C600DDDC83 /* Launch Screen.storyboard */,
 				CEB723B922984B63006B6302 /* Settings.storyboard */,
+				CE6FEC9A22A9C1C500CAC507 /* About.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -367,6 +373,7 @@
 				CE29C8412270FAA5003FDAB6 /* BookCollectionViewCell.xib in Resources */,
 				CEB723BA22984B63006B6302 /* Settings.storyboard in Resources */,
 				CE86F69C22913E4200138628 /* Start.storyboard in Resources */,
+				CE6FEC9B22A9C1C500CAC507 /* About.storyboard in Resources */,
 				CE568F2F22625E4A000D0A3B /* Assets.xcassets in Resources */,
 				CE568F2D22625E49000D0A3B /* Main.storyboard in Resources */,
 				CEB3F4FE2293C5C600DDDC83 /* Launch Screen.storyboard in Resources */,
@@ -387,6 +394,7 @@
 				CED6C3EF227E54B4008DBAC9 /* FileHandler.swift in Sources */,
 				CE568F2822625E49000D0A3B /* AppDelegate.swift in Sources */,
 				CE86F69F2291410C00138628 /* StartViewController.swift in Sources */,
+				CE6FEC9922A9BE0D00CAC507 /* SupportViewController.swift in Sources */,
 				CED6C3EA227E3C3E008DBAC9 /* BookOnline.swift in Sources */,
 				CE12A9E62278C97F00CDB66E /* DetailsDataProvider.swift in Sources */,
 				CE29C83F2270F82E003FDAB6 /* DataSource.swift in Sources */,

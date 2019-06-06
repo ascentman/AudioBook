@@ -30,7 +30,7 @@
                             </containerView>
                             <collectionView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3dH-SR-sSW">
                                 <rect key="frame" x="0.0" y="64" width="375" height="443"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="aNG-2t-8Tv">
                                     <size key="itemSize" width="102" height="54"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
