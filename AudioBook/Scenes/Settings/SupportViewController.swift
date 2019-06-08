@@ -17,6 +17,19 @@ final class SupportViewController: UIViewController {
     @IBOutlet private weak var privateImageView: UIImageView!
     @IBOutlet weak var monoView: UIView!
     @IBOutlet weak var privateView: UIView!
+
+    private enum Constants {
+        static let info = "Інформація"
+        static let monoText = "Номер картки Монобанку скопійовано"
+        static let privateText = "Номер картки Приватбанку скопійовано"
+        static let monoNumber = "2233"
+        static let monoImage = "mono"
+        static let privateNumber = "233233"
+        static let privateImage = "privat24New"
+        static let ok = "OK"
+        static let feedback = "Відгук про Аудіо Біблію"
+        static let emailTo = "ascentman@icloud.com"
+    }
     
     // MARK: - Lifecycle
 
@@ -40,10 +53,10 @@ final class SupportViewController: UIViewController {
     // MARK: - Private
 
     private func setupUI() {
-        monoImageView.image = UIImage(named: "mono")
-        privateImageView.image = UIImage(named: "privat24New")
-        monoLabel.text = "1122222414141451"
-        privateLabel.text = "112222241414142"
+        monoImageView.image = UIImage(named: Constants.monoImage)
+        privateImageView.image = UIImage(named: Constants.privateImage)
+        monoLabel.text = Constants.monoNumber
+        privateLabel.text = Constants.privateText
     }
 
     private func addGestureRecognizer() {
@@ -56,14 +69,14 @@ final class SupportViewController: UIViewController {
 
     @objc func monoTapped(_ sender: UITapGestureRecognizer) {
         let pasteboard = UIPasteboard.general
-        pasteboard.string = "1122222414141451"
-        presentAlert("Інформація", message: "Номер картки Монобанку скопійовано", acceptTitle: "ОК", declineTitle: nil)
+        pasteboard.string = Constants.monoNumber
+        presentAlert(Constants.info, message: Constants.monoText, acceptTitle: Constants.ok, declineTitle: nil)
     }
 
     @objc func privateTapped(_ sender: UITapGestureRecognizer) {
         let pasteboard = UIPasteboard.general
-        pasteboard.string = "112222241414142"
-        presentAlert("Інформація", message: "Номер картки Приватбанку скопійовано", acceptTitle: "ОК", declineTitle: nil)
+        pasteboard.string = Constants.privateNumber
+        presentAlert(Constants.info, message: Constants.privateText, acceptTitle: Constants.ok, declineTitle: nil)
     }
 
     private func showMailComposer() {
@@ -73,8 +86,8 @@ final class SupportViewController: UIViewController {
 
         let composer = MFMailComposeViewController()
         composer.mailComposeDelegate = self
-        composer.setToRecipients(["ascentman@icloud.com"])
-        composer.setSubject("Відгук про Аудіо Біблію")
+        composer.setToRecipients([Constants.emailTo])
+        composer.setSubject(Constants.feedback)
         present(composer, animated: true, completion: nil)
     }
 }

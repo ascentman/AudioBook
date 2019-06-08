@@ -16,6 +16,11 @@ final class HomeViewController: UIViewController, SearchViewAnimatable {
     @IBOutlet private var searchBarButtonItem: UIBarButtonItem!
     private var searchBar = UISearchBar()
 
+    private enum Constants {
+        static let info = "Інформація"
+        static let ok = "OK"
+    }
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -73,7 +78,7 @@ final class HomeViewController: UIViewController, SearchViewAnimatable {
         if UserDefaults.standard.historySaving {
             let lastListened = UserDefaults.standard.lastListened
             if !lastListened.isEmpty {
-                presentAlert("Інформація", message: "Ви зупинилися на: \(lastListened)", acceptTitle: "OK", declineTitle: nil)
+                presentAlert(Constants.info, message: "Ви зупинилися на: \(lastListened)", acceptTitle: Constants.ok, declineTitle: nil)
             }
         }
     }

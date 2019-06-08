@@ -13,6 +13,10 @@ final class AboutViewController: UIViewController {
     @IBOutlet weak var generalTextView: UITextView!
     @IBOutlet weak var donateButton: UIButton!
 
+    private enum Constants {
+        static let rtfFile = "About"
+    }
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -54,7 +58,7 @@ final class AboutViewController: UIViewController {
     }
 
     private func setupTextView() {
-        if let rtfPath = Bundle.main.url(forResource: "About", withExtension: "rtf") {
+        if let rtfPath = Bundle.main.url(forResource: Constants.rtfFile, withExtension: "rtf") {
             do {
                 let attributedStringWithRtf = try NSAttributedString(url: rtfPath,
                                                                      options: [.documentType: NSAttributedString.DocumentType.rtf],

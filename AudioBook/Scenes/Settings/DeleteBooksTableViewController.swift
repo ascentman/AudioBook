@@ -15,6 +15,12 @@ final class DeleteBooksTableViewController: UITableViewController {
     private var foundBooks: [String] = []
     private let fileHandler = FileHandler()
 
+    private enum Constants {
+        static let done = "Готово"
+        static let edit = "Редагувати"
+        static let delete = "Видалити"
+    }
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -26,7 +32,7 @@ final class DeleteBooksTableViewController: UITableViewController {
 
     @IBAction func editPressed(_ sender: UIBarButtonItem) {
         tableView.isEditing = !tableView.isEditing
-        sender.title = tableView.isEditing ? "Завершити" : "Редагувати"
+        sender.title = tableView.isEditing ? Constants.done  : Constants.edit
     }
 
     // MARK: - Data Source & Deledate
@@ -50,7 +56,7 @@ final class DeleteBooksTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .destructive, title: "Видалити") { [weak self] (_, _, _) in
+        let deleteAction = UIContextualAction(style: .destructive, title: Constants.delete) { [weak self] (_, _, _) in
             self?.deleteBook(indexPath: indexPath)
         }
         deleteAction.backgroundColor = .red

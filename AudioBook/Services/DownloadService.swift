@@ -90,7 +90,7 @@ extension DownloadService: URLSessionDownloadDelegate {
             try fileManager.copyItem(at: location, to: destinationURL)
             download?.track.downloaded = true
         } catch let error {
-            assertionFailure("Could not copy file to disk: \(error.localizedDescription)")
+            assertionFailure(error.localizedDescription)
         }
         if let index = Int(sourceURL.deletingPathExtension().lastPathComponent) {
             DispatchQueue.main.async {

@@ -15,11 +15,6 @@ protocol PlayerViewControllerDelegate: class {
 
 final class PlayerViewController: UIViewController {
 
-    private enum Constants {
-        static let seekDuration: Float64 = UserDefaults.standard.rewindTime
-        static let timeFormat: String = "%02d"
-    }
-
     @IBOutlet private weak var slider: UISlider!
     @IBOutlet private weak var previousButton: UIButton!
     @IBOutlet private weak var moveBackButton: UIButton!
@@ -31,13 +26,11 @@ final class PlayerViewController: UIViewController {
     @IBOutlet private weak var durationLabel: UILabel!
 
     private var timeObserver: Any?
-
     private var labelTitle = "" {
         didSet {
             trackLabel?.text = labelTitle
         }
     }
-
     private var currentBook: Book?
     private var currentChapter: Int = 1
 
@@ -45,6 +38,18 @@ final class PlayerViewController: UIViewController {
     private let fileHandler = FileHandler()
 
     weak var delegate: PlayerViewControllerDelegate?
+
+    private enum Constants {
+        static let seekDuration: Float64 = UserDefaults.standard.rewindTime
+        static let timeFormat: String = "%02d"
+        static let info = "Інформація"
+        static let noInternetMessage = "На жаль, на даний момент відсутнє інтернет зєднання і дана книга не завантажена, щоб слухати її офлайн. Перепідключіться і спробуйте ще раз"
+        static let ok = "ОK"
+        static let playImage = "play"
+        static let pauseImage = "pause"
+        static let thumbImage = "oval"
+        static let thumbImage2 = "oval2"
+    }
 
     // MARK: - Lifecycle
 
@@ -73,10 +78,10 @@ final class PlayerViewController: UIViewController {
         
         if player.timeControlStatus == .playing {
             player.pause()
-            setupImageForPlayButton(name: "play")
+            setupImageForPlayButton(name: Constants.playImage)
         } else if player.timeControlStatus == .paused {
             player.play()
-            setupImageForPlayButton(name: "pause")
+            setupImageForPlayButton(name: Constants.pauseImage)
         }
     }
 
@@ -124,7 +129,7 @@ final class PlayerViewController: UIViewController {
             if NetworkService.isConnectedToNetwork() {
                 startUrl = URL(string: book.bookUrl)?.appendingPathComponent(String(chapter)).appendingPathExtension("mp3")
             } else {
-                presentAlert("Інформація", message: "На жаль, на даний момент відсутнє інтернет зєднання і дана книга не завантажена, щоб слухати її офлайн. Перепідключіться і спробуйте ще раз", acceptTitle: "ОK", declineTitle: nil)
+                presentAlert(Constants.info, message: Constants.noInternetMessage, acceptTitle: Constants.ok, declineTitle: nil)
                 return
             }
         }
@@ -134,7 +139,7 @@ final class PlayerViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidFinishPlaying(sender:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
         player.replaceCurrentItem(with: playerItem)
         player.play()
-        setupImageForPlayButton(name: "pause")
+        setupImageForPlayButton(name: Constants.pauseImage)
         setupPeriodicTimeObserver(player: player, asset: asset)
     }
 
@@ -149,8 +154,8 @@ final class PlayerViewController: UIViewController {
     }
 
     private func setupSlider() {
-        slider.setThumbImage(UIImage(named: "oval"), for: .normal)
-        slider.setThumbImage(UIImage(named: "oval2"), for: .highlighted)
+        slider.setThumbImage(UIImage(named: Constants.thumbImage), for: .normal)
+        slider.setThumbImage(UIImage(named: Constants.thumbImage2), for: .highlighted)
     }
 
     private func setupLocalUrl(book: Book, from chapter: Int) -> URL? {

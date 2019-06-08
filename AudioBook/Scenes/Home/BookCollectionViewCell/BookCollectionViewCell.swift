@@ -14,6 +14,8 @@ final class BookCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var someLabel: UILabel!
     @IBOutlet private weak var backImageView: UIImageView!
 
+    // MARK - Lifecycle
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -25,6 +27,8 @@ final class BookCollectionViewCell: UICollectionViewCell {
         someLabel.text = nil
 
     }
+
+    // MARK: - Configuration
 
     func setCell(book: Book) {
         someLabel.text = book.name

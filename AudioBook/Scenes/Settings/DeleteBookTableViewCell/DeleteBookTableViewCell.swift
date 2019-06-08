@@ -14,10 +14,6 @@ final class DeleteBookTableViewCell: UITableViewCell {
 
     // MARK: - Lifecycle
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
     override func prepareForReuse() {
         deleteBookLabel.text = nil
     }

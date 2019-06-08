@@ -31,7 +31,7 @@ final class FileHandler {
             do {
                 try fileManager.createDirectory(at: bookDirectory, withIntermediateDirectories: true, attributes: nil)
             } catch {
-                assertionFailure("Error: can't create book directory")
+                assertionFailure("Error: can't create a book directory")
             }
         }
     }

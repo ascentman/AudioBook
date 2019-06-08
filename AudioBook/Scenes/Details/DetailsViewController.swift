@@ -20,7 +20,20 @@ final class DetailsViewController: UIViewController {
     @IBOutlet private weak var playerView: UIView!
     private var state: ActiveState = .normal
     private var bookOnline: BookOnline?
-    
+
+    private enum Constants {
+        static let backItemImage = "back-arrow-circular-symbol"
+        static let info = "Інформація"
+        static let ok = "OK"
+        static let cancel = "Скасувати"
+        static let proceed = "Продовжити"
+        static let reload = "Перезавантажити"
+        static let download = "Завантажити"
+        static let loading = "Завантаження у прогресі..."
+        static let chaptersDownloaded = "Усі розділи уже завантажені"
+        static let chaptersNotDownloaded = "Не всі розділи завантажені"
+        static let downloadBook = "Завантажити цю книгу і слухати без інтернету?"
+    }
 
     // MARK: - Lifecycle
 
@@ -77,13 +90,13 @@ final class DetailsViewController: UIViewController {
         dataProvider.downloadSpecific(book: bookOnline) { status in
             switch status {
             case .finished:
-                presentAlert("Інформація", message: "Усі розділи уже завантажені", acceptTitle: "Ok", declineTitle: nil)
+                presentAlert(Constants.info, message: Constants.chaptersDownloaded, acceptTitle: Constants.ok, declineTitle: nil)
             case .partly:
-                presentAlert("Інформація", message: "Не всі розділи завантажені", acceptTitle: "Перезавантажити", declineTitle: nil, okActionHandler: {
+                presentAlert(Constants.info, message: Constants.chaptersNotDownloaded, acceptTitle: Constants.reload, declineTitle: nil, okActionHandler: {
                     DownloadService.shared.startDownload(bookOnline)
                 }, cancelActionHandler: nil)
             case .notStarted:
-                presentAlert("Інформація", message: "Завантажити цю книгу і слухати без інтернету?", acceptTitle: "Завантажити", declineTitle: "Скасувати", okActionHandler: {
+                presentAlert(Constants.info, message: Constants.downloadBook, acceptTitle: Constants.download, declineTitle: Constants.cancel, okActionHandler: {
                     DownloadService.shared.startDownload(bookOnline)
                 }, cancelActionHandler: nil)
             }
@@ -114,13 +127,13 @@ final class DetailsViewController: UIViewController {
     private func setupCustomBackItem() {
         navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.backPressed(_:)))
-        newBackButton.setBackgroundImage(UIImage(named: "back-arrow-circular-symbol"), for: .normal, barMetrics: .default)
+        newBackButton.setBackgroundImage(UIImage(named: Constants.backItemImage), for: .normal, barMetrics: .default)
         self.navigationItem.leftBarButtonItem = newBackButton
     }
 
     @objc func backPressed(_ sender: UIBarButtonItem) {
         if state == .downloading {
-            presentAlert("Інформація", message: "Завантаження у прогресі...", acceptTitle: "Продовжити", declineTitle: "Скасувати", okActionHandler: nil) { [weak self] in
+            presentAlert(Constants.info, message: Constants.loading, acceptTitle: Constants.proceed, declineTitle: Constants.cancel, okActionHandler: nil) { [weak self] in
                 DownloadService.shared.cancelDownload()
                 if let book = self?.bookOnline {
                     self?.dataProvider.fileHandler.remove(book: book, completion: { _ in })
