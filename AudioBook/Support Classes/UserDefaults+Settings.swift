@@ -11,6 +11,7 @@ import Foundation
 private enum Constants {
     static let rewindTime = "rewindTime"
     static let lastListened = "lastListened"
+    static let historySaving = "historySaving"
 }
 
 extension UserDefaults {
@@ -27,6 +28,12 @@ extension UserDefaults {
         }
     }
 
+    var historySaving: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: Constants.historySaving)
+        }
+    }
+
     func isRewindTimePresentInUserDefaults() -> Bool {
         return UserDefaults.standard.object(forKey: Constants.rewindTime) != nil
     }
@@ -37,5 +44,9 @@ extension UserDefaults {
 
     func updateLastListened(_ value: String) {
         UserDefaults.standard.set(value, forKey: Constants.lastListened)
+    }
+
+    func updateHistorySaving(_ value: Bool) {
+        UserDefaults.standard.set(value, forKey: Constants.historySaving)
     }
 }

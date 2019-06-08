@@ -20,6 +20,7 @@ final class DetailsViewController: UIViewController {
     @IBOutlet private weak var playerView: UIView!
     private var state: ActiveState = .normal
     private var bookOnline: BookOnline?
+    
 
     // MARK: - Lifecycle
 

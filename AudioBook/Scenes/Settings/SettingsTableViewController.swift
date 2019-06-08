@@ -13,6 +13,8 @@ final class SettingsTableViewController: UITableViewController {
     // first section
     @IBOutlet private weak var rewindLabel: UILabel!
     @IBOutlet private weak var rewindStepper: UIStepper!
+    // second section
+    @IBOutlet private weak var historySwitch: UISwitch!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,10 @@ final class SettingsTableViewController: UITableViewController {
     @IBAction func timeChangePressed(_ sender: UIStepper) {
         rewindLabel.text = sender.value.description
         UserDefaults.standard.updateRewindTime(Float64(sender.value))
+    }
+
+    @IBAction func historySwitchPressed(_ sender: UISwitch) {
+        UserDefaults.standard.updateHistorySaving(sender.isOn)
     }
 
     // MARK: - Private
@@ -48,5 +54,6 @@ final class SettingsTableViewController: UITableViewController {
 
     private func setupSettings() {
         rewindLabel.text = String(UserDefaults.standard.rewindTime)
+        historySwitch.isOn = UserDefaults.standard.historySaving
     }
 }

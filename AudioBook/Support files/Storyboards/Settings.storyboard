@@ -88,10 +88,49 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Історія відтворення" footerTitle="Включена історія відтворення зберігає книгу і розділ, на якому ви востаннє зупинилися перед виходом із програми" id="gRA-VL-nQR">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="pnC-ud-wcu">
+                                        <rect key="frame" x="0.0" y="207" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pnC-ud-wcu" id="15X-v0-dG2">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ib5-qb-WGz">
+                                                    <rect key="frame" x="15" y="6.5" width="344" height="31"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Історія відтворення" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ttf-G0-jH0">
+                                                            <rect key="frame" x="0.0" y="4.5" width="200" height="22"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="TLO-k6-lNp"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="18"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ko4-2N-Qll">
+                                                            <rect key="frame" x="295" y="0.0" width="51" height="31"/>
+                                                            <connections>
+                                                                <action selector="historySwitchPressed:" destination="Fy0-vf-8Na" eventType="valueChanged" id="BWi-vg-KmU"/>
+                                                            </connections>
+                                                        </switch>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ib5-qb-WGz" firstAttribute="centerY" secondItem="15X-v0-dG2" secondAttribute="centerY" id="UJg-5L-CwL"/>
+                                                <constraint firstAttribute="trailing" secondItem="ib5-qb-WGz" secondAttribute="trailing" constant="16" id="iJG-TN-DbL"/>
+                                                <constraint firstItem="ib5-qb-WGz" firstAttribute="leading" secondItem="15X-v0-dG2" secondAttribute="leading" constant="15" id="qhw-NB-tMs"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Управління завантаженнями" footerTitle="Дозволяє видаляти завантажені раніше книги, для того, щоб зменшити загальний розмір програми" id="7R4-4n-fO3">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="deleteBooks" id="Z8M-fq-anL">
-                                        <rect key="frame" x="0.0" y="207" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="358.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z8M-fq-anL" id="rMO-7j-S8h">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -123,6 +162,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Налаштування" id="5kZ-0Y-ecE"/>
                     <connections>
+                        <outlet property="historySwitch" destination="ko4-2N-Qll" id="LEy-Wm-WMe"/>
                         <outlet property="rewindLabel" destination="vfW-LO-UbT" id="bgX-Xf-8Wx"/>
                         <outlet property="rewindStepper" destination="Rq6-4b-GEd" id="7z4-BP-zPA"/>
                     </connections>

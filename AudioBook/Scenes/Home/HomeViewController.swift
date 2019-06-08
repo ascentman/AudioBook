@@ -27,6 +27,18 @@ final class HomeViewController: UIViewController, SearchViewAnimatable {
         setupNavigationBar()
         setupSearchBar(searchBar: searchBar)
         setupDefaultsSettings()
+        showLastListenedAlert()
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(showLastListenedAlert),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIApplication.didBecomeActiveNotification,
+                                                  object: nil)
     }
 
     // MARK: - SearchBar
@@ -56,6 +68,15 @@ final class HomeViewController: UIViewController, SearchViewAnimatable {
     }
     
     // MARK: - Private
+
+    @objc private func showLastListenedAlert() {
+        if UserDefaults.standard.historySaving {
+            let lastListened = UserDefaults.standard.lastListened
+            if !lastListened.isEmpty {
+                presentAlert("Інформація", message: "Ви зупинилися на: \(lastListened)", acceptTitle: "OK", declineTitle: nil)
+            }
+        }
+    }
 
     private func setupNavigationBar() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
