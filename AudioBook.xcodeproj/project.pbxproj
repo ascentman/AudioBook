@@ -44,6 +44,8 @@
 		CEEAB9E5229DBF9700A8E345 /* UserDefaults+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEAB9E4229DBF9700A8E345 /* UserDefaults+Settings.swift */; };
 		CEEAB9E8229DE5AB00A8E345 /* DeleteBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEAB9E7229DE5AB00A8E345 /* DeleteBookTableViewCell.swift */; };
 		CEEAB9EA229DF7CB00A8E345 /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEAB9E9229DF7CB00A8E345 /* Dictionary+Extensions.swift */; };
+		CEEE244F22AB369100402081 /* About.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CEEE244E22AB369100402081 /* About.rtf */; };
+		CEEE245122ABD3A300402081 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEE245022ABD3A300402081 /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +88,8 @@
 		CEEAB9E4229DBF9700A8E345 /* UserDefaults+Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Settings.swift"; sourceTree = "<group>"; };
 		CEEAB9E7229DE5AB00A8E345 /* DeleteBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBookTableViewCell.swift; sourceTree = "<group>"; };
 		CEEAB9E9229DF7CB00A8E345 /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
+		CEEE244E22AB369100402081 /* About.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = About.rtf; sourceTree = "<group>"; };
+		CEEE245022ABD3A300402081 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +226,7 @@
 				CE9E0E152275964E00E214C1 /* Storyboards */,
 				CE568F2E22625E4A000D0A3B /* Assets.xcassets */,
 				CE568F2722625E49000D0A3B /* AppDelegate.swift */,
+				CEEE244E22AB369100402081 /* About.rtf */,
 				CE568F3322625E4A000D0A3B /* Info.plist */,
 			);
 			path = "Support files";
@@ -292,6 +297,7 @@
 			children = (
 				CED6C3EC227E3D16008DBAC9 /* DownloadService.swift */,
 				CED6C3EE227E54B4008DBAC9 /* FileHandler.swift */,
+				CEEE245022ABD3A300402081 /* NetworkService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -372,6 +378,7 @@
 				CE9E0E1C227856B000E214C1 /* PlayerIcons.xcassets in Resources */,
 				CE29C8412270FAA5003FDAB6 /* BookCollectionViewCell.xib in Resources */,
 				CEB723BA22984B63006B6302 /* Settings.storyboard in Resources */,
+				CEEE244F22AB369100402081 /* About.rtf in Resources */,
 				CE86F69C22913E4200138628 /* Start.storyboard in Resources */,
 				CE6FEC9B22A9C1C500CAC507 /* About.storyboard in Resources */,
 				CE568F2F22625E4A000D0A3B /* Assets.xcassets in Resources */,
@@ -414,6 +421,7 @@
 				CEC82102226C902600A1AA8D /* HomeViewController.swift in Sources */,
 				CEEAB9EA229DF7CB00A8E345 /* Dictionary+Extensions.swift in Sources */,
 				CE12A9CC22786E4000CDB66E /* PlayerViewController.swift in Sources */,
+				CEEE245122ABD3A300402081 /* NetworkService.swift in Sources */,
 				CE86F6C42291F17D00138628 /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

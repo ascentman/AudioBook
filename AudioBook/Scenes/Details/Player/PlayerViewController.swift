@@ -121,7 +121,12 @@ final class PlayerViewController: UIViewController {
         if isLocal {
             startUrl = setupLocalUrl(book: book, from: chapter)
         } else {
-            startUrl = URL(string: book.bookUrl)?.appendingPathComponent(String(chapter)).appendingPathExtension("mp3")
+            if NetworkService.isConnectedToNetwork() {
+                startUrl = URL(string: book.bookUrl)?.appendingPathComponent(String(chapter)).appendingPathExtension("mp3")
+            } else {
+                presentAlert("Інформація", message: "На жаль, на даний момент відсутнє інтернет зєднання і дана книга не завантажена, щоб слухати її офлайн. Перепідключіться і спробуйте ще раз", acceptTitle: "ОK", declineTitle: nil)
+                return
+            }
         }
         let asset = AVAsset(url: startUrl!)
         let playerItem = AVPlayerItem(asset: asset)
