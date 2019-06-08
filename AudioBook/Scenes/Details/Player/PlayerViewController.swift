@@ -141,6 +141,9 @@ final class PlayerViewController: UIViewController {
         player.play()
         setupImageForPlayButton(name: Constants.pauseImage)
         setupPeriodicTimeObserver(player: player, asset: asset)
+    
+        let lastListened = "\(book.name) - розділ \(chapter)"
+        UserDefaults.standard.updateLastListened(lastListened)
     }
 
     // MARK: - Private
@@ -197,6 +200,13 @@ final class PlayerViewController: UIViewController {
         let durationSeconds = CMTimeGetSeconds(asset.duration)
         timeObserver = player.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main) {
             [weak self] progressTime in
+
+            if player.currentItem?.status == .readyToPlay {
+                if let isPlaybackLikelyToKeepUp = self?.player.currentItem?.isPlaybackLikelyToKeepUp {
+                    print("youououououo")
+                }
+            }
+
             let seconds = CMTimeGetSeconds(progressTime)
             let minutesText = String(format: Constants.timeFormat, Int(seconds) / 60)
             let secondsText = String(format: Constants.timeFormat, Int(seconds) % 60)

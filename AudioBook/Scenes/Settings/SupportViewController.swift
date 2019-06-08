@@ -22,9 +22,9 @@ final class SupportViewController: UIViewController {
         static let info = "Інформація"
         static let monoText = "Номер картки Монобанку скопійовано"
         static let privateText = "Номер картки Приватбанку скопійовано"
-        static let monoNumber = "2233"
+        static let monoNumber = "5375414100958965"
         static let monoImage = "mono"
-        static let privateNumber = "233233"
+        static let privateNumber = "5168755105375840"
         static let privateImage = "privat24New"
         static let ok = "OK"
         static let feedback = "Відгук про Аудіо Біблію"
@@ -56,7 +56,7 @@ final class SupportViewController: UIViewController {
         monoImageView.image = UIImage(named: Constants.monoImage)
         privateImageView.image = UIImage(named: Constants.privateImage)
         monoLabel.text = Constants.monoNumber
-        privateLabel.text = Constants.privateText
+        privateLabel.text = Constants.privateNumber
     }
 
     private func addGestureRecognizer() {

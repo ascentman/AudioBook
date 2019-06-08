@@ -75,9 +75,6 @@ extension DetailsDataProvider: UICollectionViewDelegate {
         collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
 
         let bookOnline = BookOnline(label: chosenBook.label, previewURL: URL(string: chosenBook.bookUrl)!, chaptersCount: chosenBook.chaptersCount)
-
-        let lastListened = "\(chosenBook.name) - розділ \(indexPath.row + 1)"
-        UserDefaults.standard.updateLastListened(lastListened)
         
         let isLocal = fileHandler.isBookChaptersLoaded(book: bookOnline)
         playerViewController?.startPlaying(isLocal: isLocal, book: chosenBook, from: indexPath.row + 1)
