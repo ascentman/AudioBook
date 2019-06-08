@@ -77,6 +77,9 @@ extension DetailsDataProvider: UICollectionViewDelegate {
         let bookOnline = BookOnline(label: chosenBook.label, previewURL: URL(string: chosenBook.bookUrl)!, chaptersCount: chosenBook.chaptersCount)
         let isLocal = fileHandler.isBookChaptersLoaded(book: bookOnline)
         playerViewController?.startPlaying(isLocal: isLocal, book: chosenBook, from: indexPath.row + 1)
+
+        let lastListened = "\(chosenBook.name) - розділ: \(indexPath.row + 1)"
+        UserDefaults.standard.updateLastListened(lastListened)
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

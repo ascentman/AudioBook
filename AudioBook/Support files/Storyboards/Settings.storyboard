@@ -73,7 +73,7 @@
                                                             <rect key="frame" x="250" y="11" width="94" height="29"/>
                                                             <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <connections>
-                                                                <action selector="timeChanfePressed:" destination="Fy0-vf-8Na" eventType="valueChanged" id="HId-j9-Kig"/>
+                                                                <action selector="timeChangePressed:" destination="Fy0-vf-8Na" eventType="valueChanged" id="HId-j9-Kig"/>
                                                             </connections>
                                                         </stepper>
                                                     </subviews>

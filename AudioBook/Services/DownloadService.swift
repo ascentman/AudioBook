@@ -126,7 +126,6 @@ private extension FileManager {
         guard let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
             return nil
         }
-        print(documentDirectory)
         return documentDirectory.appendingPathComponent(bookName).appendingPathComponent(url.lastPathComponent)
     }
 }

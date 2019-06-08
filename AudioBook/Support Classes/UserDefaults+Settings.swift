@@ -10,6 +10,7 @@ import Foundation
 
 private enum Constants {
     static let rewindTime = "rewindTime"
+    static let lastListened = "lastListened"
 }
 
 extension UserDefaults {
@@ -20,11 +21,21 @@ extension UserDefaults {
         }
     }
 
+    var lastListened: String {
+        get {
+            return UserDefaults.standard.string(forKey: Constants.lastListened) ?? ""
+        }
+    }
+
     func isRewindTimePresentInUserDefaults() -> Bool {
         return UserDefaults.standard.object(forKey: Constants.rewindTime) != nil
     }
 
     func updateRewindTime(_ value: Float64) {
         UserDefaults.standard.set(value, forKey: Constants.rewindTime)
+    }
+
+    func updateLastListened(_ value: String) {
+        UserDefaults.standard.set(value, forKey: Constants.lastListened)
     }
 }

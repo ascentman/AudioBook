@@ -24,7 +24,7 @@ final class SettingsTableViewController: UITableViewController {
 
     // MARK: - Actions
 
-    @IBAction func timeChanfePressed(_ sender: UIStepper) {
+    @IBAction func timeChangePressed(_ sender: UIStepper) {
         rewindLabel.text = sender.value.description
         UserDefaults.standard.updateRewindTime(Float64(sender.value))
     }

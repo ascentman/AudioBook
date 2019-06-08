@@ -14,4 +14,5 @@ enum StoryboardName {
     static let main = "Main"
     static let details = "Details"
     static let settings = "Settings"
+    static let about = "About"
 }

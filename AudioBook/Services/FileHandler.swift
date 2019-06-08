@@ -76,7 +76,6 @@ final class FileHandler {
             return
         }
 
-        print(documentDirectory)
         let bookDirectory = documentDirectory.appendingPathComponent(book.label)
         if fileManager.fileExists(atPath: bookDirectory.path) {
             do {
