@@ -111,6 +111,8 @@
                                                         </label>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ko4-2N-Qll">
                                                             <rect key="frame" x="295" y="0.0" width="51" height="31"/>
+                                                            <color key="onTintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="thumbTintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                             <connections>
                                                                 <action selector="historySwitchPressed:" destination="Fy0-vf-8Na" eventType="valueChanged" id="BWi-vg-KmU"/>
                                                             </connections>
@@ -136,8 +138,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Книги" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MrO-1r-XL2">
-                                                    <rect key="frame" x="16" y="11" width="52" height="22"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Завантаження" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MrO-1r-XL2">
+                                                    <rect key="frame" x="16" y="11" width="118.5" height="22"/>
                                                     <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -171,7 +173,7 @@
             </objects>
             <point key="canvasLocation" x="-895.20000000000005" y="698.5007496251875"/>
         </scene>
-        <!--Книги-->
+        <!--Завантаження-->
         <scene sceneID="WLH-mb-YKb">
             <objects>
                 <tableViewController id="Bnx-eE-V53" customClass="DeleteBooksTableViewController" customModule="AudioBook" customModuleProvider="target" sceneMemberID="viewController">
@@ -213,7 +215,7 @@
                             <outlet property="delegate" destination="Bnx-eE-V53" id="PXB-Fx-9Gt"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Книги" id="9mE-x0-jFO">
+                    <navigationItem key="navigationItem" title="Завантаження" id="9mE-x0-jFO">
                         <barButtonItem key="rightBarButtonItem" title="Редагувати" id="Kz9-gQ-HEs">
                             <connections>
                                 <action selector="editPressed:" destination="Bnx-eE-V53" id="4MY-4l-jkT"/>
