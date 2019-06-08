@@ -112,12 +112,17 @@ final class PlayerViewController: UIViewController {
     }
 
     // Build Player
-    func startPlaying(book: Book, from chapter: Int) {
+    func startPlaying(isLocal: Bool, book: Book, from chapter: Int) {
         self.currentBook = book
         self.currentChapter = chapter
         playButton.isUserInteractionEnabled = true
         setupTitle(book: book, from: chapter)
-        let startUrl = setupLocalUrl(book: book, from: chapter)
+        var startUrl: URL?
+        if isLocal {
+            startUrl = setupLocalUrl(book: book, from: chapter)
+        } else {
+            startUrl = URL(string: book.bookUrl)?.appendingPathComponent(String(chapter)).appendingPathExtension("mp3")
+        }
         let asset = AVAsset(url: startUrl!)
         let playerItem = AVPlayerItem(asset: asset)
         getTrackDuration(asset: asset)
@@ -152,7 +157,9 @@ final class PlayerViewController: UIViewController {
             if currentChapter < currentBook.chaptersCount {
                 currentChapter += 1
                 delegate?.updateCurrentChapter(currentIndex: currentChapter - 1, toPlay: currentChapter)
-                startPlaying(book: currentBook, from: currentChapter)
+                let bookOnline = BookOnline(label: currentBook.label, previewURL: URL(string: currentBook.bookUrl)!, chaptersCount: currentBook.chaptersCount)
+                let isLocal = fileHandler.isBookChaptersLoaded(book: bookOnline)
+                startPlaying(isLocal: isLocal, book: currentBook, from: currentChapter)
             }
         }
     }
@@ -162,7 +169,9 @@ final class PlayerViewController: UIViewController {
             if currentChapter > 1 {
                 currentChapter -= 1
                 delegate?.updateCurrentChapter(currentIndex: currentChapter + 1, toPlay: currentChapter)
-                startPlaying(book: currentBook, from: currentChapter)
+                let bookOnline = BookOnline(label: currentBook.label, previewURL: URL(string: currentBook.bookUrl)!, chaptersCount: currentBook.chaptersCount)
+                let isLocal = fileHandler.isBookChaptersLoaded(book: bookOnline)
+                startPlaying(isLocal: isLocal, book: currentBook, from: currentChapter)
             }
         }
     }

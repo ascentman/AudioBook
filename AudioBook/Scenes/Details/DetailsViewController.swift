@@ -44,7 +44,7 @@ final class DetailsViewController: UIViewController {
                 chapterCell.downloadCompleted()
                 if index == chaptersCount {
                     self?.state = .normal
-                    print("done!!!")
+                    self?.collectionView.deselectItem(at: indexPath, animated: true)
                 }
             }
         }
@@ -61,6 +61,8 @@ final class DetailsViewController: UIViewController {
 
         tabBarController?.tabBar.isHidden = false
     }
+
+    // MARK: - Actions
 
     @IBAction func downloadPressed(_ sender: Any) {
         bookOnline = BookOnline(label: dataProvider.chosenBook.label,
@@ -125,6 +127,7 @@ final class DetailsViewController: UIViewController {
                 self?.navigationController?.popViewController(animated: true)
             }
         } else {
+            navigationItem.leftBarButtonItem = nil
             navigationController?.popViewController(animated: true)
         }
     }

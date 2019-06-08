@@ -42,7 +42,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Аудіо" footerTitle="Дозволяє задати час у секундах, на який перемотувати аудіофайл, використовуючи кнопки плеєра" id="okJ-ud-yaE">
+                            <tableViewSection headerTitle="Аудіо" footerTitle="Дозволяє вказати час у секундах, на який перемотувати аудіофайл, використовуючи кнопки плеєра" id="okJ-ud-yaE">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="8Bs-0N-I9f">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
@@ -88,7 +88,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Управління завантаженнями" footerTitle="Дозволяє видалити скачені раніше книги, щоб зменшити загальний розмір програми" id="7R4-4n-fO3">
+                            <tableViewSection headerTitle="Управління завантаженнями" footerTitle="Дозволяє видаляти завантажені раніше книги, для того, щоб зменшити загальний розмір програми" id="7R4-4n-fO3">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="deleteBooks" id="Z8M-fq-anL">
                                         <rect key="frame" x="0.0" y="207" width="375" height="44"/>

@@ -73,7 +73,10 @@ extension DetailsDataProvider: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
-        playerViewController?.startPlaying(book: chosenBook, from: indexPath.row + 1)
+
+        let bookOnline = BookOnline(label: chosenBook.label, previewURL: URL(string: chosenBook.bookUrl)!, chaptersCount: chosenBook.chaptersCount)
+        let isLocal = fileHandler.isBookChaptersLoaded(book: bookOnline)
+        playerViewController?.startPlaying(isLocal: isLocal, book: chosenBook, from: indexPath.row + 1)
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

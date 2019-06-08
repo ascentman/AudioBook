@@ -19,7 +19,14 @@ final class AboutViewController: UIViewController {
         super.viewDidLoad()
 
         setupNavigationBar()
-        generalTextView.alwaysBounceVertical = true
+        setupTextView()
+    }
+
+    // MARK: - Lifecycle
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        generalTextView.setContentOffset(CGPoint.zero, animated: false)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -38,11 +45,24 @@ final class AboutViewController: UIViewController {
     }
 
     private func animateDonateButton() {
-        UIView.animate(withDuration: 0.5) { [weak self] in
+        UIView.animate(withDuration: 0.8) { [weak self] in
             self?.donateButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
         }
-        UIView.animate(withDuration: 0.5, delay: 0.3, options: UIView.AnimationOptions.curveEaseInOut, animations: { [weak self] in
+        UIView.animate(withDuration: 0.8, delay: 0.3, options: UIView.AnimationOptions.curveEaseInOut, animations: { [weak self] in
             self?.donateButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi * 2.0)
         }, completion: nil)
+    }
+
+    private func setupTextView() {
+        if let rtfPath = Bundle.main.url(forResource: "About", withExtension: "rtf") {
+            do {
+                let attributedStringWithRtf = try NSAttributedString(url: rtfPath,
+                                                                     options: [.documentType: NSAttributedString.DocumentType.rtf],
+                                                                     documentAttributes: nil)
+                generalTextView.attributedText = attributedStringWithRtf
+            } catch {
+                print("No rtf content found!")
+            }
+        }
     }
 }
