@@ -94,6 +94,10 @@ final class HomeViewController: UIViewController, SearchViewAnimatable {
         if !UserDefaults.standard.isRewindTimePresentInUserDefaults() {
             UserDefaults.standard.updateRewindTime(5.0)
         }
+
+        if !UserDefaults.standard.isAutoPlayPresentInUserDefaults() {
+            UserDefaults.standard.updateAutoPlay(true)
+        }
     }
 
     private func setupSearchBar(searchBar: UISearchBar) {

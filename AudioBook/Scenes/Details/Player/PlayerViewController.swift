@@ -192,7 +192,9 @@ final class PlayerViewController: UIViewController {
     // tracking time
 
     @objc private func playerDidFinishPlaying(sender: Notification) {
-        nextChapterToPlay()
+        if UserDefaults.standard.autoPlay {
+            nextChapterToPlay()
+        }
     }
 
     private func setupPeriodicTimeObserver(player: AVPlayer, asset: AVAsset) {

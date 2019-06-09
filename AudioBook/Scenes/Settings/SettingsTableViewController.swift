@@ -13,6 +13,7 @@ final class SettingsTableViewController: UITableViewController {
     // first section
     @IBOutlet private weak var rewindLabel: UILabel!
     @IBOutlet private weak var rewindStepper: UIStepper!
+    @IBOutlet private weak var autoPlaySwitch: UISwitch!
     // second section
     @IBOutlet private weak var historySwitch: UISwitch!
 
@@ -35,6 +36,10 @@ final class SettingsTableViewController: UITableViewController {
         UserDefaults.standard.updateHistorySaving(sender.isOn)
     }
 
+    @IBAction func autoPlaySwitchPressed(_ sender: UISwitch) {
+        UserDefaults.standard.updateAutoPlay(sender.isOn)
+    }
+
     // MARK: - Private
 
     private func setupNavigationBar() {
@@ -55,5 +60,6 @@ final class SettingsTableViewController: UITableViewController {
     private func setupSettings() {
         rewindLabel.text = String(UserDefaults.standard.rewindTime)
         historySwitch.isOn = UserDefaults.standard.historySaving
+        autoPlaySwitch.isOn = UserDefaults.standard.autoPlay
     }
 }

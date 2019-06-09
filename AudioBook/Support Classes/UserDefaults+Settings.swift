@@ -12,6 +12,7 @@ private enum Constants {
     static let rewindTime = "rewindTime"
     static let lastListened = "lastListened"
     static let historySaving = "historySaving"
+    static let autoPlay = "autoPlay"
 }
 
 extension UserDefaults {
@@ -34,8 +35,18 @@ extension UserDefaults {
         }
     }
 
+    var autoPlay: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: Constants.autoPlay)
+        }
+    }
+
     func isRewindTimePresentInUserDefaults() -> Bool {
         return UserDefaults.standard.object(forKey: Constants.rewindTime) != nil
+    }
+
+    func isAutoPlayPresentInUserDefaults() -> Bool {
+        return UserDefaults.standard.object(forKey: Constants.autoPlay) != nil
     }
 
     func updateRewindTime(_ value: Float64) {
@@ -48,5 +59,9 @@ extension UserDefaults {
 
     func updateHistorySaving(_ value: Bool) {
         UserDefaults.standard.set(value, forKey: Constants.historySaving)
+    }
+
+    func updateAutoPlay(_ value: Bool) {
+        UserDefaults.standard.set(value, forKey: Constants.autoPlay)
     }
 }
