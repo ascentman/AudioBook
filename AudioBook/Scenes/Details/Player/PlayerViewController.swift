@@ -8,6 +8,8 @@
 
 import UIKit
 import AVFoundation
+import AVKit
+import MediaPlayer
 
 protocol PlayerViewControllerDelegate: class {
     func updateCurrentChapter(currentIndex: Int, toPlay: Int)
@@ -29,6 +31,8 @@ final class PlayerViewController: UIViewController {
     private var labelTitle = "" {
         didSet {
             trackLabel?.text = labelTitle
+            MPNowPlayingInfoCenter.default().nowPlayingInfo = [MPMediaItemPropertyTitle: labelTitle,
+                                                               MPNowPlayingInfoPropertyIsLiveStream: true]
         }
     }
     private var currentBook: Book?
@@ -58,6 +62,7 @@ final class PlayerViewController: UIViewController {
 
         setupSlider()
         playButton.isUserInteractionEnabled = false
+        setupAVAudioSession()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -223,6 +228,46 @@ final class PlayerViewController: UIViewController {
         let minutesText = String(format: Constants.timeFormat, Int(seconds) / 60)
         let secondsText = String(format: Constants.timeFormat, Int(seconds) % 60)
         self.durationLabel.text = "\(minutesText):\(secondsText)"
+    }
+
+    //background session setup
+    private func setupAVAudioSession() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+            try AVAudioSession.sharedInstance().setActive(true)
+            UIApplication.shared.beginReceivingRemoteControlEvents()
+            setupCommandCenter()
+        } catch {
+            debugPrint(error.localizedDescription)
+        }
+    }
+
+    //remoteCommandCenter setup
+    private func setupCommandCenter() {
+        let commandCenter = MPRemoteCommandCenter.shared()
+        commandCenter.playCommand.isEnabled = true
+        commandCenter.pauseCommand.isEnabled = true
+        commandCenter.nextTrackCommand.isEnabled = true
+        commandCenter.previousTrackCommand.isEnabled = true
+
+        commandCenter.playCommand.addTarget { [weak self] event -> MPRemoteCommandHandlerStatus in
+            self?.player.play()
+            return .success
+        }
+        commandCenter.pauseCommand.addTarget { [weak self] event -> MPRemoteCommandHandlerStatus in
+            self?.player.pause()
+            return .success
+        }
+
+        commandCenter.nextTrackCommand.addTarget { [weak self] event -> MPRemoteCommandHandlerStatus in
+            self?.nextChapterToPlay()
+            return .success
+        }
+
+        commandCenter.previousTrackCommand.addTarget { [weak self] event -> MPRemoteCommandHandlerStatus in
+            self?.previousChapterToPlay()
+            return .success
+        }
     }
 }
 
