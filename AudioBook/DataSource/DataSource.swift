@@ -228,13 +228,6 @@ final class DataSource {
             luke,
             john,
             acts,
-            james,
-            peter1,
-            peter2,
-            john1,
-            john2,
-            john3,
-            jude,
             romans,
             corinthians1,
             corinthians2,
@@ -249,6 +242,13 @@ final class DataSource {
             titus,
             philemon,
             hebrews,
+            james,
+            peter1,
+            peter2,
+            john1,
+            john2,
+            john3,
+            jude,
             revelation
         ]
         oldTestament = [

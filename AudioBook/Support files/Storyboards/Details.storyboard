@@ -19,17 +19,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WpO-PW-Bov">
-                                <rect key="frame" x="0.0" y="443" width="375" height="160"/>
+                                <rect key="frame" x="0.0" y="433" width="375" height="170"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="160" id="J2S-jm-sj4"/>
+                                    <constraint firstAttribute="height" constant="170" id="J2S-jm-sj4"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="GGU-Jt-Us5" kind="embed" identifier="" id="aVX-5D-dyy"/>
                                 </connections>
                             </containerView>
                             <collectionView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3dH-SR-sSW">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="443"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="433"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="aNG-2t-8Tv">
                                     <size key="itemSize" width="102" height="54"/>
@@ -128,15 +128,15 @@
             <objects>
                 <viewController storyboardIdentifier="AudioBook.PlayerViewController" id="GGU-Jt-Us5" customClass="PlayerViewController" customModule="AudioBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qTp-eR-ICD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CgO-gf-tov" userLabel="status view">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWz-Ki-zzd">
-                                        <rect key="frame" x="187.5" y="20" width="0.0" height="0.0"/>
-                                        <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWz-Ki-zzd">
+                                        <rect key="frame" x="8" y="30" width="359" height="0.0"/>
+                                        <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -145,28 +145,29 @@
                                 <color key="tintColor" red="0.098039215690000001" green="0.54901960780000003" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="hWz-Ki-zzd" firstAttribute="centerY" secondItem="CgO-gf-tov" secondAttribute="centerY" constant="5" id="2sa-hl-Oqy"/>
-                                    <constraint firstItem="hWz-Ki-zzd" firstAttribute="centerX" secondItem="CgO-gf-tov" secondAttribute="centerX" id="MFG-4M-P1Q"/>
-                                    <constraint firstAttribute="height" constant="30" id="xuY-AF-lxb"/>
+                                    <constraint firstItem="hWz-Ki-zzd" firstAttribute="leading" secondItem="CgO-gf-tov" secondAttribute="leading" constant="8" id="WZl-54-NPs"/>
+                                    <constraint firstAttribute="trailing" secondItem="hWz-Ki-zzd" secondAttribute="trailing" constant="8" id="pyy-C7-2O4"/>
+                                    <constraint firstAttribute="height" constant="50" id="xuY-AF-lxb"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="uIN-vC-cTD" userLabel="All components">
-                                <rect key="frame" x="0.0" y="35" width="375" height="115"/>
+                                <rect key="frame" x="0.0" y="55" width="375" height="105"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Xt9-YF-lfi">
-                                        <rect key="frame" x="5" y="0.0" width="365" height="35"/>
+                                        <rect key="frame" x="5" y="0.0" width="365" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ua-bZ-lq5">
-                                                <rect key="frame" x="0.0" y="9" width="36" height="17.5"/>
+                                                <rect key="frame" x="0.0" y="6.5" width="36" height="17.5"/>
                                                 <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="SJH-dS-GnP">
-                                                <rect key="frame" x="42" y="2.5" width="281" height="31"/>
+                                                <rect key="frame" x="42" y="0.0" width="281" height="31"/>
                                                 <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W91-pn-na4">
-                                                <rect key="frame" x="329" y="9" width="36" height="17.5"/>
+                                                <rect key="frame" x="329" y="6.5" width="36" height="17.5"/>
                                                 <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -180,24 +181,24 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="JbP-xz-3hl">
-                                        <rect key="frame" x="37.5" y="35" width="300" height="80"/>
+                                        <rect key="frame" x="37.5" y="30" width="300" height="75"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCz-an-PRl">
-                                                <rect key="frame" x="0.0" y="0.0" width="16" height="80"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="16" height="75"/>
                                                 <state key="normal" image="previous chapter"/>
                                                 <connections>
                                                     <action selector="previousPressed:" destination="GGU-Jt-Us5" eventType="touchUpInside" id="cqX-ul-A7R"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J0H-hA-3al">
-                                                <rect key="frame" x="51" y="0.0" width="24" height="80"/>
+                                                <rect key="frame" x="51" y="0.0" width="24" height="75"/>
                                                 <state key="normal" image="backward"/>
                                                 <connections>
                                                     <action selector="moveBackPressed:" destination="GGU-Jt-Us5" eventType="touchUpInside" id="TAx-14-4b7"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WzR-SM-IPv">
-                                                <rect key="frame" x="110" y="0.0" width="80" height="80"/>
+                                                <rect key="frame" x="110" y="0.0" width="80" height="75"/>
                                                 <state key="normal" image="play">
                                                     <color key="titleColor" red="0.091227047145366669" green="0.55192708969116211" blue="0.37101572751998901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
@@ -206,14 +207,14 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c6r-gP-gVF">
-                                                <rect key="frame" x="225" y="0.0" width="24" height="80"/>
+                                                <rect key="frame" x="225" y="0.0" width="24" height="75"/>
                                                 <state key="normal" image="forward"/>
                                                 <connections>
                                                     <action selector="moveForwardPressed:" destination="GGU-Jt-Us5" eventType="touchUpInside" id="EcY-xk-CMr"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2G-gT-Df0">
-                                                <rect key="frame" x="284" y="0.0" width="16" height="80"/>
+                                                <rect key="frame" x="284" y="0.0" width="16" height="75"/>
                                                 <state key="normal" image="next chapter"/>
                                                 <connections>
                                                     <action selector="nextPressed:" destination="GGU-Jt-Us5" eventType="touchUpInside" id="pe3-Y2-hnz"/>
