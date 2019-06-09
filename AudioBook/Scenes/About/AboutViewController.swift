@@ -49,10 +49,10 @@ final class AboutViewController: UIViewController {
     }
 
     private func animateDonateButton() {
-        UIView.animate(withDuration: 0.5) { [weak self] in
+        UIView.animate(withDuration: 0.4) { [weak self] in
             self?.donateButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
         }
-        UIView.animate(withDuration: 0.5, delay: 0.3, options: UIView.AnimationOptions.curveEaseInOut, animations: { [weak self] in
+        UIView.animate(withDuration: 0.4, delay: 0.2, options: UIView.AnimationOptions.curveEaseInOut, animations: { [weak self] in
             self?.donateButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi * 2.0)
         }, completion: nil)
     }
