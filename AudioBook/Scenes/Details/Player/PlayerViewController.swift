@@ -28,10 +28,14 @@ final class PlayerViewController: UIViewController {
     @IBOutlet private weak var durationLabel: UILabel!
 
     private var timeObserver: Any?
+    let artWorkImage = UIImage(named: "audioCell")
     private var labelTitle = "" {
         didSet {
             trackLabel?.text = labelTitle
             MPNowPlayingInfoCenter.default().nowPlayingInfo = [MPMediaItemPropertyTitle: labelTitle,
+                                                               MPMediaItemPropertyArtwork: MPMediaItemArtwork(boundsSize: artWorkImage?.size ?? CGSize.zero, requestHandler: { [weak self] (size) -> UIImage in
+                                                                return self?.artWorkImage ?? UIImage()
+                                                               }),
                                                                MPNowPlayingInfoPropertyIsLiveStream: true]
         }
     }
