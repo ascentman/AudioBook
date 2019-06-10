@@ -17,6 +17,7 @@ final class DetailsViewController: UIViewController {
 
     @IBOutlet var dataProvider: DetailsDataProvider!
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var rightBarDownloadButton: UIBarButtonItem!
     @IBOutlet private weak var playerView: UIView!
     private var state: ActiveState = .normal
     private var bookOnline: BookOnline?
@@ -47,6 +48,7 @@ final class DetailsViewController: UIViewController {
             let indexPath = IndexPath(item: index - 1, section: 0)
             if let chapterCell = self?.collectionView.cellForItem(at: indexPath) as? ChapterCollectionViewCell {
                 self?.state = .downloading
+                self?.rightBarDownloadButton.isEnabled = false
                 self?.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
                 chapterCell.updateDownloadProgress(progress: progress)
             }
@@ -58,6 +60,7 @@ final class DetailsViewController: UIViewController {
                 chapterCell.downloadCompleted()
                 if index == chaptersCount {
                     self?.state = .normal
+                    self?.rightBarDownloadButton.isEnabled = true
                     self?.collectionView.deselectItem(at: indexPath, animated: true)
                 }
             }
