@@ -23,7 +23,7 @@
                     <rect key="frame" x="8" y="10" width="292" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oz6-qT-C3X">
-                            <rect key="frame" x="8" y="14.5" width="276" height="21"/>
+                            <rect key="frame" x="4" y="14.5" width="284" height="21"/>
                             <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -31,9 +31,9 @@
                     </subviews>
                     <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="Oz6-qT-C3X" firstAttribute="leading" secondItem="eoo-zI-ZVl" secondAttribute="leading" constant="8" id="6zO-Jm-kvA"/>
+                        <constraint firstItem="Oz6-qT-C3X" firstAttribute="leading" secondItem="eoo-zI-ZVl" secondAttribute="leading" constant="4" id="6zO-Jm-kvA"/>
                         <constraint firstItem="Oz6-qT-C3X" firstAttribute="centerY" secondItem="eoo-zI-ZVl" secondAttribute="centerY" id="DQh-nt-drj"/>
-                        <constraint firstAttribute="trailing" secondItem="Oz6-qT-C3X" secondAttribute="trailing" constant="8" id="mmE-kz-Far"/>
+                        <constraint firstAttribute="trailing" secondItem="Oz6-qT-C3X" secondAttribute="trailing" constant="4" id="mmE-kz-Far"/>
                         <constraint firstAttribute="height" constant="50" id="uKk-d1-HiY"/>
                     </constraints>
                 </view>
