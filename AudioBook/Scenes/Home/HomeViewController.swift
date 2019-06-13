@@ -103,6 +103,7 @@ final class HomeViewController: UIViewController, SearchViewAnimatable {
     private func setupSearchBar(searchBar: UISearchBar) {
         searchBar.delegate = self
         searchBar.searchBarStyle = .minimal
+        searchBar.setValue("Відмінити", forKey: "_cancelButtonText")
         searchBar.showsCancelButton = true
         searchBar.barTintColor = .white
         searchBar.returnKeyType = UIReturnKeyType.done
