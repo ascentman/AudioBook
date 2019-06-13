@@ -29,6 +29,7 @@ final class SupportViewController: UIViewController {
         static let ok = "OK"
         static let feedback = "Відгук про Аудіо Біблію"
         static let emailTo = "ascentman@icloud.com"
+        static let mail = "На жаль, програма Mail у вас не налаштована. Ви можете відправити відгук через App Store"
     }
     
     // MARK: - Lifecycle
@@ -81,6 +82,7 @@ final class SupportViewController: UIViewController {
 
     private func showMailComposer() {
         guard MFMailComposeViewController.canSendMail() else {
+            presentAlert(Constants.info, message: Constants.mail, acceptTitle: Constants.ok, declineTitle: nil)
             return
         }
 
