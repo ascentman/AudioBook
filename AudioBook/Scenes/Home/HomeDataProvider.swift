@@ -95,7 +95,7 @@ extension HomeDataProvider: UICollectionViewDelegate {
         cell.alpha = 0
         cell.layer.transform = CATransform3DMakeScale(0.8, 0.8, 0.8)
 
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.1, animations: {
             cell.alpha = 1
             cell.layer.transform = CATransform3DScale(CATransform3DIdentity, 1, 1, 1)
         })
