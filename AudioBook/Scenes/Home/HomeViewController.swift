@@ -95,6 +95,10 @@ final class HomeViewController: UIViewController, SearchViewAnimatable {
             UserDefaults.standard.updateRewindTime(5.0)
         }
 
+        if !UserDefaults.standard.isSpeedPresentInUserDefaults() {
+            UserDefaults.standard.updateSpeed(1.0)
+        }
+
         if !UserDefaults.standard.isAutoPlayPresentInUserDefaults() {
             UserDefaults.standard.updateAutoPlay(true)
         }

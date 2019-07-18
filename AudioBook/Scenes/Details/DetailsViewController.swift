@@ -58,7 +58,7 @@ final class DetailsViewController: UIViewController {
             let indexPath = IndexPath(item: index - 1, section: 0)
             if let chapterCell = self?.collectionView.cellForItem(at: indexPath) as? ChapterCollectionViewCell {
                 chapterCell.downloadCompleted()
-                if index == chaptersCount {
+                if index <= chaptersCount {
                     self?.state = .normal
                     self?.rightBarDownloadButton.isEnabled = true
                     self?.collectionView.deselectItem(at: indexPath, animated: true)
