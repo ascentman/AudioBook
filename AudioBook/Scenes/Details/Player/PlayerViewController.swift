@@ -147,7 +147,8 @@ final class PlayerViewController: UIViewController {
         getTrackDuration(asset: asset)
         NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidFinishPlaying(sender:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
         player.replaceCurrentItem(with: playerItem)
-        player.play()
+        player.playImmediately(atRate: UserDefaults.standard.speed)
+//        player.play()
         setupImageForPlayButton(name: Constants.pauseImage)
         setupPeriodicTimeObserver(player: player, asset: asset)
     
