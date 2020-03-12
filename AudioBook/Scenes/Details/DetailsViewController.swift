@@ -43,6 +43,8 @@ final class DetailsViewController: UIViewController {
 
         setupUI()
         dataProvider.playerViewController?.delegate = self
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
 
         DownloadService.shared.onProgress = { [weak self] (index, progress) in
             let indexPath = IndexPath(item: index - 1, section: 0)
@@ -100,6 +102,7 @@ final class DetailsViewController: UIViewController {
                 }, cancelActionHandler: nil)
             case .notStarted:
                 presentAlert(Constants.info, message: Constants.downloadBook, acceptTitle: Constants.download, declineTitle: Constants.cancel, okActionHandler: {
+                    self.dataProvider.fileHandler.createBookDirectory(name: bookOnline.label)
                     DownloadService.shared.startDownload(bookOnline)
                 }, cancelActionHandler: nil)
             }
@@ -162,5 +165,11 @@ extension DetailsViewController: PlayerViewControllerDelegate {
             self?.collectionView.deselectItem(at: indexPathCurrent, animated: true)
             self?.collectionView.selectItem(at: indexPathToPlay, animated: true, scrollPosition: .centeredVertically)
         }
+    }
+}
+
+extension DetailsViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }

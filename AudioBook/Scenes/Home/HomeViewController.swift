@@ -92,7 +92,7 @@ final class HomeViewController: UIViewController, SearchViewAnimatable {
 
     private func setupDefaultsSettings() {
         if !UserDefaults.standard.isRewindTimePresentInUserDefaults() {
-            UserDefaults.standard.updateRewindTime(5.0)
+            UserDefaults.standard.updateRewindTime(10.0)
         }
 
         if !UserDefaults.standard.isSpeedPresentInUserDefaults() {
@@ -107,7 +107,7 @@ final class HomeViewController: UIViewController, SearchViewAnimatable {
     private func setupSearchBar(searchBar: UISearchBar) {
         searchBar.delegate = self
         searchBar.searchBarStyle = .minimal
-        searchBar.setValue("Відмінити", forKey: "_cancelButtonText")
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).title = "Відмінити"
         searchBar.showsCancelButton = true
         searchBar.barTintColor = .white
         searchBar.returnKeyType = UIReturnKeyType.done
@@ -139,8 +139,13 @@ extension HomeViewController: HomeDataProviderDelegate {
                 viewController?.dataProvider.fillChosen(book: dataProvider.dataManager.newTestament[index])
             }
         } else {
-            viewController?.title = dataProvider.dataManager.oldTestament[index].name
-            viewController?.dataProvider.fillChosen(book: dataProvider.dataManager.oldTestament[index])
+            if !dataProvider.isSearchBarEmpty {
+                viewController?.title = dataProvider.filteredOldTestament[index].name
+                viewController?.dataProvider.fillChosen(book: dataProvider.filteredOldTestament[index])
+            } else {
+                viewController?.title = dataProvider.dataManager.oldTestament[index].name
+                viewController?.dataProvider.fillChosen(book: dataProvider.dataManager.oldTestament[index])
+            }
         }
         if let viewController = viewController {
             navigationController?.pushViewController(viewController, animated: true)

@@ -27,6 +27,7 @@ final class DeleteBooksTableViewController: UITableViewController {
         super.viewDidLoad()
 
         setupFoundBooks()
+        setEmptyState()
         tableView.tableFooterView = UIView()
     }
 
@@ -83,8 +84,38 @@ final class DeleteBooksTableViewController: UITableViewController {
                 if result {
                     foundBooks.remove(at: indexPath.row)
                     tableView.reloadData()
+                    setEmptyState()
                 }
             })
         }
+    }
+
+    private func setEmptyState() {
+        if foundBooks.isEmpty {
+            tableView.setEmptyMessage("Ще немає завантажень")
+        } else {
+            tableView.restore()
+        }
+    }
+}
+
+extension UITableView {
+
+    func setEmptyMessage(_ message: String) {
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+        messageLabel.text = message
+        messageLabel.textColor = .lightGray
+        messageLabel.numberOfLines = 0
+        messageLabel.textAlignment = .center
+        messageLabel.font = UIFont(name: "Charter", size: 22)!
+        messageLabel.sizeToFit()
+
+        self.backgroundView = messageLabel
+        self.separatorStyle = .none
+    }
+
+    func restore() {
+        self.backgroundView = nil
+        self.separatorStyle = .singleLine
     }
 }

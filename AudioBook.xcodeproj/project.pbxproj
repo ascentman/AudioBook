@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		302B380E241A9ECC00310155 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302B380D241A9ECC00310155 /* ShadowView.swift */; };
+		302B3810241AA05600310155 /* InteractiveNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302B380F241AA05600310155 /* InteractiveNavigationController.swift */; };
 		CE12A9CC22786E4000CDB66E /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12A9CA22786E4000CDB66E /* PlayerViewController.swift */; };
 		CE12A9D822788BC100CDB66E /* ChapterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12A9D622788BC100CDB66E /* ChapterCollectionViewCell.swift */; };
 		CE12A9E02278988500CDB66E /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12A9DF2278988500CDB66E /* Book.swift */; };
@@ -49,6 +51,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		302B380D241A9ECC00310155 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
+		302B380F241AA05600310155 /* InteractiveNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveNavigationController.swift; sourceTree = "<group>"; };
 		CE12A9CA22786E4000CDB66E /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		CE12A9D622788BC100CDB66E /* ChapterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE12A9DF2278988500CDB66E /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 				CE12A9E12278BDCF00CDB66E /* Colors.swift */,
 				CE29C8462271027B003FDAB6 /* CustomSegmentedControl.swift */,
 				CEEAB9E4229DBF9700A8E345 /* UserDefaults+Settings.swift */,
+				302B380D241A9ECC00310155 /* ShadowView.swift */,
+				302B380F241AA05600310155 /* InteractiveNavigationController.swift */,
 			);
 			path = "Support Classes";
 			sourceTree = "<group>";
@@ -408,6 +414,7 @@
 				CE29C84B2271131A003FDAB6 /* DetailsViewController.swift in Sources */,
 				CE29C8432270FFE4003FDAB6 /* UICollectionViewCell+Extensions.swift in Sources */,
 				CED6C3E8227E3C05008DBAC9 /* Download.swift in Sources */,
+				302B3810241AA05600310155 /* InteractiveNavigationController.swift in Sources */,
 				CED6C3ED227E3D16008DBAC9 /* DownloadService.swift in Sources */,
 				CE12A9E02278988500CDB66E /* Book.swift in Sources */,
 				CE29C83C2270F712003FDAB6 /* HomeDataProvider.swift in Sources */,
@@ -418,6 +425,7 @@
 				CEEAB9E8229DE5AB00A8E345 /* DeleteBookTableViewCell.swift in Sources */,
 				CE12A9E42278C5AD00CDB66E /* UIViewController+Extensions.swift in Sources */,
 				CEC82106226C909000A1AA8D /* BookCollectionViewCell.swift in Sources */,
+				302B380E241A9ECC00310155 /* ShadowView.swift in Sources */,
 				CEC82102226C902600A1AA8D /* HomeViewController.swift in Sources */,
 				CEEAB9EA229DF7CB00A8E345 /* Dictionary+Extensions.swift in Sources */,
 				CE12A9CC22786E4000CDB66E /* PlayerViewController.swift in Sources */,
@@ -560,7 +568,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 34UQ9VN4VQ;
 				INFOPLIST_FILE = "$(SRCROOT)/AudioBook/Support files/Info.plist";
@@ -573,7 +581,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -581,7 +589,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 34UQ9VN4VQ;
 				INFOPLIST_FILE = "$(SRCROOT)/AudioBook/Support files/Info.plist";
@@ -594,7 +602,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -33,7 +33,6 @@ final class DetailsDataProvider: NSObject {
 
     func downloadSpecific(book: BookOnline, completion: (LoadingStatus) -> Void) {
         if !fileHandler.ifBookExists(book: book) {
-            fileHandler.createBookDirectory(name: book.label)
             completion(.notStarted)
         } else if fileHandler.isBookChaptersLoaded(book: book) {
             completion(.finished)

@@ -59,8 +59,8 @@ final class SettingsTableViewController: UITableViewController {
     private func setupSteppers() {
         rewindStepper.wraps = true
         rewindStepper.autorepeat = true
-        rewindStepper.stepValue = 5.0
-        rewindStepper.minimumValue = 5.0
+        rewindStepper.stepValue = 10.0
+        rewindStepper.minimumValue = 10.0
         rewindStepper.maximumValue = 30.0
 
         speedStepper.wraps = true

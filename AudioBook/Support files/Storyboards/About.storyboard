@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8rj-8X-EBV">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8rj-8X-EBV">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -39,7 +37,10 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="f4Q-Je-aaY" kind="show" id="aO0-bD-6be"/>
+                                    <segue destination="f4Q-Je-aaY" kind="show" id="aO0-bD-6be">
+                                        <segue key="commit" inheritsFrom="parent" id="DKx-bH-fv2"/>
+                                        <segue key="preview" inheritsFrom="commit" id="XDZ-mB-CI6"/>
+                                    </segue>
                                 </connections>
                             </button>
                         </subviews>
@@ -79,7 +80,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📨 Надіслати відгук:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNe-oi-0x1">
-                                <rect key="frame" x="110" y="355" width="194.5" height="23.5"/>
+                                <rect key="frame" x="110" y="285" width="194.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Charter-BoldItalic" family="Charter" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -154,7 +155,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77e-ZZ-JdU">
-                                <rect key="frame" x="107" y="418.5" width="200" height="44"/>
+                                <rect key="frame" x="107" y="328.5" width="200" height="44"/>
                                 <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="LdH-W4-2Cg"/>
@@ -177,9 +178,9 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="77e-ZZ-JdU" firstAttribute="top" secondItem="NNe-oi-0x1" secondAttribute="bottom" constant="40" id="4NU-OF-YkP"/>
+                            <constraint firstItem="77e-ZZ-JdU" firstAttribute="top" secondItem="NNe-oi-0x1" secondAttribute="bottom" constant="20" id="4NU-OF-YkP"/>
                             <constraint firstItem="77e-ZZ-JdU" firstAttribute="centerX" secondItem="lwf-YQ-uVf" secondAttribute="centerX" id="DIN-XT-tOB"/>
-                            <constraint firstItem="NNe-oi-0x1" firstAttribute="top" secondItem="GaY-GL-Oxi" secondAttribute="bottom" constant="100" id="IJd-EZ-Sim"/>
+                            <constraint firstItem="NNe-oi-0x1" firstAttribute="top" secondItem="GaY-GL-Oxi" secondAttribute="bottom" constant="30" id="IJd-EZ-Sim"/>
                             <constraint firstItem="QTL-N4-ZKC" firstAttribute="top" secondItem="lQy-ui-Rtg" secondAttribute="top" constant="30" id="M6v-pZ-gwi"/>
                             <constraint firstItem="Jny-E7-Ccr" firstAttribute="top" secondItem="QTL-N4-ZKC" secondAttribute="bottom" constant="58.5" id="O3o-tz-xY2"/>
                             <constraint firstItem="Jny-E7-Ccr" firstAttribute="centerX" secondItem="lwf-YQ-uVf" secondAttribute="centerX" id="UiQ-z9-Lac"/>
@@ -243,5 +244,8 @@
         <image name="donateButton" width="90" height="90"/>
         <image name="info50" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="aO0-bD-6be"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

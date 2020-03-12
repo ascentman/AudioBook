@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UGx-ki-Vde">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UGx-ki-Vde">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -48,10 +47,11 @@
                             <constraint firstItem="mGX-h3-faH" firstAttribute="trailing" secondItem="tHC-Qg-KoT" secondAttribute="trailing" constant="-2" id="hiI-pA-irU"/>
                             <constraint firstItem="mGX-h3-faH" firstAttribute="bottom" secondItem="tHC-Qg-KoT" secondAttribute="bottom" constant="2" id="qAo-NV-Odw"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Fo4-1D-KNj"/>
                     </view>
                     <connections>
                         <outlet property="dotsLabel" destination="iuB-6K-ggq" id="wjC-sM-ITK"/>
-                        <segue destination="NZR-WZ-sbA" kind="show" identifier="toMain" id="oJd-SW-tfS"/>
+                        <segue destination="NZR-WZ-sbA" kind="presentation" identifier="toMain" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="oJd-SW-tfS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="39T-50-pDO" userLabel="First Responder" sceneMemberID="firstResponder"/>
