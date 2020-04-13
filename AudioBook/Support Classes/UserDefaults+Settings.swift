@@ -14,6 +14,7 @@ private enum Constants {
     static let historySaving = "historySaving"
     static let autoPlay = "autoPlay"
     static let speed = "speed"
+    static let donate = "donate"
 }
 
 extension UserDefaults {
@@ -48,6 +49,12 @@ extension UserDefaults {
         }
     }
 
+    var donate: Int {
+        get {
+            return Int(UserDefaults.standard.integer(forKey: Constants.donate))
+        }
+    }
+
     func isRewindTimePresentInUserDefaults() -> Bool {
         return UserDefaults.standard.object(forKey: Constants.rewindTime) != nil
     }
@@ -78,5 +85,9 @@ extension UserDefaults {
 
     func updateSpeed(_ value: Float) {
         UserDefaults.standard.set(value, forKey: Constants.speed)
+    }
+
+    func updateDonate(_ value: Int) {
+        UserDefaults.standard.set(value, forKey: Constants.donate)
     }
 }
