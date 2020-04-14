@@ -104,8 +104,6 @@ final class HomeViewController: UIViewController, SearchViewAnimatable {
             UserDefaults.standard.updateAutoPlay(true)
         }
 
-        print(UserDefaults.standard.donate)
-
         if UserDefaults.standard.donate % 10 == 0 {
             let storyboard = UIStoryboard(name: "About", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "SupportViewController")
