@@ -87,7 +87,8 @@ extension UserDefaults {
         UserDefaults.standard.set(value, forKey: Constants.speed)
     }
 
-    func updateDonate(_ value: Int) {
-        UserDefaults.standard.set(value, forKey: Constants.donate)
+    func updateDonate() {
+        let currentCount = UserDefaults.standard.integer(forKey: Constants.donate)
+        UserDefaults.standard.set(currentCount + 1, forKey: Constants.donate)
     }
 }

@@ -11,12 +11,15 @@ import MessageUI
 
 final class SupportViewController: UIViewController {
 
+    var isPushed = false
+
     @IBOutlet private weak var monoLabel: UILabel!
     @IBOutlet private weak var privateLabel: UILabel!
     @IBOutlet private weak var monoImageView: UIImageView!
     @IBOutlet private weak var privateImageView: UIImageView!
-    @IBOutlet weak var monoView: UIView!
-    @IBOutlet weak var privateView: UIView!
+    @IBOutlet private weak var monoView: UIView!
+    @IBOutlet private weak var privateView: UIView!
+    @IBOutlet private weak var closeButton: UIButton!
 
     private enum Constants {
         static let info = "Інформація"
@@ -41,16 +44,22 @@ final class SupportViewController: UIViewController {
         addGestureRecognizer()
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+
+        closeButton.isHidden = isPushed
     }
 
     // MARK: - Actions
 
-    @IBAction func backAction(_ sender: Any) {
+    @IBAction private func backAction(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
 
-    @IBAction func sendFeedbackPressed(_ sender: Any) {
+    @IBAction private func sendFeedbackPressed(_ sender: Any) {
         showMailComposer()
+    }
+
+    @IBAction private func closeDidTouch(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 
     // MARK: - Private

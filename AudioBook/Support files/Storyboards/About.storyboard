@@ -37,7 +37,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="f4Q-Je-aaY" kind="show" id="aO0-bD-6be"/>
+                                    <segue destination="f4Q-Je-aaY" kind="show" identifier="supportSegue" id="aO0-bD-6be"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -65,25 +65,31 @@
         <!--Підтримати проект-->
         <scene sceneID="Obq-CQ-oWg">
             <objects>
-                <viewController id="f4Q-Je-aaY" customClass="SupportViewController" customModule="AudioBook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SupportViewController" id="f4Q-Je-aaY" customClass="SupportViewController" customModule="AudioBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lwf-YQ-uVf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🎁 Підтримати проект ви можете банківським переказом на картку:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTL-N4-ZKC">
-                                <rect key="frame" x="16" y="30" width="382" height="46.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🎁 Підтримати розвиток проекту ви можете банківським переказом на картку:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTL-N4-ZKC">
+                                <rect key="frame" x="16" y="40" width="382" height="70"/>
                                 <fontDescription key="fontDescription" name="Charter-BoldItalic" family="Charter" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📨 Надіслати відгук:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNe-oi-0x1">
-                                <rect key="frame" x="110" y="325" width="194.5" height="23.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📨 Надіслати відгук на пошту:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNe-oi-0x1">
+                                <rect key="frame" x="61" y="353.5" width="292.5" height="23.5"/>
+                                <fontDescription key="fontDescription" name="Charter-BoldItalic" family="Charter" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🙏 Божих благословінь!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ze6-0E-mJm">
+                                <rect key="frame" x="99" y="280" width="216.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Charter-BoldItalic" family="Charter" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jny-E7-Ccr" userLabel="monoView">
-                                <rect key="frame" x="92" y="135" width="230" height="40"/>
+                                <rect key="frame" x="92" y="140" width="230" height="40"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sud-YZ-t7f">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -120,7 +126,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sjf-jW-C4o">
-                                <rect key="frame" x="92" y="215" width="230" height="40"/>
+                                <rect key="frame" x="92" y="210" width="230" height="40"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="91c-G8-Del">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -152,7 +158,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77e-ZZ-JdU">
-                                <rect key="frame" x="107" y="368.5" width="200" height="44"/>
+                                <rect key="frame" x="107" y="397" width="200" height="44"/>
                                 <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="LdH-W4-2Cg"/>
@@ -171,20 +177,37 @@
                                     <action selector="sendFeedbackPressed:" destination="f4Q-Je-aaY" eventType="touchUpInside" id="YVR-0J-eLR"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="paS-Aj-qdk">
+                                <rect key="frame" x="380" y="10" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="1V1-Cc-WUh"/>
+                                    <constraint firstAttribute="height" constant="24" id="2Uq-LA-vmd"/>
+                                </constraints>
+                                <state key="normal" image="close">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeDidTouch:" destination="f4Q-Je-aaY" eventType="touchUpInside" id="y9E-1m-B7B"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="NNe-oi-0x1" firstAttribute="top" secondItem="ze6-0E-mJm" secondAttribute="bottom" constant="50" id="1nR-Bs-kJo"/>
                             <constraint firstItem="77e-ZZ-JdU" firstAttribute="top" secondItem="NNe-oi-0x1" secondAttribute="bottom" constant="20" id="4NU-OF-YkP"/>
                             <constraint firstItem="77e-ZZ-JdU" firstAttribute="centerX" secondItem="lwf-YQ-uVf" secondAttribute="centerX" id="DIN-XT-tOB"/>
-                            <constraint firstItem="NNe-oi-0x1" firstAttribute="top" secondItem="GaY-GL-Oxi" secondAttribute="bottom" constant="70" id="IJd-EZ-Sim"/>
-                            <constraint firstItem="QTL-N4-ZKC" firstAttribute="top" secondItem="lQy-ui-Rtg" secondAttribute="top" constant="30" id="M6v-pZ-gwi"/>
-                            <constraint firstItem="Jny-E7-Ccr" firstAttribute="top" secondItem="QTL-N4-ZKC" secondAttribute="bottom" constant="58.5" id="O3o-tz-xY2"/>
+                            <constraint firstItem="QTL-N4-ZKC" firstAttribute="top" secondItem="lQy-ui-Rtg" secondAttribute="top" constant="40" id="M6v-pZ-gwi"/>
+                            <constraint firstItem="Jny-E7-Ccr" firstAttribute="top" secondItem="QTL-N4-ZKC" secondAttribute="bottom" constant="30" id="O3o-tz-xY2"/>
                             <constraint firstItem="Jny-E7-Ccr" firstAttribute="centerX" secondItem="lwf-YQ-uVf" secondAttribute="centerX" id="UiQ-z9-Lac"/>
+                            <constraint firstItem="paS-Aj-qdk" firstAttribute="top" secondItem="lQy-ui-Rtg" secondAttribute="top" constant="10" id="Z88-kj-qz7"/>
+                            <constraint firstItem="ze6-0E-mJm" firstAttribute="centerX" secondItem="lwf-YQ-uVf" secondAttribute="centerX" id="bVq-oD-Ih6"/>
                             <constraint firstItem="QTL-N4-ZKC" firstAttribute="centerX" secondItem="lwf-YQ-uVf" secondAttribute="centerX" id="iJV-sk-fes"/>
+                            <constraint firstItem="lQy-ui-Rtg" firstAttribute="trailing" secondItem="paS-Aj-qdk" secondAttribute="trailing" constant="10" id="jRE-Mi-fvv"/>
                             <constraint firstItem="sjf-jW-C4o" firstAttribute="centerX" secondItem="lwf-YQ-uVf" secondAttribute="centerX" id="kiH-6V-6JC"/>
-                            <constraint firstItem="sjf-jW-C4o" firstAttribute="top" secondItem="Jny-E7-Ccr" secondAttribute="bottom" constant="40" id="ngL-OD-Vsf"/>
+                            <constraint firstItem="sjf-jW-C4o" firstAttribute="top" secondItem="Jny-E7-Ccr" secondAttribute="bottom" constant="30" id="ngL-OD-Vsf"/>
                             <constraint firstAttribute="trailing" secondItem="QTL-N4-ZKC" secondAttribute="trailing" constant="16" id="pBc-R6-7PW"/>
+                            <constraint firstItem="ze6-0E-mJm" firstAttribute="top" secondItem="sjf-jW-C4o" secondAttribute="bottom" constant="30" id="xCC-Q6-1i6"/>
                             <constraint firstItem="QTL-N4-ZKC" firstAttribute="leading" secondItem="lwf-YQ-uVf" secondAttribute="leading" constant="16" id="xh4-b7-bi3"/>
                             <constraint firstItem="NNe-oi-0x1" firstAttribute="centerX" secondItem="lwf-YQ-uVf" secondAttribute="centerX" id="yVe-1y-N6W"/>
                         </constraints>
@@ -199,6 +222,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="closeButton" destination="paS-Aj-qdk" id="UdM-SJ-GEI"/>
                         <outlet property="monoImageView" destination="Sud-YZ-t7f" id="mBX-MP-v71"/>
                         <outlet property="monoLabel" destination="qIi-qq-icA" id="YZR-9b-75c"/>
                         <outlet property="monoView" destination="Jny-E7-Ccr" id="baT-Gu-VgM"/>
@@ -238,6 +262,7 @@
     </scenes>
     <resources>
         <image name="back-arrow-circular-symbol" width="32" height="32"/>
+        <image name="close" width="32" height="32"/>
         <image name="donateButton" width="90" height="90"/>
         <image name="info50" width="25" height="25"/>
     </resources>

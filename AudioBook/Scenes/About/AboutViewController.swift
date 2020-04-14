@@ -39,6 +39,12 @@ final class AboutViewController: UIViewController {
          animateDonateButton()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? SupportViewController {
+            vc.isPushed = true
+        }
+    }
+
     // MARK: - Private
 
     private func setupNavigationBar() {

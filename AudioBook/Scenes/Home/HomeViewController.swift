@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 final class HomeViewController: UIViewController, SearchViewAnimatable {
 
@@ -101,6 +102,18 @@ final class HomeViewController: UIViewController, SearchViewAnimatable {
 
         if !UserDefaults.standard.isAutoPlayPresentInUserDefaults() {
             UserDefaults.standard.updateAutoPlay(true)
+        }
+
+        print(UserDefaults.standard.donate)
+
+        if UserDefaults.standard.donate % 10 == 0 {
+            let storyboard = UIStoryboard(name: "About", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "SupportViewController")
+            present(vc, animated: true)
+        }
+
+        if UserDefaults.standard.donate == 3 || UserDefaults.standard.donate % 33 == 0 {
+            SKStoreReviewController.requestReview()
         }
     }
 
